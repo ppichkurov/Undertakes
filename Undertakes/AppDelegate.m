@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "UNDHomeViewController.h"
 
 @interface AppDelegate ()
+
+//@property (nonatomic, strong)
 
 @end
 
@@ -16,7 +19,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [UIWindow new];
+    
+    UNDHomeViewController *homeView = [UNDHomeViewController new];
+    NSArray *viewControllersArray = @[homeView];
+
+    UITabBarController * tabBarController = [UITabBarController new];
+    tabBarController.viewControllers = viewControllersArray;
+//    tabBarController.tabBar.barTintColor = UIColor.blueColor;
+    
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
