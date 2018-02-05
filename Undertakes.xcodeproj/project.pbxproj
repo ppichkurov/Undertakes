@@ -116,7 +116,7 @@
 		7F36ABFA201E6C650043D00E /* Undertakes */ = {
 			isa = PBXGroup;
 			children = (
-				7F75E4E22021176500AC53C3 /* Models */,
+				7F75E4E22021176500AC53C3 /* Delegates */,
 				7F75E4E02021174900AC53C3 /* Views */,
 				7F75E4E32021179500AC53C3 /* Controllers */,
 				7F75E4DF202116E200AC53C3 /* Resources */,
@@ -158,7 +158,7 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		7F75E4E22021176500AC53C3 /* Models */ = {
+		7F75E4E22021176500AC53C3 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				7F433BD320272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.h */,
@@ -166,7 +166,7 @@
 				7F433BD620272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.h */,
 				7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */,
 			);
-			name = Models;
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 		7F75E4E32021179500AC53C3 /* Controllers */ = {
