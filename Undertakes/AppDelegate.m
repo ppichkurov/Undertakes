@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    self.window = [UIWindow new];
+    self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
     
     UNDHomeViewController *homeView = [UNDHomeViewController new];
     NSArray *viewControllersArray = @[homeView];
