@@ -8,33 +8,49 @@
 
 #import "AppDelegate.h"
 #import "UNDHomeViewController.h"
+#import "UNDAuthViewController.h"
+#import "UNDProxyRootViewController.h"
 
 @interface AppDelegate ()
 
-//@property (nonatomic, strong)
+@property (nonatomic, strong)  UITabBarController * tabBarController;
 
 @end
 
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     
     self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
-    
-    UNDHomeViewController *homeView = [UNDHomeViewController new];
-    NSArray *viewControllersArray = @[homeView];
-
-    UITabBarController * tabBarController = [UITabBarController new];
-    tabBarController.viewControllers = viewControllersArray;
-//    tabBarController.tabBar.barTintColor = UIColor.blueColor;
-    
-    self.window.rootViewController = tabBarController;
+    [self prepareTabBarController];
+    [self selectRootControllerByToken];
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
+- (void)prepareTabBarController
+{
+    UNDHomeViewController *homeView = [UNDHomeViewController new];
+    NSArray *viewControllersArray = @[homeView];
+    self.tabBarController = [UITabBarController new];
+    self.tabBarController.viewControllers = viewControllersArray;
+}
+
+- (void)selectRootControllerByToken
+{
+    UNDAuthViewController *authViewController = [[UNDAuthViewController alloc] initWithMainViewController: self.tabBarController];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKToken"];
+    if (!token)
+    {
+        self.window.rootViewController = authViewController;
+    }
+    else
+    {
+        self.window.rootViewController = self.tabBarController;
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
