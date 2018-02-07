@@ -19,15 +19,12 @@
 static NSString *UNDPromiseCollViewCellId = @"promiseCollViewCell";
 static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
-
 @interface UNDHomeViewController ()
 
 @property (nonatomic, strong) UIImage *photoImage;
 @property (nonatomic, strong) UIButton *addNewPromiseButton;
-
 @property (nonatomic, strong) UICollectionView *promisesCollectionView;
 @property (nonatomic, strong) UICollectionView *maintainersCollectionView;
-
 @property (nonatomic, strong) id <UICollectionViewDelegate, UICollectionViewDataSource> promisesDelegate;
 @property (nonatomic, strong) id <UICollectionViewDelegate, UICollectionViewDataSource> maintainersDelegate;
 
@@ -39,6 +36,9 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     [self prepareButton];
     [self preparePromisesCollectionView];
     [self prepareMaintainersCollectionView];
@@ -47,16 +47,14 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
 - (void)prepareButton
 {
-    self.view.backgroundColor = [UIColor whiteColor];
-    
     self.addNewPromiseButton = [[UIButton alloc] init];
-    self.addNewPromiseButton.titleLabel.font = [UIFont systemFontOfSize: 20.0f];
+    
     [self.addNewPromiseButton setTitle:@"#Дать обещание" forState:UIControlStateNormal];
     [self.addNewPromiseButton setTitleColor: [UIColor colorWithRed:0
                                                              green:153/255.0f
                                                               blue:153/255.0f
                                                              alpha:1]
-                                   forState:UIControlStateNormal];
+                                   forState: UIControlStateNormal];
     self.addNewPromiseButton.layer.borderWidth = 1;
     self.addNewPromiseButton.layer.borderColor = [UIColor colorWithRed:0
                                                                  green:153/255.0f
@@ -64,7 +62,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
                                                                  alpha:1].CGColor;
     self.addNewPromiseButton.layer.cornerRadius = 7;
     
-    [self.view addSubview:self.addNewPromiseButton];
+    [self.view addSubview: self.addNewPromiseButton];
 }
 
 - (void)preparePromisesCollectionView
@@ -156,7 +154,6 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
          make.left.equalTo(self.view.mas_left).with.offset(15.0f);
          make.bottom.equalTo(self.view.mas_bottom).with.offset(0);
      }];
-    
 }
 
 @end
