@@ -10,4 +10,6 @@
 
 @interface UNDAuthViewController : UIViewController
 
+- (instancetype)initWithMainViewController: (UIViewController *) viewController;
+
 @end

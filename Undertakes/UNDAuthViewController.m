@@ -7,6 +7,7 @@
 //
 
 #import "UNDAuthViewController.h"
+#import "UNDHomeViewController.h"
 #import <WebKit/WKWebView.h>
 #import <WebKit/WKUIDelegate.h>
 #import <WebKit/WKNavigationDelegate.h>
@@ -17,11 +18,20 @@
 @interface UNDAuthViewController () <WKUIDelegate, WKNavigationDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;
+@property (nonatomic, weak) UIViewController *mainController;
 
 @end
 
 @implementation UNDAuthViewController
 
+- (instancetype)initWithMainViewController: (UIViewController *) viewController;
+{
+    if (self = [super init])
+    {
+        _mainController = viewController;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -95,7 +105,10 @@
     
     [urlString deleteCharactersInRange: NSMakeRange(0, prefix.length)];
     NSArray* urlParamArray = [urlString componentsSeparatedByString:@"&"];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"VKToken" : urlParamArray[0] }];
+    [[NSUserDefaults standardUserDefaults] setObject: urlParamArray[0] forKey:@"VKToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [UIApplication sharedApplication].delegate.window.rootViewController = self.mainController;
 }
 
 @end
