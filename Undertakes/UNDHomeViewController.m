@@ -14,6 +14,8 @@
 #import "UNDPromiseCollectionViewCell.h"
 #import "UNDMaintainerCollectionViewCell.h"
 
+#import "UNDAddPromiceViewController.h"
+
 #import "masonry.h"
 
 static NSString *UNDPromiseCollViewCellId = @"promiseCollViewCell";
@@ -62,7 +64,16 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
                                                                  alpha:1].CGColor;
     self.addNewPromiseButton.layer.cornerRadius = 7;
     
+    [self.addNewPromiseButton addTarget:self action:@selector(addNewPromice) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview: self.addNewPromiseButton];
+}
+
+- (void)addNewPromice
+{
+    [self presentViewController: [UNDAddPromiceViewController new] animated:YES completion:^{
+        NSLog(@"go forward");
+    }];
 }
 
 - (void)preparePromisesCollectionView
@@ -125,6 +136,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     return UIStatusBarStyleDefault;
 }
+
 
 #pragma mark - Constraints
 

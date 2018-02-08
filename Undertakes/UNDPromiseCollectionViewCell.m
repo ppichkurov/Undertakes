@@ -24,9 +24,9 @@
     return self;
 }
 
-- (UIColor *)colorForImportance: (NSNumber *)importance
+- (UIColor *)colorForImportance:(int64_t)importance
 {
-    switch (importance.intValue) {
+    switch ((int)importance) {
         case 1:
             return UIColor.darkGrayColor;
             break;
@@ -48,7 +48,7 @@
     }
 }
 
-- (void)setImportance:(NSNumber *)importance
+- (void)setImportance:(int64_t)importance
 {
     _importance = importance;
     self.contentView.backgroundColor = [self colorForImportance:importance];
