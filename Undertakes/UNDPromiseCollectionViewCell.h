@@ -11,6 +11,6 @@
 @interface UNDPromiseCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, strong) NSNumber *importance;
+@property (nonatomic, assign) int64_t importance;
 
 @end

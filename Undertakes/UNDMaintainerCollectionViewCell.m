@@ -23,7 +23,6 @@
     {
         self.backgroundColor = [UIColor whiteColor];
         _maintainerImageView = [[UIImageView alloc] init];
-        
         [self.maintainerImageView setImage: [UIImage imageNamed:@"imageTest"]];
         [self.contentView addSubview:_maintainerImageView];
     }

@@ -8,10 +8,14 @@
 
 #import "UNDPromiseCollectionViewDelegate.h"
 #import "UNDPromiseCollectionViewCell.h"
+#import "UNDUserPromisesModel.h"
+#import "UNDPromise+CoreDataClass.h"
 
 static NSString *promiseCollViewCell = @"promiseCollViewCell";
 
 @interface UNDPromiseCollectionViewDelegate ()
+
+@property (nonatomic, copy) UNDUserPromisesModel *promisesModel;
 
 @end
 
@@ -21,14 +25,15 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
 {
     if (self = [super init])
     {
-        _testArray = @[@1,@2,@3,@1,@3,@5,@1,@5];
+        _promisesModel = [UNDUserPromisesModel new];
+//        _testArray = @[@1,@2,@3,@1,@3,@5,@1,@5];
     }
     return self;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.testArray.count;
+    return self.promisesModel.promisesArray.count; //возможно нужно сразу использовать
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -40,8 +45,12 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
 {
     UNDPromiseCollectionViewCell *cell = (UNDPromiseCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:promiseCollViewCell forIndexPath:indexPath];
     
-    cell.importance = self.testArray[indexPath.item];
-    cell.title = @"Test Title";
+//    cell.importance = self.testArray[indexPath.item];
+    
+    UNDPromise *promise = self.promisesModel.promisesArray[indexPath.item];
+    
+    cell.importance = promise.importance;
+    cell.title = promise.title;
     
     return cell;
 }
