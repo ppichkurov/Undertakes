@@ -8,7 +8,7 @@
 
 #import "UNDCoreDataService.h"
 
-//TODO сделать из этого класса фасад (кор дата + сеть)
+//TODO возможно сделать из этого класса фасад (кор дата + сеть)
 
 @interface UNDCoreDataService ()
 

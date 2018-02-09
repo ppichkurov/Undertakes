@@ -51,6 +51,7 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     
     cell.importance = promise.importance;
     cell.title = promise.title;
+    cell.fullText = promise.fullText;
     
     return cell;
 }

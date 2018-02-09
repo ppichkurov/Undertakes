@@ -29,6 +29,7 @@
 		7F50B997202C97F9004BC9B3 /* UNDPromise+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B995202C97F8004BC9B3 /* UNDPromise+CoreDataProperties.m */; };
 		7F50B998202C97F9004BC9B3 /* UNDPromise+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B996202C97F8004BC9B3 /* UNDPromise+CoreDataClass.m */; };
 		7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */; };
+		7F50B99D202DE267004BC9B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F50B99C202DE267004BC9B3 /* Assets.xcassets */; };
 		F682493F0C2E8BDAC7C437A4 /* libPods-UndertakesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C47DCC7EBD44AC3528019D /* libPods-UndertakesTests.a */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		7F50B996202C97F8004BC9B3 /* UNDPromise+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UNDPromise+CoreDataClass.m"; path = "/Users/pavelpickurov/Documents/develop/undertakes2/Undertakes/Undertakes/UNDPromise+CoreDataClass.m"; sourceTree = "<absolute>"; };
 		7F50B999202CA324004BC9B3 /* UNDAddPromiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDAddPromiceViewController.h; sourceTree = "<group>"; };
 		7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDAddPromiceViewController.m; sourceTree = "<group>"; };
+		7F50B99C202DE267004BC9B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		901ED00352727172D6BB99A0 /* Pods-UndertakesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5F97F5AFEE0C146DAA3B375 /* Pods-UndertakesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3BA64324FDD367D0D2B6C12 /* Pods-Undertakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Undertakes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Undertakes/Pods-Undertakes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		7F75E4DF202116E200AC53C3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7F50B99C202DE267004BC9B3 /* Assets.xcassets */,
 				7F1517D6202B833900F97473 /* Undertakes.xcdatamodeld */,
 				7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */,
 				7F36AC0C201E6C650043D00E /* Info.plist */,
@@ -369,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F50B99D202DE267004BC9B3 /* Assets.xcassets in Resources */,
 				7F36AC23201E7C9C0043D00E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
