@@ -58,16 +58,17 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     self.addNewPromiseButton = [[UIButton alloc] init];
     
     [self.addNewPromiseButton setTitle:@"#Дать обещание" forState:UIControlStateNormal];
-    [self.addNewPromiseButton setTitleColor: [UIColor colorWithRed:0
-                                                             green:153/255.0f
-                                                              blue:153/255.0f
-                                                             alpha:1]
-                                   forState: UIControlStateNormal];
+//    [self.addNewPromiseButton setTitleColor: [UIColor colorWithRed:0
+//                                                             green:153/255.0f
+//                                                              blue:153/255.0f
+//                                                             alpha:1]
+//                                   forState: UIControlStateNormal];
+    [self.addNewPromiseButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     self.addNewPromiseButton.layer.borderWidth = 1;
-    self.addNewPromiseButton.layer.borderColor = [UIColor colorWithRed:0
-                                                                 green:153/255.0f
-                                                                  blue:153/255.0f
-                                                                 alpha:1].CGColor;
+//    self.addNewPromiseButton.layer.borderColor = [UIColor colorWithRed:0
+//                                                                 green:153/255.0f
+//                                                                  blue:153/255.0f
+//                                                                 alpha:1].CGColor;
     self.addNewPromiseButton.layer.cornerRadius = 7;
     
     [self.addNewPromiseButton addTarget:self action:@selector(addNewPromice) forControlEvents:UIControlEventTouchUpInside];
