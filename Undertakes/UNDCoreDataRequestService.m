@@ -32,16 +32,20 @@
 
 - (NSFetchRequest *)currentUserRequest
 {
+    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
+    
     NSFetchRequest *fetchRequest = [self getRequestByEntityName:@"UNDUser"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vkID CONTAINS %@", @"test"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vkID CONTAINS %@", user];
     [fetchRequest setPredicate:predicate];
     return fetchRequest;
 }
 
 - (NSFetchRequest *)userPromisesRequest
 {
+    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
+
     NSFetchRequest *fetchRequest = [self getRequestByEntityName:@"UNDPromise"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userVkID CONTAINS %@", @"test"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userVkID CONTAINS %@", user];
     [fetchRequest setPredicate:predicate];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDate"
                                                                    ascending:NO];

@@ -11,6 +11,6 @@
 
 @interface UNDPromiseCollectionViewDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 
-//@property (nonatomic, copy) NSArray<NSNumber *> *testArray;
+- (void)updateModel;
 
 @end

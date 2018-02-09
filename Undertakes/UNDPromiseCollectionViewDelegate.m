@@ -33,7 +33,7 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.promisesModel.promisesArray.count; //возможно нужно сразу использовать
+    return self.promisesModel.promisesArray.count;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -53,6 +53,11 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     cell.title = promise.title;
     
     return cell;
+}
+
+- (void)updateModel
+{
+    [self.promisesModel update];
 }
 
 @end
