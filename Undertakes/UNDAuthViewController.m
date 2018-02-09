@@ -85,6 +85,11 @@
      }];
 }
 
+- (void)saveUserInfo
+{
+    
+}
+
 - (void)loadAuthRequest
 {
     NSURL *authUrl = [UNDNetworkRequestURLService getAuthVKRequestURL];
@@ -104,8 +109,13 @@
     }
     
     [urlString deleteCharactersInRange: NSMakeRange(0, prefix.length)];
-    NSArray* urlParamArray = [urlString componentsSeparatedByString:@"&"];
+    NSArray *urlParamArray = [urlString componentsSeparatedByString:@"&"];
+    
+    NSString *userId = [urlParamArray[2] componentsSeparatedByString:@"="][1];
+    
     [[NSUserDefaults standardUserDefaults] setObject: urlParamArray[0] forKey:@"VKToken"];
+    [[NSUserDefaults standardUserDefaults] setObject: userId forKey:@"VKUser"];
+
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [UIApplication sharedApplication].delegate.window.rootViewController = self.mainController;

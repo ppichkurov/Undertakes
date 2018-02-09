@@ -7,6 +7,7 @@
 //
 
 #import "UNDAddPromiceViewController.h"
+#import "UNDUserPromisesModel.h"
 #import "masonry.h"
 
 static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
@@ -20,9 +21,12 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 @property (nonatomic, strong) UITextField *fullText;
 @property (nonatomic, strong) UILabel *importanceLabel;
 @property (nonatomic, strong) UISlider *importanceSlider;
+@property (nonatomic, assign) int64_t importance;
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIButton *addButton;
+
+@property (nonatomic, strong) UNDUserPromisesModel *model;
 
 @end
 
@@ -31,6 +35,8 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
+    self.model = [UNDUserPromisesModel new];
+    
     [self prepareTitleLabel];
     [self prepareTitleText];
     [self prepareWhyLabel];
@@ -85,6 +91,13 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 - (void)prepareImportanceSlider
 {
     self.importanceSlider = [UISlider new];
+    self.importanceSlider.minimumValue = 1;
+    self.importanceSlider.maximumValue = 5;
+    self.importanceSlider.value = 1;
+    self.importance = 1;
+    
+    [self.importanceSlider addTarget:self action:@selector(changeImportance) forControlEvents:UIControlEventValueChanged];
+    
     [self.view addSubview: self.importanceSlider];
 }
 
@@ -188,11 +201,26 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     }];
 }
 
+- (void)changeImportance
+{
+    self.importance = (int64_t)(self.importanceSlider.value + 0.5);
+    self.importanceSlider.value = self.importance;
+}
+
 - (void)backToMainView
 {
+    [self savePromiseToCoreData];
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"go BACK");
     }];
+}
+
+
+#pragma mark - Save before close
+
+- (void)savePromiseToCoreData
+{
+    [self.model addNewPromiseWithTitle:self.titleText.text description:self.fullText.text importance: self.importance fireDate: self.datePicker.date];
 }
 
 @end

@@ -47,6 +47,12 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     [self prepareConstraints];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [(UNDPromiseCollectionViewDelegate *)self.promisesDelegate updateModel];
+    [self.promisesCollectionView reloadData];
+}
+
 - (void)prepareButton
 {
     self.addNewPromiseButton = [[UIButton alloc] init];

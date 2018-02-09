@@ -16,4 +16,9 @@
 - (UNDUser *)getCurrentUser;
 - (NSArray<UNDPromise *> *)getPromisesForCurrentUser;
 
+- (void)savePromiseToCoreDataWithTitle:(NSString *)title
+                           description:(NSString *)fullText
+                            importance:(NSInteger)importance
+                              fireDate:(NSDate *)fireDate;
+
 @end

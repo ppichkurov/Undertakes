@@ -12,7 +12,14 @@
 
 @interface UNDUserPromisesModel : NSObject
 
-@property (nonatomic, strong) NSArray<UNDPromise *> *promisesArray;
+@property (nonatomic, readonly) NSArray<UNDPromise *> *promisesArray;
+
+- (void)update;
+
+- (void)addNewPromiseWithTitle:(NSString *)title
+                   description:(NSString *)fullText
+                    importance:(NSInteger)importance
+                      fireDate:(NSDate *)fireDate;
 
 @end
 
