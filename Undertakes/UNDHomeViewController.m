@@ -39,7 +39,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = UIColor.grayColor;
     
     [self prepareButton];
     [self preparePromisesCollectionView];
@@ -55,22 +55,16 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
 - (void)prepareButton
 {
-    self.addNewPromiseButton = [[UIButton alloc] init];
-    
+    self.addNewPromiseButton = [UIButton new];
     [self.addNewPromiseButton setTitle:@"#Дать обещание" forState:UIControlStateNormal];
-//    [self.addNewPromiseButton setTitleColor: [UIColor colorWithRed:0
-//                                                             green:153/255.0f
-//                                                              blue:153/255.0f
-//                                                             alpha:1]
-//                                   forState: UIControlStateNormal];
-    [self.addNewPromiseButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    self.addNewPromiseButton.layer.borderWidth = 1;
-//    self.addNewPromiseButton.layer.borderColor = [UIColor colorWithRed:0
-//                                                                 green:153/255.0f
-//                                                                  blue:153/255.0f
-//                                                                 alpha:1].CGColor;
-    self.addNewPromiseButton.layer.cornerRadius = 7;
     
+    self.addNewPromiseButton.backgroundColor = [UIColor colorWithRed:223/255.0f
+                                                               green:223/255.0f
+                                                                blue:223/255.0f
+                                                               alpha:1];
+    [self.addNewPromiseButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    self.addNewPromiseButton.layer.cornerRadius = 10;
+    self.addNewPromiseButton.alpha = 0.48;
     [self.addNewPromiseButton addTarget:self action:@selector(addNewPromice) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview: self.addNewPromiseButton];
@@ -86,8 +80,8 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 - (void)preparePromisesCollectionView
 {
     self.promisesCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[self propmiseFlowLayout]];
-    self.promisesCollectionView.backgroundColor = UIColor.whiteColor;
-    self.promisesCollectionView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    self.promisesCollectionView.backgroundColor = UIColor.grayColor;
+    self.promisesCollectionView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     
     self.promisesDelegate = [UNDPromiseCollectionViewDelegate new];
     
@@ -102,7 +96,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 - (void)prepareMaintainersCollectionView
 {
     self.maintainersCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[self maintainerFlowLayout]];
-    self.maintainersCollectionView.backgroundColor = UIColor.whiteColor;
+    self.maintainersCollectionView.backgroundColor = UIColor.grayColor;
     self.maintainersCollectionView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     
     self.maintainersDelegate = [UNDMaintainerCollectionViewDelegate new];
@@ -153,22 +147,24 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     [self.addNewPromiseButton mas_makeConstraints: ^(MASConstraintMaker *make)
     {
         make.top.equalTo(self.view.mas_top).with.offset(padding.top);
-        make.left.equalTo(self.view.mas_left).with.offset(padding.left);
+//        make.left.equalTo(self.view.mas_left).with.offset(padding.left);
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.width.equalTo(@200);
         make.height.equalTo(@44);
-        make.right.equalTo(self.view.mas_right).with.offset(-padding.right);
+//        make.right.equalTo(self.view.mas_right).with.offset(-padding.right);
     }];
     
     [self.promisesCollectionView mas_makeConstraints: ^(MASConstraintMaker *make)
     {
-        make.top.equalTo(self.addNewPromiseButton.mas_bottom).with.offset(30.0f);
+        make.top.equalTo(self.addNewPromiseButton.mas_bottom).with.offset(20.0f);
         make.right.equalTo(self.view.mas_right).with.offset(15.0f);
         make.left.equalTo(self.view.mas_left).with.offset(15.0f);
-        make.height.equalTo(@200);
+        make.height.equalTo(@220);
     }];
     
     [self.maintainersCollectionView mas_makeConstraints: ^(MASConstraintMaker *make)
      {
-         make.top.equalTo(self.promisesCollectionView.mas_bottom).with.offset(30.0f);
+         make.top.equalTo(self.promisesCollectionView.mas_bottom).with.offset(20.0f);
          make.right.equalTo(self.view.mas_right).with.offset(15.0f);
          make.left.equalTo(self.view.mas_left).with.offset(15.0f);
          make.bottom.equalTo(self.view.mas_bottom).with.offset(0);

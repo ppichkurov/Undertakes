@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "UNDPromise+CoreDataClass.h"
 
 @protocol UNDNetworkServiceInputProtocol <NSObject>
 @optional
@@ -17,7 +17,7 @@
 /**
  * <p>Получение токена ВКонтакте для использования API</p>
  */
-- (void)getVkAccessToken;
+//- (void)getVkAccessToken;
 
 /**
  * <p>Получение стены пользователя</p>
@@ -37,6 +37,10 @@
 
 - (void)likeFriendsPromise:(NSUInteger) fieldID;
 
+- (void)createPromiseOnTheUserWallWithTitle:(NSString *)title
+                                   fulltext:(NSString *)fullText;
+
+
 @end
 
 
@@ -45,19 +49,16 @@
 
 //- (void)nowLoadingWithProgress: (double) progress;
 
-- (void)loadLikeFriendPromiseDidFinishWithData: (NSData *)data;
+- (void)loadLikeFriendPromiseDidFinishWithData:(NSData *)data;
 
-- (void)loadLikeFieldUsersDidFinishWithData: (NSData *)data;
+- (void)loadLikeFieldUsersDidFinishWithData:(NSData *)data;
 
-- (void)loadFriendListDidFinishWithData: (NSData *)data;
+- (void)loadFriendListDidFinishWithData:(NSData *)data;
 
-- (void)loadUserPhotoDidFinishWithData: (NSData *)data;
+- (void)loadUserPhotoDidFinishWithData:(NSData *)data;
 
-- (void)loadWallDidFinishWithData: (NSData *)data;
+- (void)loadWallDidFinishWithData:(NSData *)data;
 
-
-
-
-
+- (void)loadPostPromiseOnUserWallFinishWithData:(NSData *)data;
 
 @end

@@ -13,6 +13,7 @@
 @interface UNDCoreDataService ()
 
 @property (nonatomic, strong) UNDCoreDataRequestService *requestService;
+@property (nonatomic, strong) UNDPromise *lastSavedPromise;
 
 @end
 
@@ -48,6 +49,8 @@
 {
     UNDPromise *promise = [NSEntityDescription insertNewObjectForEntityForName:@"UNDPromise" inManagedObjectContext: self.requestService.coreDataContext];
     
+    self.lastSavedPromise = promise;
+    
     promise.title = title;
     promise.fullText = fullText;
     promise.importance = importance;
@@ -65,4 +68,17 @@
     error = nil;
 }
 
+- (void)savePromiseFieldIdToCoreData:(int64_t)fieldId
+{
+    self.lastSavedPromise.fieldVkID = fieldId;
+    
+    NSError *error = nil;
+    
+    if (![self.lastSavedPromise.managedObjectContext save:&error])
+    {
+        NSLog(@"bad save try, error : %@", error);
+    }
+    
+    error = nil;
+}
 @end

@@ -30,7 +30,7 @@ static NSString *maintainerCollViewCell = @"maintainerCollViewCell";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
 //    return self.testArray.count;
-    return 7;
+    return 17;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

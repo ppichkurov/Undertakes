@@ -7,6 +7,7 @@
 //
 
 #import "UNDNetworkService.h"
+#import "UNDNetworkRequestURLService.h"
 
 @interface UNDNetworkService ()
 
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) NSURLSessionDownloadTask *loadPhotoTask;
 @property (nonatomic, strong) NSURLSessionDownloadTask *loadLikeUsersTask;
 @property (nonatomic, strong) NSURLSessionDownloadTask *likePromiseTask;
+@property (nonatomic, strong) NSURLSessionDownloadTask *postPromiseTask;
 
 @end
 
@@ -35,23 +37,20 @@
     }
 }
 
-//- (void)getVkAccessToken
-//{
-//    if (!self.urlSession)
-//    {
-//        [self configureURLSession];
-//    }
-//
-//    NSURL *url = [[NSURL alloc] initWithString: UNDAuthUrlString];
-//    
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-//    request.HTTPMethod = @"GET";
-
-//    self.downloadTask = [self.urlSession downloadTaskWithRequest:request];
-//    [self.downloadTask resume];
-//}
-
-
+- (void)createPromiseOnTheUserWallWithTitle:(NSString *)title fulltext:(NSString *)fullText
+{
+    if (!self.urlSession)
+    {
+        [self configureURLSession];
+    }
+    NSURL *url = [UNDNetworkRequestURLService getCreatePromiseOnTheUserWallRequestURL:title fulltext:fullText];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"GET";
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Contet-Type"];
+    self.postPromiseTask = [self.urlSession downloadTaskWithRequest:request];
+    [self.postPromiseTask resume];
+}
 
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
@@ -59,10 +58,18 @@
     NSData *data = [NSData dataWithContentsOfURL:location];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.outputDelegate loadWallDidFinishWithData:data];
+        if (downloadTask == self.postPromiseTask)
+        {
+            [self.outputDelegate loadPostPromiseOnUserWallFinishWithData:data];
+        }
     });
 
     [session finishTasksAndInvalidate];
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+    NSLog(@"Error: %@",error);
 }
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite

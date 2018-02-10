@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UNDPromise+CoreDataClass.h"
+
 
 @interface UNDNetworkRequestURLService : NSObject
 
@@ -16,6 +18,6 @@
 + (NSURL *)getFriendListRequestURL;
 + (NSURL *)getUserPhotoRequestURL;
 + (NSURL *)getWallRequestURL;
-+ (NSURL *)getLogoutVkRequestURL;
++ (NSURL *)getCreatePromiseOnTheUserWallRequestURL:(NSString *)title fulltext:(NSString *)fullText;
 
 @end

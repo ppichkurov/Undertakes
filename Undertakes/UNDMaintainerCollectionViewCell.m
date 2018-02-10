@@ -21,8 +21,11 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor grayColor];
+        self.contentView.backgroundColor = [UIColor grayColor];
         _maintainerImageView = [[UIImageView alloc] init];
+        _maintainerImageView.layer.masksToBounds = YES;
+        _maintainerImageView.layer.cornerRadius = CGRectGetWidth(frame)/2;
         [self.maintainerImageView setImage: [UIImage imageNamed:@"imageTest"]];
         [self.contentView addSubview:_maintainerImageView];
     }
@@ -42,7 +45,6 @@
      {
          make.edges.equalTo(self);
      }];
-    self.contentView.layer.cornerRadius = 20;
 }
 
 
@@ -52,7 +54,7 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor grayColor];
 }
 
 @end

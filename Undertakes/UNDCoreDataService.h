@@ -14,11 +14,14 @@
 @interface UNDCoreDataService : NSObject
 
 - (UNDUser *)getCurrentUser;
+
 - (NSArray<UNDPromise *> *)getPromisesForCurrentUser;
 
 - (void)savePromiseToCoreDataWithTitle:(NSString *)title
                            description:(NSString *)fullText
                             importance:(NSInteger)importance
                               fireDate:(NSDate *)fireDate;
+
+- (void)savePromiseFieldIdToCoreData:(int64_t)fieldId;
 
 @end

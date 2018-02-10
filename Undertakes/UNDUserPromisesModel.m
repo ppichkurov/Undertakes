@@ -8,13 +8,18 @@
 
 #import "UNDUserPromisesModel.h"
 #import "UNDCoreDataService.h"
+#import "UNDNetworkIOProtocol.h"
+#import "UNDNetworkService.h"
 
-@interface UNDUserPromisesModel ()
+
+@interface UNDUserPromisesModel () <UNDNetworkServiceOutputProtocol>
 
 @property (nonatomic, strong, readwrite) NSArray<UNDPromise *> *promisesArray;
+@property (nonatomic, strong) UNDNetworkService *networkService;
 @property (nonatomic, strong) UNDCoreDataService *coreDataService;
 
 @end
+
 
 @implementation UNDUserPromisesModel
 
@@ -23,6 +28,8 @@
     if (self = [super init])
     {
         _coreDataService = [UNDCoreDataService new];
+        _networkService = [UNDNetworkService new];
+        _networkService.outputDelegate = self;
     }
     return self;
 }
@@ -43,12 +50,20 @@
                     importance:(NSInteger)importance
                       fireDate:(NSDate *)fireDate
 {
+    [self.networkService createPromiseOnTheUserWallWithTitle:title fulltext:fullText];
+
     [self.coreDataService savePromiseToCoreDataWithTitle:title
                                              description:fullText
                                               importance:importance
                                                 fireDate:fireDate];
-    
-    //добавить обращение к нетворку с публикацией на стене
+}
+
+- (void)loadPostPromiseOnUserWallFinishWithData:(NSData *)data
+{
+    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSDictionary *postIdDict = dataDictionary[@"response"];
+    NSString *fieldId = postIdDict[@"post_id"];
+    [self.coreDataService savePromiseFieldIdToCoreData: fieldId.intValue];
 }
 
 @end

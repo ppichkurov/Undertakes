@@ -23,8 +23,10 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor grayColor];
         _substrateView = [UIView new];
+        _substrateView.alpha = 0.8;
+        self.contentView.alpha = 0.8;
         _titleLabel = [UILabel new];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _fullTextLabel = [UILabel new];
