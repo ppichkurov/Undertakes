@@ -49,7 +49,6 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [(UNDPromiseCollectionViewDelegate *)self.promisesDelegate updateModel];
     [self.promisesCollectionView reloadData];
 }
 
@@ -66,6 +65,10 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     self.addNewPromiseButton.layer.cornerRadius = 10;
     self.addNewPromiseButton.alpha = 0.48;
     [self.addNewPromiseButton addTarget:self action:@selector(addNewPromice) forControlEvents:UIControlEventTouchUpInside];
+    self.addNewPromiseButton.layer.masksToBounds = NO;
+    self.addNewPromiseButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.addNewPromiseButton.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    self.addNewPromiseButton.layer.shadowOpacity = 0.5f;
     
     [self.view addSubview: self.addNewPromiseButton];
 }
@@ -83,7 +86,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     self.promisesCollectionView.backgroundColor = UIColor.grayColor;
     self.promisesCollectionView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     
-    self.promisesDelegate = [UNDPromiseCollectionViewDelegate new];
+    self.promisesDelegate = [[UNDPromiseCollectionViewDelegate alloc] initWithCollectionView:self.promisesCollectionView];
     
     self.promisesCollectionView.delegate = self.promisesDelegate;
     self.promisesCollectionView.dataSource = self.promisesDelegate;

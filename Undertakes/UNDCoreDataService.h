@@ -13,7 +13,7 @@
 
 @interface UNDCoreDataService : NSObject
 
-- (UNDUser *)getCurrentUser;
+//- (UNDUser *)getCurrentUser;
 
 - (NSArray<UNDPromise *> *)getPromisesForCurrentUser;
 

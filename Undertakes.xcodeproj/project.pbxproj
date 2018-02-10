@@ -21,7 +21,6 @@
 		7F433BD020272C3300C40FAD /* UNDMaintainerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BCF20272C3300C40FAD /* UNDMaintainerCollectionViewCell.m */; };
 		7F433BD520272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */; };
 		7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */; };
-		7F50B97F202C4849004BC9B3 /* UNDUserPromisesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B97E202C4849004BC9B3 /* UNDUserPromisesModel.m */; };
 		7F50B988202C5B5C004BC9B3 /* UNDUser+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B980202C5B5C004BC9B3 /* UNDUser+CoreDataClass.m */; };
 		7F50B98B202C5B5C004BC9B3 /* UNDUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B986202C5B5C004BC9B3 /* UNDUser+CoreDataProperties.m */; };
 		7F50B98E202C62AC004BC9B3 /* UNDCoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B98D202C62AC004BC9B3 /* UNDCoreDataService.m */; };
@@ -73,8 +72,6 @@
 		7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDPromiseCollectionViewDelegate.m; sourceTree = "<group>"; };
 		7F433BD620272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDMaintainerCollectionViewDelegate.h; sourceTree = "<group>"; };
 		7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDMaintainerCollectionViewDelegate.m; sourceTree = "<group>"; };
-		7F50B97D202C4849004BC9B3 /* UNDUserPromisesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDUserPromisesModel.h; sourceTree = "<group>"; };
-		7F50B97E202C4849004BC9B3 /* UNDUserPromisesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDUserPromisesModel.m; sourceTree = "<group>"; };
 		7F50B980202C5B5C004BC9B3 /* UNDUser+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UNDUser+CoreDataClass.m"; sourceTree = "<group>"; };
 		7F50B981202C5B5C004BC9B3 /* UNDUser+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UNDUser+CoreDataClass.h"; sourceTree = "<group>"; };
 		7F50B986202C5B5C004BC9B3 /* UNDUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UNDUser+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -212,8 +209,6 @@
 		7F50B96D202C404E004BC9B3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7F50B97D202C4849004BC9B3 /* UNDUserPromisesModel.h */,
-				7F50B97E202C4849004BC9B3 /* UNDUserPromisesModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -503,7 +498,6 @@
 				7F50B98B202C5B5C004BC9B3 /* UNDUser+CoreDataProperties.m in Sources */,
 				7F50B998202C97F9004BC9B3 /* UNDPromise+CoreDataClass.m in Sources */,
 				7F1517C8202B3B1D00F97473 /* UNDAuthViewController.m in Sources */,
-				7F50B97F202C4849004BC9B3 /* UNDUserPromisesModel.m in Sources */,
 				7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */,
 				7F36AC0E201E6C650043D00E /* main.m in Sources */,
 				7F433BCD2025F31100C40FAD /* UNDPromiseCollectionViewCell.m in Sources */,
