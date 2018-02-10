@@ -18,35 +18,40 @@
 @interface UNDAuthViewController () <WKUIDelegate, WKNavigationDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;
-@property (nonatomic, weak) UIViewController *mainController;
+@property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, strong) UNDHomeViewController *homeViewController;
 
 @end
 
 @implementation UNDAuthViewController
 
-- (instancetype)initWithMainViewController: (UIViewController *) viewController;
-{
-    if (self = [super init])
-    {
-        _mainController = viewController;
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     [self prepareUI];
-    [self prepareWebView];
-    [self clearWebViewCache];
-    [self makeConstraints];
-    [self loadAuthRequest];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKToken"];
+    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
+    if (!token || !user)
+    {
+        [self prepareWebView];
+        [self clearWebViewCache];
+        [self makeConstraints];
+        [self loadAuthRequest];
+    }
+    else
+    {
+        [self presentMainTabBar];
+    }
+
 }
 
 - (void)prepareUI
 {
-    self.view.backgroundColor = UIColor.whiteColor;
+    self.view.backgroundColor = UIColor.grayColor;
 }
 
 - (void)clearWebViewCache
@@ -70,6 +75,7 @@
 
 - (void)prepareWebView
 {
+    self.webView = nil;
     self.webView = [[WKWebView alloc] init];
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
@@ -110,15 +116,31 @@
     
     [urlString deleteCharactersInRange: NSMakeRange(0, prefix.length)];
     NSArray *urlParamArray = [urlString componentsSeparatedByString:@"&"];
-    
     NSString *userId = [urlParamArray[2] componentsSeparatedByString:@"="][1];
     
     [[NSUserDefaults standardUserDefaults] setObject: urlParamArray[0] forKey:@"VKToken"];
     [[NSUserDefaults standardUserDefaults] setObject: userId forKey:@"VKUser"];
-
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [UIApplication sharedApplication].delegate.window.rootViewController = self.mainController;
+    [self presentMainTabBar];
+}
+
+- (void)presentMainTabBar
+{
+    if (!self.homeViewController)
+    {
+        self.homeViewController = [UNDHomeViewController new];
+    }
+    if (!self.tabBarController)
+    {
+        self.tabBarController = [UITabBarController new];
+    }
+    NSArray *viewControllersArray = @[self.homeViewController];
+    self.tabBarController.viewControllers = viewControllersArray;
+    
+    [self presentViewController:self.tabBarController animated:NO completion:^{
+        NSLog(@"Presented");
+    }];
 }
 
 @end

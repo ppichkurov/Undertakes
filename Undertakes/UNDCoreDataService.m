@@ -8,11 +8,9 @@
 
 #import "UNDCoreDataService.h"
 
-//TODO возможно сделать из этого класса фасад (кор дата + сеть)
-
 @interface UNDCoreDataService ()
 
-@property (nonatomic, strong) UNDCoreDataRequestService *requestService;
+
 @property (nonatomic, strong) UNDPromise *lastSavedPromise;
 
 @end
@@ -20,43 +18,36 @@
 @implementation UNDCoreDataService
 
 
-- (instancetype)init
-{
-    if (self = [super init])
-    {
-        _requestService = [UNDCoreDataRequestService new];
-    }
-    return self;
-}
-
 - (NSArray<UNDPromise *> *)getPromisesForCurrentUser
 {
-    NSArray *result = [self.requestService.coreDataContext executeFetchRequest: [self.requestService userPromisesRequest] error:nil];
+    NSArray *result = [[UNDCoreDataRequestService coreDataContext] executeFetchRequest: [UNDCoreDataRequestService userPromisesRequest] error:nil];
     return result;
 }
 
-- (UNDUser *)getCurrentUser
-{
-    NSArray *result = [self.requestService.coreDataContext executeFetchRequest: [self.requestService userPromisesRequest] error:nil];
-    UNDUser *user = result[0];
-    return user;
-}
+//- (UNDUser *)getCurrentUser
+//{
+//    NSArray *result = [self.requestService.coreDataContext executeFetchRequest: [self.requestService userPromisesRequest] error:nil];
+//    UNDUser *user = result[0];
+//    return user;
+//}
 
 - (void)savePromiseToCoreDataWithTitle:(NSString *)title
                            description:(NSString *)fullText
                             importance:(NSInteger)importance
                               fireDate:(NSDate *)fireDate
 {
-    UNDPromise *promise = [NSEntityDescription insertNewObjectForEntityForName:@"UNDPromise" inManagedObjectContext: self.requestService.coreDataContext];
+    UNDPromise *promise = [NSEntityDescription
+                           insertNewObjectForEntityForName:@"UNDPromise"
+                                    inManagedObjectContext:[UNDCoreDataRequestService coreDataContext]];
     
-    self.lastSavedPromise = promise;
+//    self.lastSavedPromise = promise;
     
     promise.title = title;
     promise.fullText = fullText;
     promise.importance = importance;
     promise.fireDate = fireDate;
     promise.startDate = [NSDate date];
-    promise.userVkID = [[[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"] intValue];
+    promise.userVkID = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
     
     NSError *error = nil;
     
@@ -70,15 +61,16 @@
 
 - (void)savePromiseFieldIdToCoreData:(int64_t)fieldId
 {
-    self.lastSavedPromise.fieldVkID = fieldId;
+//    self.lastSavedPromise.fieldVkID = fieldId;
     
-    NSError *error = nil;
-    
-    if (![self.lastSavedPromise.managedObjectContext save:&error])
-    {
-        NSLog(@"bad save try, error : %@", error);
-    }
-    
-    error = nil;
+//    NSError *error = nil;
+//
+//    if (![self.lastSavedPromise.managedObjectContext save:&error])
+//    {
+//        NSLog(@"bad save try, error : %@", error);
+//    }
+//
+//    error = nil;
 }
+
 @end

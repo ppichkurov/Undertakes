@@ -2,7 +2,7 @@
 //  UNDPromise+CoreDataProperties.h
 //  
 //
-//  Created by Павел Пичкуров on 08.02.2018.
+//  Created by Павел Пичкуров on 10.02.2018.
 //
 //
 
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *perDayTime;
 @property (nullable, nonatomic, copy) NSDate *startDate;
 @property (nullable, nonatomic, copy) NSString *title;
-@property (nonatomic) int64_t userVkID;
+@property (nullable, nonatomic, copy) NSString *userVkID;
 
 @end
 

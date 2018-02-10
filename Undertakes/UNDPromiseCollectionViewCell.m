@@ -24,23 +24,55 @@
     if (self = [super initWithFrame:frame])
     {
         self.backgroundColor = [UIColor grayColor];
-        _substrateView = [UIView new];
-        _substrateView.alpha = 0.8;
-        self.contentView.alpha = 0.8;
-        _titleLabel = [UILabel new];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _fullTextLabel = [UILabel new];
-        _fullTextLabel.textAlignment = NSTextAlignmentCenter;
-        _fullTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        _fullTextLabel.numberOfLines = 5;
-        [_substrateView addSubview:_titleLabel];
-        [_substrateView addSubview:_fullTextLabel];
-        _substrateView.backgroundColor = UIColor.whiteColor;
-        [self.contentView addSubview:_substrateView];
-        self.contentView.layer.cornerRadius = 20;
-        _substrateView.layer.cornerRadius = 20;
+        [self prepareContentView];
+        [self prepareSubstrateView];
+        [self prepareTitle];
+        [self prepareFullText];
     }
     return self;
+}
+
+- (void)prepareTitle
+{
+    if (!_substrateView)
+    {
+        return;
+    }
+    _titleLabel = [UILabel new];
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
+    [_substrateView addSubview:_titleLabel];
+}
+
+- (void)prepareFullText
+{
+    if (!_substrateView)
+    {
+        return;
+    }
+    _fullTextLabel = [UILabel new];
+    _fullTextLabel.textAlignment = NSTextAlignmentCenter;
+    _fullTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _fullTextLabel.numberOfLines = 5;
+    [_substrateView addSubview:_fullTextLabel];
+}
+
+- (void)prepareSubstrateView
+{
+    _substrateView = [UIView new];
+    _substrateView.backgroundColor = UIColor.whiteColor;
+    _substrateView.alpha = 0.8;
+    _substrateView.layer.cornerRadius = 20;
+    [self.contentView addSubview:_substrateView];
+}
+
+- (void)prepareContentView
+{
+    self.contentView.layer.cornerRadius = 20;
+    self.contentView.alpha = 0.8;
+    self.contentView.layer.masksToBounds = NO;
+    self.contentView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.contentView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    self.contentView.layer.shadowOpacity = 0.5f;
 }
 
 - (void)layoutSubviews

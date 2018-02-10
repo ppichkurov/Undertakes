@@ -7,11 +7,11 @@
 //
 
 #import "UNDAddPromiceViewController.h"
-#import "UNDUserPromisesModel.h"
+#import "UNDCoreDataService.h"
 #import "masonry.h"
 
-static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 
+static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 
 @interface UNDAddPromiceViewController ()
 
@@ -26,7 +26,7 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIButton *addButton;
 
-@property (nonatomic, strong) UNDUserPromisesModel *model;
+@property (nonatomic, strong) UNDCoreDataService *coreDataService;
 
 @end
 
@@ -35,7 +35,7 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
-    self.model = [UNDUserPromisesModel new];
+    self.coreDataService = [UNDCoreDataService new];
     
     [self prepareTitleLabel];
     [self prepareTitleText];
@@ -78,7 +78,6 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     self.fullText.borderStyle = UITextBorderStyleRoundedRect;
 
     [self.view addSubview: self.fullText];
-
 }
 
 - (void)prepareImportanceLabel
@@ -119,21 +118,26 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 {
     self.addButton = [[UIButton alloc] init];
     [self.addButton setTitle:@"#Действовать" forState:UIControlStateNormal];
-    [self.addButton setTitleColor: [UIColor colorWithRed:0
-                                                   green:153/255.0f
-                                                    blue:153/255.0f
-                                                   alpha:1]
-                                       forState: UIControlStateNormal];
-    self.addButton.layer.borderWidth = 1;
-    self.addButton.layer.borderColor = [UIColor colorWithRed:0
-                                                       green:153/255.0f
-                                                        blue:153/255.0f
-                                                       alpha:1].CGColor;
-    self.addButton.layer.cornerRadius = 7;
+    
+    self.addButton.backgroundColor = [UIColor colorWithRed:223/255.0f
+                                                               green:223/255.0f
+                                                                blue:223/255.0f
+                                                               alpha:1];
+    [self.addButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    self.addButton.layer.cornerRadius = 10;
+    self.addButton.alpha = 0.48;
+    
+    self.addButton.layer.masksToBounds = NO;
+    self.addButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.addButton.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    self.addButton.layer.shadowOpacity = 0.2f;
     
     [self.addButton addTarget:self action:@selector(backToMainView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.addButton];
 }
+
+
+#pragma mark - Constraints
 
 - (void)prepareConstraints
 {
@@ -220,7 +224,10 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 
 - (void)savePromiseToCoreData
 {
-    [self.model addNewPromiseWithTitle:self.titleText.text description:self.fullText.text importance: self.importance fireDate: self.datePicker.date];
+    [self.coreDataService savePromiseToCoreDataWithTitle:self.titleText.text
+                                             description:self.fullText.text
+                                              importance:self.importance
+                                                fireDate:self.datePicker.date];
 }
 
 @end

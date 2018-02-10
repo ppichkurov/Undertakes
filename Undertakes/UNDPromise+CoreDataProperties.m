@@ -2,7 +2,7 @@
 //  UNDPromise+CoreDataProperties.m
 //  
 //
-//  Created by Павел Пичкуров on 08.02.2018.
+//  Created by Павел Пичкуров on 10.02.2018.
 //
 //
 

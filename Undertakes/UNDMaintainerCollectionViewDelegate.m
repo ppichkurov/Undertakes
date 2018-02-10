@@ -13,15 +13,24 @@ static NSString *maintainerCollViewCell = @"maintainerCollViewCell";
 
 @interface UNDMaintainerCollectionViewDelegate ()
 
+//@property (nonatomic, strong) NSFetchedResultsController *maintainerResultsController;
+
 @end
 
 @implementation UNDMaintainerCollectionViewDelegate
 
 
-- (instancetype)init
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
 {
     if (self = [super init])
     {
+//        _promisesModel = [UNDUserPromisesModel new];
+//        _promiceResultsController = [[NSFetchedResultsController alloc]
+//                                     initWithFetchRequest:[UNDCoreDataRequestService userPromisesRequest]
+//                                     managedObjectContext:[UNDCoreDataRequestService coreDataContext]
+//                                     sectionNameKeyPath:nil
+//                                     cacheName:nil];
+//        _promiceResultsController.delegate = self;
         _testArray = @[@1,@2,@3,@1,@3,@5,@1,@5];
     }
     return self;

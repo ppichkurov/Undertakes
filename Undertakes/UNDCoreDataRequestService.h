@@ -11,9 +11,10 @@
 
 @interface UNDCoreDataRequestService : NSObject
 
-@property (nonatomic, weak) NSManagedObjectContext *coreDataContext;
+//@property (nonatomic, weak) NSManagedObjectContext *coreDataContext;
 
-- (NSFetchRequest *)currentUserRequest;
-- (NSFetchRequest *)userPromisesRequest;
++ (NSManagedObjectContext *)coreDataContext;
++ (NSFetchRequest *)currentUserRequest;
++ (NSFetchRequest *)userPromisesRequest;
 
 @end

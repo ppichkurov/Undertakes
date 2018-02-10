@@ -10,19 +10,15 @@
 
 @implementation UNDCoreDataRequestService
 
-- (NSManagedObjectContext *)coreDataContext
++ (NSManagedObjectContext *)coreDataContext
 {
-    if (_coreDataContext)
-    {
-        return _coreDataContext;
-    }
     UIApplication *application = [UIApplication sharedApplication];
     NSPersistentContainer *container = ((AppDelegate *)(application.delegate)).persistentContainer;
     NSManagedObjectContext *context = container.viewContext;
     return context;
 }
 
-- (NSFetchRequest *)getRequestByEntityName:(NSString *) entityName
++ (NSFetchRequest *)getRequestByEntityName:(NSString *) entityName
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName: entityName inManagedObjectContext:self.coreDataContext];
@@ -30,7 +26,7 @@
     return fetchRequest;
 }
 
-- (NSFetchRequest *)currentUserRequest
++ (NSFetchRequest *)currentUserRequest
 {
     NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
     
@@ -40,7 +36,7 @@
     return fetchRequest;
 }
 
-- (NSFetchRequest *)userPromisesRequest
++ (NSFetchRequest *)userPromisesRequest
 {
     NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
 

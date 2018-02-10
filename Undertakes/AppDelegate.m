@@ -23,34 +23,11 @@
 {
     
     self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
-    [self prepareTabBarController];
-    [self selectRootControllerByToken];
+    UNDAuthViewController *authViewController = [UNDAuthViewController new];
+    self.window.rootViewController = authViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
-
-- (void)prepareTabBarController
-{
-    UNDHomeViewController *homeView = [UNDHomeViewController new];
-    NSArray *viewControllersArray = @[homeView];
-    self.tabBarController = [UITabBarController new];
-    self.tabBarController.viewControllers = viewControllersArray;
-}
-
-- (void)selectRootControllerByToken
-{
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKToken"];
-    if (!token)
-    {
-        UNDAuthViewController *authViewController = [[UNDAuthViewController alloc] initWithMainViewController: self.tabBarController];
-        self.window.rootViewController = authViewController;
-    }
-    else
-    {
-        self.window.rootViewController = self.tabBarController;
-    }
-}
-
 
 #pragma mark - Core Data stack
 

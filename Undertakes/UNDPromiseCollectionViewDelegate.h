@@ -11,6 +11,6 @@
 
 @interface UNDPromiseCollectionViewDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 
-- (void)updateModel;
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 
 @end
