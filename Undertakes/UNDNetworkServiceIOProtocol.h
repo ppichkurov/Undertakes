@@ -33,9 +33,9 @@
 - (void)getUserPhoto:(NSUInteger) userID;
 //https://vk.com/dev/photos.get?params[owner_id]=7627791&params[album_id]=profile&params[rev]=1&params[extended]=0&params[photo_sizes]=0&params[count]=1&params[v]=5.71
 
-- (void)getUsersThatLikeField:(NSUInteger) fieldID;
+- (void)getUsersThatLikeField:(NSUInteger)fieldID;
 
-- (void)likeFriendsPromise:(NSUInteger) fieldID;
+- (void)likeFriendsPromise:(NSUInteger)fieldID;
 
 - (void)createPromiseOnTheUserWallWithTitle:(NSString *)title
                                    fulltext:(NSString *)fullText;

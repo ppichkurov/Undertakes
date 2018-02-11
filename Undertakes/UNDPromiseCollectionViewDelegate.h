@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UICollectionView.h>
+#import "UNDPromiseDataSourceOutputProtocol.h"
 
 @interface UNDPromiseCollectionViewDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (nonatomic, weak) id<UNDPromiseDataSourceOutputProtocol> output;
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 

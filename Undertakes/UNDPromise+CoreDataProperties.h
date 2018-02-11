@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int64_t importance;
 @property (nullable, nonatomic, copy) NSDate *startDate;
 @property (nullable, nonatomic, copy) NSString *title;
-@property (nullable, nonatomic, retain) NSObject *ownerVkID;
+@property (nullable, nonatomic, retain) NSString *ownerVkID;
 @property (nullable, nonatomic, retain) UNDPromiseWeb *webVersion;
 
 @end

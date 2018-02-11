@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UNDPromise+CoreDataClass.h"
 
 @protocol UNDPromiseDataSourceOutputProtocol <NSObject>
+@optional
+
+- (void)changeCurrentMaintainerCollectionForPromise: (UNDPromise *)promise;
 
 @end

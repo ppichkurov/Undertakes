@@ -14,7 +14,7 @@
 
 + (NSURL *)getAuthVKRequestURL;
 + (NSURL *)getLikeFriendPromiseRequestURL;
-+ (NSURL *)getUsersLikeFieldRequestURL;
++ (NSURL *)getUsersLikeFieldRequestURL:(NSUInteger)fieldID;
 + (NSURL *)getFriendListRequestURL;
 + (NSURL *)getUserPhotoRequestURL;
 + (NSURL *)getWallRequestURL;

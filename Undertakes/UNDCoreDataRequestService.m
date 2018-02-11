@@ -8,6 +8,7 @@
 
 #import "UNDCoreDataRequestService.h"
 
+
 @implementation UNDCoreDataRequestService
 
 + (NSManagedObjectContext *)coreDataContext
@@ -41,7 +42,7 @@
     NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
 
     NSFetchRequest *fetchRequest = [self getRequestByEntityName:@"UNDPromise"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userVkID CONTAINS %@", user];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ownerVkID CONTAINS %@", user];
     [fetchRequest setPredicate:predicate];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDate"
                                                                    ascending:NO];

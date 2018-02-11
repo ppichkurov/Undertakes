@@ -39,15 +39,12 @@
     UNDPromise *promise = [NSEntityDescription
                            insertNewObjectForEntityForName:@"UNDPromise"
                                     inManagedObjectContext:[UNDCoreDataRequestService coreDataContext]];
-    
-//    self.lastSavedPromise = promise;
-    
     promise.title = title;
     promise.fullText = fullText;
     promise.importance = importance;
     promise.fireDate = fireDate;
     promise.startDate = [NSDate date];
-    promise.userVkID = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
+    promise.ownerVkID = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
     
     NSError *error = nil;
     

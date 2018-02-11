@@ -8,7 +8,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UNDHuman.h"
+#import "UNDHuman+CoreDataClass.h"
 
 @class UNDPromiseWeb;
 

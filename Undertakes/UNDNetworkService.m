@@ -9,19 +9,22 @@
 #import "UNDNetworkService.h"
 #import "UNDNetworkRequestURLService.h"
 
+
+static NSString *UNDPostPromiseToWallDescription = @"UNDPostPromiseToWallDescription";
+static NSString *UNDUsersThatLikeWallDescription = @"UNDUsersThatLikeWallDescription";
+
+
 @interface UNDNetworkService ()
 
 @property (nonatomic, strong) NSURLSession *urlSession;
-@property (nonatomic, strong) NSURLSessionDownloadTask *loadWallTask;
-@property (nonatomic, strong) NSURLSessionDownloadTask *loadFriendListTask;
-@property (nonatomic, strong) NSURLSessionDownloadTask *loadPhotoTask;
-@property (nonatomic, strong) NSURLSessionDownloadTask *loadLikeUsersTask;
-@property (nonatomic, strong) NSURLSessionDownloadTask *likePromiseTask;
-@property (nonatomic, strong) NSURLSessionDownloadTask *postPromiseTask;
+@property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
 
 @end
 
 @implementation UNDNetworkService
+
+
+#pragma mark - NSURLSession configuration
 
 - (void)configureURLSession
 {
@@ -37,6 +40,17 @@
     }
 }
 
+- (void)prepareTaskWithURL:(NSURL *)url
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    request.HTTPMethod = @"GET";
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Contet-Type"];
+    self.downloadTask = [self.urlSession downloadTaskWithRequest:request];
+}
+
+
+#pragma mark - UNDNetworkServiceInputProtocol
+
 - (void)createPromiseOnTheUserWallWithTitle:(NSString *)title fulltext:(NSString *)fullText
 {
     if (!self.urlSession)
@@ -45,22 +59,40 @@
     }
     NSURL *url = [UNDNetworkRequestURLService getCreatePromiseOnTheUserWallRequestURL:title fulltext:fullText];
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"GET";
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Contet-Type"];
-    self.postPromiseTask = [self.urlSession downloadTaskWithRequest:request];
-    [self.postPromiseTask resume];
+    [self prepareTaskWithURL:url];
+    self.downloadTask.taskDescription = UNDPostPromiseToWallDescription;
+    [self.downloadTask resume];
 }
 
+- (void)bgetUsersThatLikeField:(NSUInteger)fieldID
+{
+    if (!self.urlSession)
+    {
+        [self configureURLSession];
+    }
+    NSURL *url = [UNDNetworkRequestURLService getUsersLikeFieldRequestURL:fieldID];
+    
+    [self prepareTaskWithURL:url];
+    self.downloadTask.taskDescription = UNDUsersThatLikeWallDescription;
+    [self.downloadTask resume];
+    
+}
+
+
+#pragma mark - NSURLSessin and DowloadTask delegates
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
     NSData *data = [NSData dataWithContentsOfURL:location];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (downloadTask == self.postPromiseTask)
+        if ([downloadTask.taskDescription isEqualToString: UNDPostPromiseToWallDescription])
         {
             [self.outputDelegate loadPostPromiseOnUserWallFinishWithData:data];
+        }
+        else if ([downloadTask.taskDescription isEqualToString: UNDUsersThatLikeWallDescription])
+        {
+            [self.outputDelegate loadLikeFieldUsersDidFinishWithData:data];
         }
     });
 

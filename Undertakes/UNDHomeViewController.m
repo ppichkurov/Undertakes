@@ -16,19 +16,21 @@
 
 #import "UNDAddPromiceViewController.h"
 
+#import "UNDPromiseDataSourceOutputProtocol.h"
+
 #import "masonry.h"
 
 static NSString *UNDPromiseCollViewCellId = @"promiseCollViewCell";
 static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
-@interface UNDHomeViewController ()
+@interface UNDHomeViewController () <UNDPromiseDataSourceOutputProtocol>
 
 @property (nonatomic, strong) UIImage *photoImage;
 @property (nonatomic, strong) UIButton *addNewPromiseButton;
 @property (nonatomic, strong) UICollectionView *promisesCollectionView;
 @property (nonatomic, strong) UICollectionView *maintainersCollectionView;
-@property (nonatomic, strong) id <UICollectionViewDelegate, UICollectionViewDataSource> promisesDelegate;
-@property (nonatomic, strong) id <UICollectionViewDelegate, UICollectionViewDataSource> maintainersDelegate;
+@property (nonatomic, strong) UNDPromiseCollectionViewDelegate *promisesDelegate;
+@property (nonatomic, strong) UNDMaintainerCollectionViewDelegate *maintainersDelegate;
 
 @end
 
@@ -90,6 +92,9 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     
     self.promisesCollectionView.delegate = self.promisesDelegate;
     self.promisesCollectionView.dataSource = self.promisesDelegate;
+    self.promisesDelegate.output = self;
+    
+    self.promisesCollectionView.prefetchingEnabled = NO;
     
     [self.promisesCollectionView registerClass: [UNDPromiseCollectionViewCell class] forCellWithReuseIdentifier:UNDPromiseCollViewCellId];
     
@@ -172,6 +177,14 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
          make.left.equalTo(self.view.mas_left).with.offset(15.0f);
          make.bottom.equalTo(self.view.mas_bottom).with.offset(0);
      }];
+}
+
+
+#pragma mark - UNDPromiseDataSourceOutputProtocol
+
+- (void)changeCurrentMaintainerCollectionForPromise:(UNDPromise *)promise
+{
+    NSLog(@"Current Promise: %@", promise.title);
 }
 
 @end
