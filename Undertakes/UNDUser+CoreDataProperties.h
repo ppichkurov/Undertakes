@@ -1,8 +1,9 @@
 //
 //  UNDUser+CoreDataProperties.h
-//  
+//  Undertakes
 //
-//  Created by Павел Пичкуров on 08.02.2018.
+//  Created by Павел Пичкуров on 11.02.2018.
+//  Copyright © 2018 Павел Пичкуров. All rights reserved.
 //
 //
 
@@ -16,9 +17,17 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<UNDUser *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSDate *freeTime;
-@property (nullable, nonatomic, copy) NSString *name;
-@property (nullable, nonatomic, copy) NSString *photo;
-@property (nonatomic) int64_t vkID;
+@property (nullable, nonatomic, copy) NSString *token;
+@property (nullable, nonatomic, retain) NSSet<UNDFriend *> *friends;
+
+@end
+
+@interface UNDUser (CoreDataGeneratedAccessors)
+
+- (void)addFriendsObject:(UNDFriend *)value;
+- (void)removeFriendsObject:(UNDFriend *)value;
+- (void)addFriends:(NSSet<UNDFriend *> *)values;
+- (void)removeFriends:(NSSet<UNDFriend *> *)values;
 
 @end
 

@@ -1,5 +1,5 @@
 //
-//  UNDPromise+CoreDataClass.h
+//  UNDPromiseWeb+CoreDataClass.h
 //  Undertakes
 //
 //  Created by Павел Пичкуров on 11.02.2018.
@@ -10,14 +10,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class UNDPromiseWeb;
+@class UNDFriend, UNDLikeMan, UNDPromise;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UNDPromise : NSManagedObject
+@interface UNDPromiseWeb : NSManagedObject
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "UNDPromise+CoreDataProperties.h"
+#import "UNDPromiseWeb+CoreDataProperties.h"

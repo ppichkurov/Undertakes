@@ -1,5 +1,5 @@
 //
-//  UNDUser+CoreDataClass.m
+//  UNDPromiseWeb+CoreDataClass.m
 //  Undertakes
 //
 //  Created by Павел Пичкуров on 11.02.2018.
@@ -7,8 +7,8 @@
 //
 //
 
-#import "UNDUser+CoreDataClass.h"
+#import "UNDPromiseWeb+CoreDataClass.h"
 
-@implementation UNDUser
+@implementation UNDPromiseWeb
 
 @end

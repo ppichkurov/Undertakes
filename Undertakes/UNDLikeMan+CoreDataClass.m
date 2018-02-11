@@ -1,5 +1,5 @@
 //
-//  UNDUser+CoreDataClass.m
+//  UNDLikeMan+CoreDataClass.m
 //  Undertakes
 //
 //  Created by Павел Пичкуров on 11.02.2018.
@@ -7,8 +7,8 @@
 //
 //
 
-#import "UNDUser+CoreDataClass.h"
+#import "UNDLikeMan+CoreDataClass.h"
 
-@implementation UNDUser
+@implementation UNDLikeMan
 
 @end

@@ -1,8 +1,9 @@
 //
 //  UNDPromise+CoreDataProperties.m
-//  
+//  Undertakes
 //
-//  Created by Павел Пичкуров on 10.02.2018.
+//  Created by Павел Пичкуров on 11.02.2018.
+//  Copyright © 2018 Павел Пичкуров. All rights reserved.
 //
 //
 
@@ -14,15 +15,12 @@
 	return [[NSFetchRequest alloc] initWithEntityName:@"UNDPromise"];
 }
 
-@dynamic fieldVkID;
 @dynamic fireDate;
 @dynamic fullText;
-@dynamic hashTag;
 @dynamic importance;
-@dynamic likeCount;
-@dynamic perDayTime;
 @dynamic startDate;
 @dynamic title;
-@dynamic userVkID;
+@dynamic ownerVkID;
+@dynamic webVersion;
 
 @end
