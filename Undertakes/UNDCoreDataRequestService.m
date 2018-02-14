@@ -41,11 +41,32 @@
     NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
 
     NSFetchRequest *fetchRequest = [self getRequestByEntityName:@"UNDPromise"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userVkID CONTAINS %@", user];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ownerVkID CONTAINS %@", user];
     [fetchRequest setPredicate:predicate];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDate"
                                                                    ascending:NO];
     fetchRequest.sortDescriptors = @[sortDescriptor];
+    return fetchRequest;
+}
+
+//+ (NSFetchRequest *)userLastPromiseRequest
+//{
+//    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
+//    
+//    NSFetchRequest *fetchRequest = [self getRequestByEntityName:@"UNDPromise"];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ownerVkID CONTAINS %@", user];
+//    [fetchRequest setPredicate:predicate];
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDate"
+//                                                                   ascending:NO];
+//    fetchRequest.sortDescriptors = @[sortDescriptor];
+//    return fetchRequest;
+//}
+
++ (NSFetchRequest *)promiseLikeManRequest:(NSString *)likeManID
+{
+    NSFetchRequest *fetchRequest = [self getRequestByEntityName:@"UNDLikeMan"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vkID CONTAINS %@", likeManID];
+    [fetchRequest setPredicate:predicate];
     return fetchRequest;
 }
 

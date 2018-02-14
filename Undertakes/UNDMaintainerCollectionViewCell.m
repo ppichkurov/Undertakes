@@ -12,6 +12,7 @@
 @interface UNDMaintainerCollectionViewCell ()
 
 @property (nonatomic, strong) UIImageView *maintainerImageView;
+//@property (nonatomic, strong) UILabel *idLabel;
 
 @end
 
@@ -21,21 +22,33 @@
 {
     if (self = [super initWithFrame:frame])
     {
+//        _idLabel = [UILabel new];
+//        _idLabel.textColor = UIColor.grayColor;
         self.backgroundColor = [UIColor grayColor];
+//        self.contentView.backgroundColor = [UIColor grayColor];
         self.contentView.backgroundColor = [UIColor grayColor];
-        _maintainerImageView = [[UIImageView alloc] init];
+
+        _maintainerImageView = [UIImageView new];
         _maintainerImageView.layer.masksToBounds = YES;
         _maintainerImageView.layer.cornerRadius = CGRectGetWidth(frame)/2;
-        [self.maintainerImageView setImage: [UIImage imageNamed:@"imageTest"]];
+        _maintainerImageView.contentMode = UIViewContentModeCenter;
+//        [self.contentView addSubview:_idLabel];
         [self.contentView addSubview:_maintainerImageView];
     }
     return self;
 }
 
-- (void)setMaintainerImage:(UIImage *)maintainerImage
+- (void)setMaintainerImagePath:(NSString *)maintainerImagePath
 {
-    _maintainerImage = maintainerImage;
-    [self.maintainerImageView setImage:maintainerImage];
+    _maintainerImagePath = maintainerImagePath;
+    NSData *dataImg = [NSData dataWithContentsOfFile:maintainerImagePath];
+    [self.maintainerImageView setImage: [UIImage imageWithData:dataImg]];
+}
+
+- (void)setVkID:(NSString *)vkID
+{
+    _vkID = vkID;
+//    self.idLabel.text = vkID;
 }
 
 
@@ -45,6 +58,10 @@
      {
          make.edges.equalTo(self);
      }];
+//    [self.idLabel mas_makeConstraints: ^(MASConstraintMaker *make)
+//    {
+//        make.edges.equalTo(self.contentView);
+//    }];
 }
 
 

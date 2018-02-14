@@ -10,6 +10,9 @@
 #import "UNDCoreDataRequestService.h"
 #import "UNDUser+CoreDataClass.h"
 #import "UNDPromise+CoreDataClass.h"
+#import "UNDPromiseWeb+CoreDataClass.h"
+#import "UNDHuman+CoreDataClass.h"
+#import "UNDLikeMan+CoreDataClass.h"
 
 @interface UNDCoreDataService : NSObject
 
@@ -23,5 +26,9 @@
                               fireDate:(NSDate *)fireDate;
 
 - (void)savePromiseFieldIdToCoreData:(int64_t)fieldId;
+
+- (void)correctLikeManIDs:(NSSet *)likeMans forPromise:(NSManagedObjectID *)promiseID;
+
+- (void)correctLikeManID:(NSString *)likeManID Photo:(NSString *)photoPath;
 
 @end

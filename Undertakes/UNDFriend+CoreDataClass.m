@@ -1,5 +1,5 @@
 //
-//  UNDUser+CoreDataClass.m
+//  UNDFriend+CoreDataClass.m
 //  Undertakes
 //
 //  Created by Павел Пичкуров on 11.02.2018.
@@ -7,8 +7,8 @@
 //
 //
 
-#import "UNDUser+CoreDataClass.h"
+#import "UNDFriend+CoreDataClass.h"
 
-@implementation UNDUser
+@implementation UNDFriend
 
 @end

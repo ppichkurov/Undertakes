@@ -1,8 +1,9 @@
 //
 //  UNDPromise+CoreDataProperties.h
-//  
+//  Undertakes
 //
-//  Created by Павел Пичкуров on 10.02.2018.
+//  Created by Павел Пичкуров on 11.02.2018.
+//  Copyright © 2018 Павел Пичкуров. All rights reserved.
 //
 //
 
@@ -15,16 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<UNDPromise *> *)fetchRequest;
 
-@property (nonatomic) int64_t fieldVkID;
 @property (nullable, nonatomic, copy) NSDate *fireDate;
 @property (nullable, nonatomic, copy) NSString *fullText;
-@property (nullable, nonatomic, copy) NSString *hashTag;
 @property (nonatomic) int64_t importance;
-@property (nonatomic) int64_t likeCount;
-@property (nullable, nonatomic, copy) NSDate *perDayTime;
 @property (nullable, nonatomic, copy) NSDate *startDate;
 @property (nullable, nonatomic, copy) NSString *title;
-@property (nullable, nonatomic, copy) NSString *userVkID;
+@property (nullable, nonatomic, retain) NSString *ownerVkID;
+@property (nullable, nonatomic, retain) UNDPromiseWeb *webVersion;
 
 @end
 

@@ -155,6 +155,7 @@
     self.substrateView.backgroundColor = [UIColor whiteColor];
     self.title = @"";
     self.fullText = @"";
+    self.promiseObject = nil;
 }
 
 @end

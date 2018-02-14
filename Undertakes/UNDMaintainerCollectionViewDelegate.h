@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UICollectionView.h>
+#import "UNDPromise+CoreDataClass.h"
 
 @interface UNDMaintainerCollectionViewDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, copy) NSArray<NSNumber *> *testArray;
+@property (nonatomic, weak) UNDPromise *promiseThatHaveLikes;
 
 @end

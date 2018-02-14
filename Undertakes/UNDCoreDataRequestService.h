@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
+#import "UNDPromise+CoreDataClass.h"
+
 
 @interface UNDCoreDataRequestService : NSObject
-
-//@property (nonatomic, weak) NSManagedObjectContext *coreDataContext;
 
 + (NSManagedObjectContext *)coreDataContext;
 + (NSFetchRequest *)currentUserRequest;
 + (NSFetchRequest *)userPromisesRequest;
++ (NSFetchRequest *)promiseLikeManRequest:(NSString *)likeManID;
 
 @end
