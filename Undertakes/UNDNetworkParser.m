@@ -142,7 +142,7 @@
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.coreDataService correctLikeManID:userID Photo:filePath];
+        [self.coreDataService correctLikeManID:userID Photo:fileName];
     });
 }
 

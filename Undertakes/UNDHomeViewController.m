@@ -24,6 +24,8 @@
 #import "masonry.h"
 
 
+#import "UNDStringConstants.h"
+
 static NSString *UNDPromiseCollViewCellId = @"promiseCollViewCell";
 static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 

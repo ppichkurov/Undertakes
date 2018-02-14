@@ -39,6 +39,7 @@
 		7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */; };
 		7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5686772030BF1C003CB42B /* UNDNetworkParser.m */; };
 		7FDCEAE92033219F0081ABED /* UNDStringConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAE82033219F0081ABED /* UNDStringConstants.m */; };
+		7FDCEAEC203422460081ABED /* UNDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEB203422460081ABED /* UNDDetailViewController.m */; };
 		F682493F0C2E8BDAC7C437A4 /* libPods-UndertakesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C47DCC7EBD44AC3528019D /* libPods-UndertakesTests.a */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,8 @@
 		7F5686792030BF8A003CB42B /* UNDParserOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDParserOutputProtocol.h; sourceTree = "<group>"; };
 		7FDCEAE72033219F0081ABED /* UNDStringConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDStringConstants.h; sourceTree = "<group>"; };
 		7FDCEAE82033219F0081ABED /* UNDStringConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDStringConstants.m; sourceTree = "<group>"; };
+		7FDCEAEA203422460081ABED /* UNDDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDDetailViewController.h; sourceTree = "<group>"; };
+		7FDCEAEB203422460081ABED /* UNDDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDDetailViewController.m; sourceTree = "<group>"; };
 		901ED00352727172D6BB99A0 /* Pods-UndertakesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5F97F5AFEE0C146DAA3B375 /* Pods-UndertakesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3BA64324FDD367D0D2B6C12 /* Pods-Undertakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Undertakes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Undertakes/Pods-Undertakes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 				7F36ABFF201E6C650043D00E /* UNDHomeViewController.m */,
 				7F50B999202CA324004BC9B3 /* UNDAddPromiceViewController.h */,
 				7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */,
+				7FDCEAEA203422460081ABED /* UNDDetailViewController.h */,
+				7FDCEAEB203422460081ABED /* UNDDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -556,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F1517CB202B3B1D00F97473 /* UNDNetworkService.m in Sources */,
+				7FDCEAEC203422460081ABED /* UNDDetailViewController.m in Sources */,
 				7F433BD520272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m in Sources */,
 				7F1517D8202B833900F97473 /* Undertakes.xcdatamodeld in Sources */,
 				7F56867120307E0B003CB42B /* UNDHuman+CoreDataProperties.m in Sources */,

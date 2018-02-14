@@ -7,6 +7,7 @@
 //
 
 #import "UNDMaintainerCollectionViewCell.h"
+#import "UNDStringConstants.h"
 #import "masonry.h"
 
 @interface UNDMaintainerCollectionViewCell ()
@@ -41,7 +42,8 @@
 - (void)setMaintainerImagePath:(NSString *)maintainerImagePath
 {
     _maintainerImagePath = maintainerImagePath;
-    NSData *dataImg = [NSData dataWithContentsOfFile:maintainerImagePath];
+    NSString *filePath = [[UNDStringConstants getDocumentDirPath] stringByAppendingString:maintainerImagePath];
+    NSData *dataImg = [NSData dataWithContentsOfFile:filePath];
     [self.maintainerImageView setImage: [UIImage imageWithData:dataImg]];
 }
 
