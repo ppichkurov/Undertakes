@@ -8,6 +8,7 @@
 
 #import "UNDAddPromiceViewController.h"
 #import "UNDCoreDataService.h"
+#import "UNDTemplatesUI.h"
 #import "masonry.h"
 
 static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
@@ -24,6 +25,8 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIButton *addButton;
+@property (nonatomic, strong) UIButton *backButton;
+
 
 @property (nonatomic, strong) UNDCoreDataService *coreDataService;
 
@@ -45,7 +48,7 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     [self prepareImportanceSlider];
     [self prepareDateLabel];
     [self prepareDatePicker];
-    [self prepareAddButton];
+    [self prepareButtons];
     [self prepareConstraints];
 }
 
@@ -114,28 +117,18 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     [self.view addSubview:self.datePicker];
 }
 
-- (void)prepareAddButton
+- (void)prepareButtons
 {
-    self.addButton = [[UIButton alloc] init];
-    [self.addButton setTitle:@"#Действовать" forState:UIControlStateNormal];
+    self.addButton = [UNDTemplatesUI getButtonWithTitle:@"#Действовать"
+                                                 action:@selector(backToMainView)
+                                                 target:self
+                                                 toView:self.view];
     
-    self.addButton.backgroundColor = [UIColor colorWithRed:223/255.0f
-                                                               green:223/255.0f
-                                                                blue:223/255.0f
-                                                               alpha:1];
-    [self.addButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    self.addButton.layer.cornerRadius = 10;
-    self.addButton.alpha = 0.48;
-    
-    self.addButton.layer.masksToBounds = NO;
-    self.addButton.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.addButton.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    self.addButton.layer.shadowOpacity = 0.2f;
-    
-    [self.addButton addTarget:self action:@selector(backToMainView) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview: self.addButton];
+    self.backButton = [UNDTemplatesUI getButtonWithTitle:@"#Back"
+                                                  action:@selector(backWithoutSave)
+                                                  target:self
+                                                  toView:self.view];
 }
-
 
 #pragma mark - Constraints
 
@@ -199,10 +192,20 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     [self.addButton mas_makeConstraints: ^(MASConstraintMaker *make)
     {
         make.top.equalTo(self.datePicker.mas_bottom).with.offset(paddingMiddleItem.top);
-        make.centerX.equalTo(self.view.mas_centerX);
+        make.right.equalTo(self.view.mas_right).with.offset(-paddingMiddleItem.right);
         make.height.equalTo(@44);
         make.width.equalTo(@200);
     }];
+    
+    [self.backButton mas_makeConstraints: ^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(self.datePicker.mas_bottom).with.offset(paddingMiddleItem.top);
+         make.left.equalTo(self.view.mas_left).with.offset(paddingMiddleItem.left);
+         make.right.equalTo(self.addButton.mas_left).with.offset(-paddingMiddleItem.right);
+         make.height.equalTo(@44);
+     }];
+    
+    
 }
 
 - (void)changeImportance
@@ -217,6 +220,13 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     [self.delegate addPromisCollectionViewWillDismissed:self.titleText.text fulltext:self.fullText.text];
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"go BACK");
+    }];
+}
+
+- (void)backWithoutSave
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"go BACK without save");
     }];
 }
 

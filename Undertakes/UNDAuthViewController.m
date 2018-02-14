@@ -8,6 +8,8 @@
 
 #import "UNDAuthViewController.h"
 #import "UNDHomeViewController.h"
+#import "UNDAlreadyDoneTableViewController.h"
+#import "UNDFriendsTableViewController.h"
 #import <WebKit/WKWebView.h>
 #import <WebKit/WKUIDelegate.h>
 #import <WebKit/WKNavigationDelegate.h>
@@ -20,6 +22,8 @@
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UNDHomeViewController *homeViewController;
+@property (nonatomic, strong) UNDAlreadyDoneTableViewController *alreadyDoneViewController;
+@property (nonatomic, strong) UNDFriendsTableViewController *friendsViewController;
 
 @end
 
@@ -130,14 +134,24 @@
     if (!self.homeViewController)
     {
         self.homeViewController = [UNDHomeViewController new];
+        self.homeViewController.tabBarItem.title = @"Home";
+    }
+    if (!self.alreadyDoneViewController)
+    {
+        self.alreadyDoneViewController = [UNDAlreadyDoneTableViewController new];
+        self.alreadyDoneViewController.tabBarItem.title = @"Done";
+    }
+    if (!self.friendsViewController)
+    {
+        self.friendsViewController = [UNDFriendsTableViewController new];
+        self.friendsViewController.tabBarItem.title = @"Friends";
     }
     if (!self.tabBarController)
     {
         self.tabBarController = [UITabBarController new];
     }
-    NSArray *viewControllersArray = @[self.homeViewController];
+    NSArray *viewControllersArray = @[self.friendsViewController, self.homeViewController, self.alreadyDoneViewController];
     self.tabBarController.viewControllers = viewControllersArray;
-    
     [self presentViewController:self.tabBarController animated:NO completion:^{
         NSLog(@"Presented");
     }];

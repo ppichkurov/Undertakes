@@ -31,7 +31,9 @@
 
         _maintainerImageView = [UIImageView new];
         _maintainerImageView.layer.masksToBounds = YES;
-        _maintainerImageView.layer.cornerRadius = CGRectGetWidth(frame)/2;
+//        _maintainerImageView.layer.cornerRadius = CGRectGetWidth(frame)/2;
+        _maintainerImageView.layer.cornerRadius = 10;
+
         _maintainerImageView.contentMode = UIViewContentModeCenter;
 //        [self.contentView addSubview:_idLabel];
         [self.contentView addSubview:_maintainerImageView];

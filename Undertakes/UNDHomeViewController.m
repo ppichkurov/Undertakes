@@ -20,6 +20,7 @@
 
 #import "UNDNetworkParser.h"
 #import "UNDNetworkService.h"
+#import "UNDTemplatesUI.h"
 
 #import "masonry.h"
 
@@ -53,16 +54,26 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.grayColor;
+    self.tabBarItem.title = @"Home";
     
-    self.addNewPromiseButton = [self prepareButtonWithTitle:@"#Дать обещание"
-                                                     action:@selector(addNewPromice)];
-    self.refreshLikesButton = [self prepareButtonWithTitle:@"#Fresh"
-                                                      action:@selector(refreshLikes)];
+    [self prepareButtons];
     [self preparePromisesCollectionView];
     [self prepareMaintainersCollectionView];
     [self prepareConstraints];
     [self prepareParser];
     [self prepareNetworkService];
+}
+
+- (void)prepareButtons
+{
+    self.addNewPromiseButton = [UNDTemplatesUI getButtonWithTitle:@"#Дать обещание"
+                                                           action:@selector(addNewPromice)
+                                                           target:self
+                                                           toView:self.view];
+    self.refreshLikesButton = [UNDTemplatesUI getButtonWithTitle:@"#Fresh"
+                                                          action:@selector(refreshLikes)
+                                                          target:self
+                                                          toView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,28 +91,6 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     self.networkParser = [UNDNetworkParser new];
     self.networkParser.outputDelegate = self;
-}
-
-- (UIButton *)prepareButtonWithTitle:(NSString *)title action:(SEL)selector;
-{
-    UIButton *button = [UIButton new];
-    [button setTitle:title forState:UIControlStateNormal];
-    
-    button.backgroundColor = [UIColor colorWithRed:223/255.0f
-                                             green:223/255.0f
-                                              blue:223/255.0f
-                                             alpha:1];
-    [button setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    button.layer.cornerRadius = 10;
-    button.alpha = 0.48;
-    [button addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
-    button.layer.masksToBounds = NO;
-    button.layer.shadowColor = [UIColor blackColor].CGColor;
-    button.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    button.layer.shadowOpacity = 0.5f;
-    
-    [self.view addSubview: button];
-    return button;
 }
 
 - (void)addNewPromice
