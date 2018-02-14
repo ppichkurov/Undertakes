@@ -14,4 +14,6 @@
 
 - (void)changeCurrentMaintainerCollectionForPromise: (UNDPromise *)promise;
 
+- (void)addPromisCollectionViewWillDismissed:(NSString *)title fulltext:(NSString *)fullText;
+
 @end

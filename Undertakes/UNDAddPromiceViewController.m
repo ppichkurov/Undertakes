@@ -10,7 +10,6 @@
 #import "UNDCoreDataService.h"
 #import "masonry.h"
 
-
 static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 
 @interface UNDAddPromiceViewController ()
@@ -31,6 +30,7 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 @end
 
 @implementation UNDAddPromiceViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -214,6 +214,7 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 - (void)backToMainView
 {
     [self savePromiseToCoreData];
+    [self.delegate addPromisCollectionViewWillDismissed:self.titleText.text fulltext:self.fullText.text];
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"go BACK");
     }];

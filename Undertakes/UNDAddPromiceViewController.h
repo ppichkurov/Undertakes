@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UNDPromiseDataSourceOutputProtocol.h"
+
 
 @interface UNDAddPromiceViewController : UIViewController
+
+@property (nonatomic, weak) id <UNDPromiseDataSourceOutputProtocol> delegate;
 
 @end

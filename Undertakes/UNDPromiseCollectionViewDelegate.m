@@ -32,6 +32,7 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
                                      sectionNameKeyPath:nil
                                      cacheName:nil];
         _promiceResultsController.delegate = self;
+        _promisesCollectionView = collectionView;
         [_promiceResultsController performFetch:nil];
     }
     return self;
@@ -94,9 +95,9 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     }
 }
 
-//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-//    [self.promisesCollectionView reloadSections: [NSIndexSet indexSetWithIndex:0]];
-//}
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.promisesCollectionView reloadData];
+}
 
 
 #pragma mark - UICollectionViewDataSource
@@ -126,17 +127,41 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.promisesCollectionView layoutIfNeeded];
-//        NSArray<UNDPromiseCollectionViewCell *> *arrayOfVisibleCells = [self.promisesCollectionView visibleCells];
-//        if (arrayOfVisibleCells.count > 0)
-//        {
-//            if (arrayOfVisibleCells[0].promiseObject)
-//            {
-//                [self.output changeCurrentMaintainerCollectionForPromise: arrayOfVisibleCells[0].promiseObject];
-//            }
-//        }
-//    });
+    [self choosePromiseForLikeDisplay];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate)
+    {
+        [self choosePromiseForLikeDisplay];
+    }
+}
+
+- (void)choosePromiseForLikeDisplay
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSArray<UNDPromiseCollectionViewCell *> *arrayOfVisibleCells = [self.promisesCollectionView visibleCells];
+        if (!arrayOfVisibleCells)
+        {
+            return;
+        }
+        CGFloat collectionWidth = CGRectGetWidth(self.promisesCollectionView.frame);
+        CGFloat contentOffset = self.promisesCollectionView.contentOffset.x;
+        for (UNDPromiseCollectionViewCell *cell in arrayOfVisibleCells) {
+            if (CGRectGetMinX(cell.frame) >= contentOffset
+                && CGRectGetMaxX(cell.frame) <= contentOffset + collectionWidth)
+            {
+                [self.output changeCurrentMaintainerCollectionForPromise: cell.promiseObject];
+                return;
+            }
+        }
+    });
+}
+
+- (void)maintainersNeedToInit
+{ 
+    [self choosePromiseForLikeDisplay];
 }
 
 @end

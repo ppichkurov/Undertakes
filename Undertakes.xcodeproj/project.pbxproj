@@ -37,6 +37,8 @@
 		7F56867120307E0B003CB42B /* UNDHuman+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866320307E0A003CB42B /* UNDHuman+CoreDataProperties.m */; };
 		7F56867220307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866620307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m */; };
 		7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */; };
+		7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5686772030BF1C003CB42B /* UNDNetworkParser.m */; };
+		7FDCEAE92033219F0081ABED /* UNDStringConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAE82033219F0081ABED /* UNDStringConstants.m */; };
 		F682493F0C2E8BDAC7C437A4 /* libPods-UndertakesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C47DCC7EBD44AC3528019D /* libPods-UndertakesTests.a */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +114,11 @@
 		7F56866620307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDPromiseWeb+CoreDataClass.m"; sourceTree = "<group>"; };
 		7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDPromiseWeb+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7F568674203084F7003CB42B /* UNDPromiseDataSourceOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDPromiseDataSourceOutputProtocol.h; sourceTree = "<group>"; };
+		7F5686762030BF1C003CB42B /* UNDNetworkParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDNetworkParser.h; sourceTree = "<group>"; };
+		7F5686772030BF1C003CB42B /* UNDNetworkParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkParser.m; sourceTree = "<group>"; };
+		7F5686792030BF8A003CB42B /* UNDParserOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDParserOutputProtocol.h; sourceTree = "<group>"; };
+		7FDCEAE72033219F0081ABED /* UNDStringConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDStringConstants.h; sourceTree = "<group>"; };
+		7FDCEAE82033219F0081ABED /* UNDStringConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDStringConstants.m; sourceTree = "<group>"; };
 		901ED00352727172D6BB99A0 /* Pods-UndertakesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5F97F5AFEE0C146DAA3B375 /* Pods-UndertakesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3BA64324FDD367D0D2B6C12 /* Pods-Undertakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Undertakes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Undertakes/Pods-Undertakes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +159,7 @@
 		7F1517CE202B44E800F97473 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7F5686752030BE38003CB42B /* Parsers */,
 				7F50B98F202C62C7004BC9B3 /* CoreDataService */,
 				7F1517CF202B44F000F97473 /* NetworkService */,
 			);
@@ -193,6 +201,7 @@
 		7F36ABFA201E6C650043D00E /* Undertakes */ = {
 			isa = PBXGroup;
 			children = (
+				7FDCEAE5203320AC0081ABED /* Const */,
 				7F50B96D202C404E004BC9B3 /* Models */,
 				7F50B96C202BA1E4004BC9B3 /* CoreData */,
 				7F1517CE202B44E800F97473 /* Services */,
@@ -265,6 +274,16 @@
 			name = CoreDataService;
 			sourceTree = "<group>";
 		};
+		7F5686752030BE38003CB42B /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				7F5686762030BF1C003CB42B /* UNDNetworkParser.h */,
+				7F5686772030BF1C003CB42B /* UNDNetworkParser.m */,
+				7F5686792030BF8A003CB42B /* UNDParserOutputProtocol.h */,
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
 		7F75E4DF202116E200AC53C3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,11 +309,11 @@
 		7F75E4E22021176500AC53C3 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				7F568674203084F7003CB42B /* UNDPromiseDataSourceOutputProtocol.h */,
 				7F433BD320272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.h */,
 				7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */,
 				7F433BD620272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.h */,
 				7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */,
-				7F568674203084F7003CB42B /* UNDPromiseDataSourceOutputProtocol.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -310,6 +329,15 @@
 				7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7FDCEAE5203320AC0081ABED /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCEAE72033219F0081ABED /* UNDStringConstants.h */,
+				7FDCEAE82033219F0081ABED /* UNDStringConstants.m */,
+			);
+			name = Const;
 			sourceTree = "<group>";
 		};
 		997F88108763FD8C013F0DE5 /* Frameworks */ = {
@@ -537,6 +565,7 @@
 				7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */,
 				7F56866820307E0B003CB42B /* UNDUser+CoreDataClass.m in Sources */,
 				7F56867020307E0B003CB42B /* UNDHuman+CoreDataClass.m in Sources */,
+				7FDCEAE92033219F0081ABED /* UNDStringConstants.m in Sources */,
 				7F56866920307E0B003CB42B /* UNDUser+CoreDataProperties.m in Sources */,
 				7F56866A20307E0B003CB42B /* UNDLikeMan+CoreDataClass.m in Sources */,
 				7F433BD020272C3300C40FAD /* UNDMaintainerCollectionViewCell.m in Sources */,
@@ -544,6 +573,7 @@
 				7F56867220307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m in Sources */,
 				7F56866E20307E0B003CB42B /* UNDPromise+CoreDataClass.m in Sources */,
 				7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */,
+				7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */,
 				7F1517C8202B3B1D00F97473 /* UNDAuthViewController.m in Sources */,
 				7F56866C20307E0B003CB42B /* UNDFriend+CoreDataClass.m in Sources */,
 				7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */,

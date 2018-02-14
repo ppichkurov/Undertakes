@@ -16,4 +16,6 @@
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 
+- (void)maintainersNeedToInit;
+
 @end

@@ -8,6 +8,8 @@
 
 #import "UNDHomeViewController.h"
 
+#import "UNDPromiseWeb+CoreDataClass.h"
+
 #import "UNDPromiseCollectionViewDelegate.h"
 #import "UNDMaintainerCollectionViewDelegate.h"
 
@@ -16,24 +18,31 @@
 
 #import "UNDAddPromiceViewController.h"
 
-#import "UNDPromiseDataSourceOutputProtocol.h"
+#import "UNDNetworkParser.h"
+#import "UNDNetworkService.h"
 
 #import "masonry.h"
+
 
 static NSString *UNDPromiseCollViewCellId = @"promiseCollViewCell";
 static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
-@interface UNDHomeViewController () <UNDPromiseDataSourceOutputProtocol>
+
+@interface UNDHomeViewController () <UNDPromiseDataSourceOutputProtocol, UNDParserOutputProtocol>
 
 @property (nonatomic, strong) UIImage *photoImage;
 @property (nonatomic, strong) UIButton *addNewPromiseButton;
+@property (nonatomic, strong) UIButton *refreshLikesButton;
 @property (nonatomic, strong) UICollectionView *promisesCollectionView;
 @property (nonatomic, strong) UICollectionView *maintainersCollectionView;
 @property (nonatomic, strong) UNDPromiseCollectionViewDelegate *promisesDelegate;
 @property (nonatomic, strong) UNDMaintainerCollectionViewDelegate *maintainersDelegate;
+@property (nonatomic, strong) UNDNetworkParser *networkParser;
+@property (nonatomic, strong) UNDNetworkService *networkService;
+
+@property (nonatomic, weak) UNDPromise *currentPromise;
 
 @end
-
 
 @implementation UNDHomeViewController
 
@@ -43,67 +52,109 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     
     self.view.backgroundColor = UIColor.grayColor;
     
-    [self prepareButton];
+    self.addNewPromiseButton = [self prepareButtonWithTitle:@"#Дать обещание"
+                                                     action:@selector(addNewPromice)];
+    self.refreshLikesButton = [self prepareButtonWithTitle:@"#Fresh"
+                                                      action:@selector(refreshLikes)];
     [self preparePromisesCollectionView];
     [self prepareMaintainersCollectionView];
     [self prepareConstraints];
+    [self prepareParser];
+    [self prepareNetworkService];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.promisesCollectionView reloadData];
+    [self.promisesDelegate maintainersNeedToInit];
 }
 
-- (void)prepareButton
+- (void)prepareNetworkService
 {
-    self.addNewPromiseButton = [UIButton new];
-    [self.addNewPromiseButton setTitle:@"#Дать обещание" forState:UIControlStateNormal];
+    self.networkService = [UNDNetworkService new];
+    self.networkService.outputDelegate = self.networkParser;
+}
+
+- (void)prepareParser
+{
+    self.networkParser = [UNDNetworkParser new];
+    self.networkParser.outputDelegate = self;
+}
+
+- (UIButton *)prepareButtonWithTitle:(NSString *)title action:(SEL)selector;
+{
+    UIButton *button = [UIButton new];
+    [button setTitle:title forState:UIControlStateNormal];
     
-    self.addNewPromiseButton.backgroundColor = [UIColor colorWithRed:223/255.0f
-                                                               green:223/255.0f
-                                                                blue:223/255.0f
-                                                               alpha:1];
-    [self.addNewPromiseButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    self.addNewPromiseButton.layer.cornerRadius = 10;
-    self.addNewPromiseButton.alpha = 0.48;
-    [self.addNewPromiseButton addTarget:self action:@selector(addNewPromice) forControlEvents:UIControlEventTouchUpInside];
-    self.addNewPromiseButton.layer.masksToBounds = NO;
-    self.addNewPromiseButton.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.addNewPromiseButton.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    self.addNewPromiseButton.layer.shadowOpacity = 0.5f;
+    button.backgroundColor = [UIColor colorWithRed:223/255.0f
+                                             green:223/255.0f
+                                              blue:223/255.0f
+                                             alpha:1];
+    [button setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    button.layer.cornerRadius = 10;
+    button.alpha = 0.48;
+    [button addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
+    button.layer.masksToBounds = NO;
+    button.layer.shadowColor = [UIColor blackColor].CGColor;
+    button.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    button.layer.shadowOpacity = 0.5f;
     
-    [self.view addSubview: self.addNewPromiseButton];
+    [self.view addSubview: button];
+    return button;
 }
 
 - (void)addNewPromice
 {
-    [self presentViewController: [UNDAddPromiceViewController new] animated:YES completion:^{
+    UNDAddPromiceViewController *addPromiseViewController = [UNDAddPromiceViewController new];
+    addPromiseViewController.delegate = self;
+    [self presentViewController: addPromiseViewController animated:YES completion:^{
         NSLog(@"go forward");
     }];
 }
 
+- (void)refreshLikes
+{
+    if (!self.currentPromise)
+    {
+        return;
+    }
+    if (!self.currentPromise.webVersion)
+    {
+        return;
+    }
+    [self.networkService getUsersThatLikeField: self.currentPromise.webVersion.fieldVkID.intValue];
+    
+    // переделать на обновления после полной подгрузки
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.maintainersCollectionView reloadData];
+    });
+}
+
 - (void)preparePromisesCollectionView
 {
-    self.promisesCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[self propmiseFlowLayout]];
+    self.promisesCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
+                                                     collectionViewLayout:[self propmiseFlowLayout]];
     self.promisesCollectionView.backgroundColor = UIColor.grayColor;
     self.promisesCollectionView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     
-    self.promisesDelegate = [[UNDPromiseCollectionViewDelegate alloc] initWithCollectionView:self.promisesCollectionView];
+    self.promisesDelegate = [[UNDPromiseCollectionViewDelegate alloc]
+                             initWithCollectionView:self.promisesCollectionView];
     
     self.promisesCollectionView.delegate = self.promisesDelegate;
     self.promisesCollectionView.dataSource = self.promisesDelegate;
     self.promisesDelegate.output = self;
     
-    self.promisesCollectionView.prefetchingEnabled = NO;
+//    self.promisesCollectionView.prefetchingEnabled = NO;
     
-    [self.promisesCollectionView registerClass: [UNDPromiseCollectionViewCell class] forCellWithReuseIdentifier:UNDPromiseCollViewCellId];
+    [self.promisesCollectionView registerClass: [UNDPromiseCollectionViewCell class]
+                    forCellWithReuseIdentifier:UNDPromiseCollViewCellId];
     
     [self.view addSubview:self.promisesCollectionView];
 }
 
 - (void)prepareMaintainersCollectionView
 {
-    self.maintainersCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[self maintainerFlowLayout]];
+    self.maintainersCollectionView = [[UICollectionView alloc]
+                                      initWithFrame:CGRectZero collectionViewLayout:[self maintainerFlowLayout]];
     self.maintainersCollectionView.backgroundColor = UIColor.grayColor;
     self.maintainersCollectionView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     
@@ -112,7 +163,8 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     self.maintainersCollectionView.delegate = self.maintainersDelegate;
     self.maintainersCollectionView.dataSource = self.maintainersDelegate;
     
-    [self.maintainersCollectionView registerClass: [UNDMaintainerCollectionViewCell class] forCellWithReuseIdentifier:UNDMaintainerCollViewCellId];
+    [self.maintainersCollectionView registerClass: [UNDMaintainerCollectionViewCell class]
+                       forCellWithReuseIdentifier:UNDMaintainerCollViewCellId];
     
     [self.view addSubview:self.maintainersCollectionView];
 }
@@ -139,6 +191,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     return flowLayout;
 }
 
+
 #pragma mark - StatusBarStyle
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -155,12 +208,21 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     [self.addNewPromiseButton mas_makeConstraints: ^(MASConstraintMaker *make)
     {
         make.top.equalTo(self.view.mas_top).with.offset(padding.top);
-//        make.left.equalTo(self.view.mas_left).with.offset(padding.left);
-        make.centerX.equalTo(self.view.mas_centerX);
-        make.width.equalTo(@200);
+        make.left.equalTo(self.view.mas_left).with.offset(padding.left);
+//        make.right.equalTo(self.view.mas_right).with.offset(padding.right);
+//        make.centerX.equalTo(self.view.mas_centerX);
+
+        make.width.equalTo(@180);
         make.height.equalTo(@44);
-//        make.right.equalTo(self.view.mas_right).with.offset(-padding.right);
     }];
+    
+    [self.refreshLikesButton mas_makeConstraints: ^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(self.view.mas_top).with.offset(padding.top);
+         make.left.equalTo(self.addNewPromiseButton.mas_right).with.offset(padding.left);
+         make.right.equalTo(self.view.mas_right).with.offset(-padding.right);
+         make.height.equalTo(@44);
+     }];
     
     [self.promisesCollectionView mas_makeConstraints: ^(MASConstraintMaker *make)
     {
@@ -184,7 +246,27 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
 - (void)changeCurrentMaintainerCollectionForPromise:(UNDPromise *)promise
 {
-    NSLog(@"Current Promise: %@", promise.title);
+    self.maintainersDelegate.promiseThatHaveLikes = promise;
+    self.currentPromise = promise;
+    self.networkParser.currentPromiseID = promise.objectID;
+    [self.maintainersCollectionView reloadData];
+}
+
+- (void)addPromisCollectionViewWillDismissed:(NSString *)title fulltext:(NSString *)fullText
+{
+        [self.networkService createPromiseOnTheUserWallWithTitle:title fulltext:fullText];
+}
+
+- (void)listOfMansThatLikedPromise:(NSSet *)likeMans
+{
+    for (NSNumber *man in likeMans) {
+        [self.networkService getUserPhotoURL:man.intValue];
+    }
+}
+
+- (void)photosURLOfMan:(NSUInteger)userID thatLikedPromiseReceived:(NSString *)urlString
+{
+    [self.networkService getPhotoByURL:urlString userID:userID];
 }
 
 @end

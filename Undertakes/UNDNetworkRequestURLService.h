@@ -12,12 +12,18 @@
 
 @interface UNDNetworkRequestURLService : NSObject
 
+// реализовано
+
 + (NSURL *)getAuthVKRequestURL;
-+ (NSURL *)getLikeFriendPromiseRequestURL;
 + (NSURL *)getUsersLikeFieldRequestURL:(NSUInteger)fieldID;
-+ (NSURL *)getFriendListRequestURL;
-+ (NSURL *)getUserPhotoRequestURL;
-+ (NSURL *)getWallRequestURL;
++ (NSURL *)getUserPhotoRequestURL:(NSUInteger)userID;
 + (NSURL *)getCreatePromiseOnTheUserWallRequestURL:(NSString *)title fulltext:(NSString *)fullText;
+
+// не реализовано
+
++ (NSURL *)getLikeFriendPromiseRequestURL;
++ (NSURL *)getFriendListRequestURL;
+//+ (NSURL *)getWallRequestURL;
+
 
 @end

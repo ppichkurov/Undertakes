@@ -10,6 +10,7 @@
 
 @interface UNDMaintainerCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIImage *maintainerImage;
+@property (nonatomic, strong) NSString *maintainerImagePath;
+@property (nonatomic, strong) NSString *vkID;
 
 @end
