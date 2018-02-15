@@ -7,6 +7,8 @@
 //
 
 #import "UNDMaintainerCollectionViewCell.h"
+#import "UNDTemplatesUI.h"
+#import "UNDStringConstants.h"
 #import "masonry.h"
 
 @interface UNDMaintainerCollectionViewCell ()
@@ -24,13 +26,15 @@
     {
 //        _idLabel = [UILabel new];
 //        _idLabel.textColor = UIColor.grayColor;
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 //        self.contentView.backgroundColor = [UIColor grayColor];
-        self.contentView.backgroundColor = [UIColor grayColor];
+        self.contentView.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 
         _maintainerImageView = [UIImageView new];
         _maintainerImageView.layer.masksToBounds = YES;
-        _maintainerImageView.layer.cornerRadius = CGRectGetWidth(frame)/2;
+//        _maintainerImageView.layer.cornerRadius = CGRectGetWidth(frame)/2;
+        _maintainerImageView.layer.cornerRadius = 10;
+
         _maintainerImageView.contentMode = UIViewContentModeCenter;
 //        [self.contentView addSubview:_idLabel];
         [self.contentView addSubview:_maintainerImageView];
@@ -41,7 +45,8 @@
 - (void)setMaintainerImagePath:(NSString *)maintainerImagePath
 {
     _maintainerImagePath = maintainerImagePath;
-    NSData *dataImg = [NSData dataWithContentsOfFile:maintainerImagePath];
+    NSString *filePath = [[UNDStringConstants getDocumentDirPath] stringByAppendingString:maintainerImagePath];
+    NSData *dataImg = [NSData dataWithContentsOfFile:filePath];
     [self.maintainerImageView setImage: [UIImage imageWithData:dataImg]];
 }
 
@@ -71,7 +76,7 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.backgroundColor = [UIColor grayColor];
+    self.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 }
 
 @end

@@ -39,6 +39,11 @@
 		7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */; };
 		7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5686772030BF1C003CB42B /* UNDNetworkParser.m */; };
 		7FDCEAE92033219F0081ABED /* UNDStringConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAE82033219F0081ABED /* UNDStringConstants.m */; };
+		7FDCEAEC203422460081ABED /* UNDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEB203422460081ABED /* UNDDetailViewController.m */; };
+		7FDCEAEF203428AB0081ABED /* UNDAlreadyDoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */; };
+		7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */; };
+		7FDCEAF620344AFE0081ABED /* UNDTemplatesUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */; };
+		7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */; };
 		F682493F0C2E8BDAC7C437A4 /* libPods-UndertakesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C47DCC7EBD44AC3528019D /* libPods-UndertakesTests.a */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +124,16 @@
 		7F5686792030BF8A003CB42B /* UNDParserOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDParserOutputProtocol.h; sourceTree = "<group>"; };
 		7FDCEAE72033219F0081ABED /* UNDStringConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDStringConstants.h; sourceTree = "<group>"; };
 		7FDCEAE82033219F0081ABED /* UNDStringConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDStringConstants.m; sourceTree = "<group>"; };
+		7FDCEAEA203422460081ABED /* UNDDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDDetailViewController.h; sourceTree = "<group>"; };
+		7FDCEAEB203422460081ABED /* UNDDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDDetailViewController.m; sourceTree = "<group>"; };
+		7FDCEAED203428AB0081ABED /* UNDAlreadyDoneTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDAlreadyDoneTableViewController.h; sourceTree = "<group>"; };
+		7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDAlreadyDoneTableViewController.m; sourceTree = "<group>"; };
+		7FDCEAF020343D7E0081ABED /* UNDFriendsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDFriendsTableViewController.h; sourceTree = "<group>"; };
+		7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDFriendsTableViewController.m; sourceTree = "<group>"; };
+		7FDCEAF420344AFE0081ABED /* UNDTemplatesUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDTemplatesUI.h; sourceTree = "<group>"; };
+		7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDTemplatesUI.m; sourceTree = "<group>"; };
+		7FDCEAF82034C3BF0081ABED /* NSDate+UNDStringPresentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+UNDStringPresentation.h"; sourceTree = "<group>"; };
+		7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+UNDStringPresentation.m"; sourceTree = "<group>"; };
 		901ED00352727172D6BB99A0 /* Pods-UndertakesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5F97F5AFEE0C146DAA3B375 /* Pods-UndertakesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3BA64324FDD367D0D2B6C12 /* Pods-Undertakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Undertakes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Undertakes/Pods-Undertakes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +174,7 @@
 		7F1517CE202B44E800F97473 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7FDCEAF320344A990081ABED /* Templates */,
 				7F5686752030BE38003CB42B /* Parsers */,
 				7F50B98F202C62C7004BC9B3 /* CoreDataService */,
 				7F1517CF202B44F000F97473 /* NetworkService */,
@@ -201,11 +217,11 @@
 		7F36ABFA201E6C650043D00E /* Undertakes */ = {
 			isa = PBXGroup;
 			children = (
+				7FDCEAF72034C2B20081ABED /* Categories */,
 				7FDCEAE5203320AC0081ABED /* Const */,
-				7F50B96D202C404E004BC9B3 /* Models */,
 				7F50B96C202BA1E4004BC9B3 /* CoreData */,
 				7F1517CE202B44E800F97473 /* Services */,
-				7F75E4E22021176500AC53C3 /* Delegates */,
+				7F75E4E22021176500AC53C3 /* DelegatesAndDatasources */,
 				7F75E4E02021174900AC53C3 /* Views */,
 				7F75E4E32021179500AC53C3 /* Controllers */,
 				7F75E4DF202116E200AC53C3 /* Resources */,
@@ -256,13 +272,6 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		7F50B96D202C404E004BC9B3 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		7F50B98F202C62C7004BC9B3 /* CoreDataService */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,7 +315,7 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		7F75E4E22021176500AC53C3 /* Delegates */ = {
+		7F75E4E22021176500AC53C3 /* DelegatesAndDatasources */ = {
 			isa = PBXGroup;
 			children = (
 				7F568674203084F7003CB42B /* UNDPromiseDataSourceOutputProtocol.h */,
@@ -315,7 +324,7 @@
 				7F433BD620272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.h */,
 				7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */,
 			);
-			name = Delegates;
+			name = DelegatesAndDatasources;
 			sourceTree = "<group>";
 		};
 		7F75E4E32021179500AC53C3 /* Controllers */ = {
@@ -327,6 +336,12 @@
 				7F36ABFF201E6C650043D00E /* UNDHomeViewController.m */,
 				7F50B999202CA324004BC9B3 /* UNDAddPromiceViewController.h */,
 				7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */,
+				7FDCEAEA203422460081ABED /* UNDDetailViewController.h */,
+				7FDCEAEB203422460081ABED /* UNDDetailViewController.m */,
+				7FDCEAED203428AB0081ABED /* UNDAlreadyDoneTableViewController.h */,
+				7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */,
+				7FDCEAF020343D7E0081ABED /* UNDFriendsTableViewController.h */,
+				7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -338,6 +353,24 @@
 				7FDCEAE82033219F0081ABED /* UNDStringConstants.m */,
 			);
 			name = Const;
+			sourceTree = "<group>";
+		};
+		7FDCEAF320344A990081ABED /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCEAF420344AFE0081ABED /* UNDTemplatesUI.h */,
+				7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */,
+			);
+			name = Templates;
+			sourceTree = "<group>";
+		};
+		7FDCEAF72034C2B20081ABED /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCEAF82034C3BF0081ABED /* NSDate+UNDStringPresentation.h */,
+				7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		997F88108763FD8C013F0DE5 /* Frameworks */ = {
@@ -556,12 +589,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F1517CB202B3B1D00F97473 /* UNDNetworkService.m in Sources */,
+				7FDCEAEC203422460081ABED /* UNDDetailViewController.m in Sources */,
 				7F433BD520272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m in Sources */,
 				7F1517D8202B833900F97473 /* Undertakes.xcdatamodeld in Sources */,
 				7F56867120307E0B003CB42B /* UNDHuman+CoreDataProperties.m in Sources */,
 				7F36AC00201E6C650043D00E /* UNDHomeViewController.m in Sources */,
 				7F50B98E202C62AC004BC9B3 /* UNDCoreDataService.m in Sources */,
 				7F1517CA202B3B1D00F97473 /* UNDNetworkRequestURLService.m in Sources */,
+				7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */,
+				7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */,
 				7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */,
 				7F56866820307E0B003CB42B /* UNDUser+CoreDataClass.m in Sources */,
 				7F56867020307E0B003CB42B /* UNDHuman+CoreDataClass.m in Sources */,
@@ -574,6 +610,7 @@
 				7F56866E20307E0B003CB42B /* UNDPromise+CoreDataClass.m in Sources */,
 				7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */,
 				7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */,
+				7FDCEAEF203428AB0081ABED /* UNDAlreadyDoneTableViewController.m in Sources */,
 				7F1517C8202B3B1D00F97473 /* UNDAuthViewController.m in Sources */,
 				7F56866C20307E0B003CB42B /* UNDFriend+CoreDataClass.m in Sources */,
 				7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */,
@@ -583,6 +620,7 @@
 				7F433BCD2025F31100C40FAD /* UNDPromiseCollectionViewCell.m in Sources */,
 				7F36ABFD201E6C650043D00E /* AppDelegate.m in Sources */,
 				7F50B992202C6B63004BC9B3 /* UNDCoreDataRequestService.m in Sources */,
+				7FDCEAF620344AFE0081ABED /* UNDTemplatesUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

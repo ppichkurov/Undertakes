@@ -99,7 +99,6 @@ static NSString *UNDPhotoHashTagUserID = @"UNDPhoto#%lu";
     {
         [self configureURLSession];
     }
-    NSLog(@"try to download: %@", urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     self.downloadTask = [self.urlSession downloadTaskWithURL:url];
     self.downloadTask.taskDescription = [NSString stringWithFormat:UNDPhotoHashTagUserID, userID];
@@ -111,27 +110,24 @@ static NSString *UNDPhotoHashTagUserID = @"UNDPhoto#%lu";
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
-    
     NSData *data = [NSData dataWithContentsOfURL:location];
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-        if ([downloadTask.taskDescription isEqualToString: UNDPostPromiseToWallDescription])
-        {
-            [self.outputDelegate loadPostPromiseOnUserWallFinishWithData:data];
-        }
-        else if ([downloadTask.taskDescription isEqualToString: UNDUsersThatLikeWallDescription])
-        {
+    if ([downloadTask.taskDescription isEqualToString: UNDPostPromiseToWallDescription])
+    {
+        [self.outputDelegate loadPostPromiseOnUserWallFinishWithData:data];
+    }
+    else if ([downloadTask.taskDescription isEqualToString: UNDUsersThatLikeWallDescription])
+    {
             [self.outputDelegate loadUsersThatLikeFieldDidFinishWithData:data];
-        }
-        else if ([downloadTask.taskDescription isEqualToString: UNDUsersURLPhotoDescription])
-        {
-            [self.outputDelegate loadUserPhotoURLDidFinishWithData:data];
-        }
-        else if ([downloadTask.taskDescription containsString: @"UNDPhoto#"])
-        {
-            [self.outputDelegate loadPhotoDidFinishWithData:data taskDescription: downloadTask.taskDescription];
-        }
-//    });
+    }
+    else if ([downloadTask.taskDescription isEqualToString: UNDUsersURLPhotoDescription])
+    {
+        [self.outputDelegate loadUserPhotoURLDidFinishWithData:data];
+    }
+    else if ([downloadTask.taskDescription containsString: @"UNDPhoto#"])
+    {
+        [self.outputDelegate loadPhotoDidFinishWithData:data taskDescription: downloadTask.taskDescription];
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
@@ -140,9 +136,9 @@ static NSString *UNDPhotoHashTagUserID = @"UNDPhoto#%lu";
 //    [session finishTasksAndInvalidate];
 }
 
-- (void)URLSession:(NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
-{
-    
-}
+//- (void)URLSession:(NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
+//{
+//
+//}
 
 @end

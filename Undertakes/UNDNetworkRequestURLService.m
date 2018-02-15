@@ -53,7 +53,6 @@
     NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKToken"];
     NSString *urlString = [NSString stringWithFormat:@"https://api.vk.com/method/likes.getList?type=post&owner_id=%@&item_id=%lu&filter=likes&friends_only=0&extended=0&offset=0&count=1000&skip_own=0&v=5.71&access_token=%@", userID, fieldID, token];
-    NSLog(@"%@",urlString);
     return [NSURL URLWithString: urlString];
 }
 

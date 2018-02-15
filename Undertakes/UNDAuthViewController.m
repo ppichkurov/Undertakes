@@ -7,7 +7,10 @@
 //
 
 #import "UNDAuthViewController.h"
+#import "UNDTemplatesUI.h"
 #import "UNDHomeViewController.h"
+#import "UNDAlreadyDoneTableViewController.h"
+#import "UNDFriendsTableViewController.h"
 #import <WebKit/WKWebView.h>
 #import <WebKit/WKUIDelegate.h>
 #import <WebKit/WKNavigationDelegate.h>
@@ -20,6 +23,8 @@
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UNDHomeViewController *homeViewController;
+@property (nonatomic, strong) UNDAlreadyDoneTableViewController *alreadyDoneViewController;
+@property (nonatomic, strong) UNDFriendsTableViewController *friendsViewController;
 
 @end
 
@@ -51,7 +56,7 @@
 
 - (void)prepareUI
 {
-    self.view.backgroundColor = UIColor.grayColor;
+    self.view.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 }
 
 - (void)clearWebViewCache
@@ -130,14 +135,25 @@
     if (!self.homeViewController)
     {
         self.homeViewController = [UNDHomeViewController new];
+        self.homeViewController.tabBarItem.title = @"Home";
+    }
+    if (!self.alreadyDoneViewController)
+    {
+        self.alreadyDoneViewController = [UNDAlreadyDoneTableViewController new];
+        self.alreadyDoneViewController.tabBarItem.title = @"Done";
+    }
+    if (!self.friendsViewController)
+    {
+        self.friendsViewController = [UNDFriendsTableViewController new];
+        self.friendsViewController.tabBarItem.title = @"Friends";
     }
     if (!self.tabBarController)
     {
         self.tabBarController = [UITabBarController new];
     }
-    NSArray *viewControllersArray = @[self.homeViewController];
+    NSArray *viewControllersArray = @[self.friendsViewController, self.homeViewController, self.alreadyDoneViewController];
     self.tabBarController.viewControllers = viewControllersArray;
-    
+    self.tabBarController.selectedIndex = 1;
     [self presentViewController:self.tabBarController animated:NO completion:^{
         NSLog(@"Presented");
     }];
