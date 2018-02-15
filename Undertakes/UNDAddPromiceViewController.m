@@ -122,12 +122,12 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     self.addButton = [UNDTemplatesUI getButtonWithTitle:@"#Действовать"
                                                  action:@selector(backToMainView)
                                                  target:self
-                                                 toView:self.view];
+                                                forView:self.view];
     
     self.backButton = [UNDTemplatesUI getButtonWithTitle:@"#Back"
                                                   action:@selector(backWithoutSave)
                                                   target:self
-                                                  toView:self.view];
+                                                 forView:self.view];
 }
 
 #pragma mark - Constraints

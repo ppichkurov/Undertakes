@@ -12,9 +12,16 @@
 
 @interface UNDTemplatesUI : NSObject
 
++ (UIColor *)getMainBackgroundColor;
+
++ (UIColor *)colorForImportance:(NSUInteger)importance;
+
 + (UIButton *)getButtonWithTitle:(NSString *)title
                           action:(SEL)selector
                           target:(id)target
-                          toView:(UIView *)view;
+                          forView:(UIView *)view;
+
++ (UILabel *)getLabel:(NSString *)text forView:(UIView *)view;
+
 
 @end

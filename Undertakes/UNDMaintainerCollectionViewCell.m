@@ -7,6 +7,7 @@
 //
 
 #import "UNDMaintainerCollectionViewCell.h"
+#import "UNDTemplatesUI.h"
 #import "UNDStringConstants.h"
 #import "masonry.h"
 
@@ -25,9 +26,9 @@
     {
 //        _idLabel = [UILabel new];
 //        _idLabel.textColor = UIColor.grayColor;
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 //        self.contentView.backgroundColor = [UIColor grayColor];
-        self.contentView.backgroundColor = [UIColor grayColor];
+        self.contentView.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 
         _maintainerImageView = [UIImageView new];
         _maintainerImageView.layer.masksToBounds = YES;
@@ -75,7 +76,7 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.backgroundColor = [UIColor grayColor];
+    self.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 }
 
 @end

@@ -53,6 +53,7 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     //TODO передавать только объект и настраивать внутри cell?
 }
 
+
 #pragma mark - NSFetchedResultsController delegate
 
 - (NSString *)controller:(NSFetchedResultsController *)controller sectionIndexTitleForSectionName:(NSString *)sectionName
@@ -104,7 +105,6 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"Count: %lu", self.promiceResultsController.sections[section].numberOfObjects);
     return self.promiceResultsController.sections[section].numberOfObjects;
 }
 
@@ -137,6 +137,14 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
         [self choosePromiseForLikeDisplay];
     }
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UNDPromise *promise = [self.promiceResultsController objectAtIndexPath:indexPath];
+    [self.output presentPromise: promise];
+}
+
+#pragma mark - Choose cell logic
 
 - (void)choosePromiseForLikeDisplay
 {

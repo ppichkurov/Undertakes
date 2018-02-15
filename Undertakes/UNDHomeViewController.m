@@ -17,6 +17,7 @@
 #import "UNDMaintainerCollectionViewCell.h"
 
 #import "UNDAddPromiceViewController.h"
+#import "UNDDetailViewController.h"
 
 #import "UNDNetworkParser.h"
 #import "UNDNetworkService.h"
@@ -40,7 +41,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 @property (nonatomic, strong) UICollectionView *maintainersCollectionView;
 @property (nonatomic, strong) UNDPromiseCollectionViewDelegate *promisesDelegate;
 @property (nonatomic, strong) UNDMaintainerCollectionViewDelegate *maintainersDelegate;
-@property (nonatomic, strong) UNDNetworkParser *networkParser;
+@property (nonatomic, strong) UNDNetworkParser *networkParser; //TODO должен работать только с нетворком
 @property (nonatomic, strong) UNDNetworkService *networkService;
 
 @property (nonatomic, weak) UNDPromise *currentPromise;
@@ -53,15 +54,18 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = UIColor.grayColor;
-    self.tabBarItem.title = @"Home";
-    
+    [self prepareUI];
     [self prepareButtons];
     [self preparePromisesCollectionView];
     [self prepareMaintainersCollectionView];
     [self prepareConstraints];
     [self prepareParser];
-    [self prepareNetworkService];
+    [self prepareNetworkService];    
+}
+
+- (void)prepareUI
+{
+    self.view.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 }
 
 - (void)prepareButtons
@@ -69,11 +73,11 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     self.addNewPromiseButton = [UNDTemplatesUI getButtonWithTitle:@"#Дать обещание"
                                                            action:@selector(addNewPromice)
                                                            target:self
-                                                           toView:self.view];
+                                                          forView:self.view];
     self.refreshLikesButton = [UNDTemplatesUI getButtonWithTitle:@"#Fresh"
                                                           action:@selector(refreshLikes)
                                                           target:self
-                                                          toView:self.view];
+                                                         forView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -124,21 +128,15 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     self.promisesCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                                      collectionViewLayout:[self propmiseFlowLayout]];
-    self.promisesCollectionView.backgroundColor = UIColor.grayColor;
+    self.promisesCollectionView.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
     self.promisesCollectionView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
-    
     self.promisesDelegate = [[UNDPromiseCollectionViewDelegate alloc]
                              initWithCollectionView:self.promisesCollectionView];
-    
     self.promisesCollectionView.delegate = self.promisesDelegate;
     self.promisesCollectionView.dataSource = self.promisesDelegate;
     self.promisesDelegate.output = self;
-    
-//    self.promisesCollectionView.prefetchingEnabled = NO;
-    
     [self.promisesCollectionView registerClass: [UNDPromiseCollectionViewCell class]
                     forCellWithReuseIdentifier:UNDPromiseCollViewCellId];
-    
     [self.view addSubview:self.promisesCollectionView];
 }
 
@@ -146,20 +144,17 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     self.maintainersCollectionView = [[UICollectionView alloc]
                                       initWithFrame:CGRectZero collectionViewLayout:[self maintainerFlowLayout]];
-    self.maintainersCollectionView.backgroundColor = UIColor.grayColor;
+    self.maintainersCollectionView.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
     self.maintainersCollectionView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    
     self.maintainersDelegate = [UNDMaintainerCollectionViewDelegate new];
-    
     self.maintainersCollectionView.delegate = self.maintainersDelegate;
     self.maintainersCollectionView.dataSource = self.maintainersDelegate;
-    
     [self.maintainersCollectionView registerClass: [UNDMaintainerCollectionViewCell class]
                        forCellWithReuseIdentifier:UNDMaintainerCollViewCellId];
-    
     [self.view addSubview:self.maintainersCollectionView];
 }
 
+//нет смысла объединять методы, будет слишком много параметров
 - (UICollectionViewFlowLayout *)propmiseFlowLayout
 {
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
@@ -200,9 +195,6 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     {
         make.top.equalTo(self.view.mas_top).with.offset(padding.top);
         make.left.equalTo(self.view.mas_left).with.offset(padding.left);
-//        make.right.equalTo(self.view.mas_right).with.offset(padding.right);
-//        make.centerX.equalTo(self.view.mas_centerX);
-
         make.width.equalTo(@180);
         make.height.equalTo(@44);
     }];
@@ -228,25 +220,37 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
          make.top.equalTo(self.promisesCollectionView.mas_bottom).with.offset(20.0f);
          make.right.equalTo(self.view.mas_right).with.offset(15.0f);
          make.left.equalTo(self.view.mas_left).with.offset(15.0f);
-         make.bottom.equalTo(self.view.mas_bottom).with.offset(0);
+         make.height.equalTo(@135);
      }];
 }
 
 
 #pragma mark - UNDPromiseDataSourceOutputProtocol
 
+
 - (void)changeCurrentMaintainerCollectionForPromise:(UNDPromise *)promise
 {
-    self.maintainersDelegate.promiseThatHaveLikes = promise;
     self.currentPromise = promise;
+    self.maintainersDelegate.promiseThatHaveLikes = promise;
     self.networkParser.currentPromiseID = promise.objectID;
     [self.maintainersCollectionView reloadData];
 }
 
 - (void)addPromisCollectionViewWillDismissed:(NSString *)title fulltext:(NSString *)fullText
 {
-        [self.networkService createPromiseOnTheUserWallWithTitle:title fulltext:fullText];
+    [self.networkService createPromiseOnTheUserWallWithTitle:title fulltext:fullText];
 }
+
+- (void)presentPromise:(UNDPromise *)promise
+{
+    UNDDetailViewController *detailViewController = [[UNDDetailViewController alloc] initWithPromise:promise];
+    [self presentViewController:detailViewController animated:YES completion:^{
+        NSLog(@"show details");
+    }];
+}
+
+//вынести в отдельный сервис
+//------------------------------------------------------------------------------------
 
 - (void)listOfMansThatLikedPromise:(NSSet *)likeMans
 {
@@ -259,5 +263,6 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     [self.networkService getPhotoByURL:urlString userID:userID];
 }
+//------------------------------------------------------------------------------------
 
 @end

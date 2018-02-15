@@ -7,6 +7,7 @@
 //
 
 #import "UNDAuthViewController.h"
+#import "UNDTemplatesUI.h"
 #import "UNDHomeViewController.h"
 #import "UNDAlreadyDoneTableViewController.h"
 #import "UNDFriendsTableViewController.h"
@@ -55,7 +56,7 @@
 
 - (void)prepareUI
 {
-    self.view.backgroundColor = UIColor.grayColor;
+    self.view.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 }
 
 - (void)clearWebViewCache
@@ -152,6 +153,7 @@
     }
     NSArray *viewControllersArray = @[self.friendsViewController, self.homeViewController, self.alreadyDoneViewController];
     self.tabBarController.viewControllers = viewControllersArray;
+    self.tabBarController.selectedIndex = 1;
     [self presentViewController:self.tabBarController animated:NO completion:^{
         NSLog(@"Presented");
     }];

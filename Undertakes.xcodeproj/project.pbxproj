@@ -43,6 +43,7 @@
 		7FDCEAEF203428AB0081ABED /* UNDAlreadyDoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */; };
 		7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */; };
 		7FDCEAF620344AFE0081ABED /* UNDTemplatesUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */; };
+		7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */; };
 		F682493F0C2E8BDAC7C437A4 /* libPods-UndertakesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C47DCC7EBD44AC3528019D /* libPods-UndertakesTests.a */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,8 @@
 		7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDFriendsTableViewController.m; sourceTree = "<group>"; };
 		7FDCEAF420344AFE0081ABED /* UNDTemplatesUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDTemplatesUI.h; sourceTree = "<group>"; };
 		7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDTemplatesUI.m; sourceTree = "<group>"; };
+		7FDCEAF82034C3BF0081ABED /* NSDate+UNDStringPresentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+UNDStringPresentation.h"; sourceTree = "<group>"; };
+		7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+UNDStringPresentation.m"; sourceTree = "<group>"; };
 		901ED00352727172D6BB99A0 /* Pods-UndertakesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5F97F5AFEE0C146DAA3B375 /* Pods-UndertakesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3BA64324FDD367D0D2B6C12 /* Pods-Undertakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Undertakes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Undertakes/Pods-Undertakes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 		7F36ABFA201E6C650043D00E /* Undertakes */ = {
 			isa = PBXGroup;
 			children = (
+				7FDCEAF72034C2B20081ABED /* Categories */,
 				7FDCEAE5203320AC0081ABED /* Const */,
 				7F50B96C202BA1E4004BC9B3 /* CoreData */,
 				7F1517CE202B44E800F97473 /* Services */,
@@ -358,6 +362,15 @@
 				7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */,
 			);
 			name = Templates;
+			sourceTree = "<group>";
+		};
+		7FDCEAF72034C2B20081ABED /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCEAF82034C3BF0081ABED /* NSDate+UNDStringPresentation.h */,
+				7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		997F88108763FD8C013F0DE5 /* Frameworks */ = {
@@ -583,6 +596,7 @@
 				7F36AC00201E6C650043D00E /* UNDHomeViewController.m in Sources */,
 				7F50B98E202C62AC004BC9B3 /* UNDCoreDataService.m in Sources */,
 				7F1517CA202B3B1D00F97473 /* UNDNetworkRequestURLService.m in Sources */,
+				7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */,
 				7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */,
 				7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */,
 				7F56866820307E0B003CB42B /* UNDUser+CoreDataClass.m in Sources */,

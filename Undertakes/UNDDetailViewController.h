@@ -6,8 +6,11 @@
 //  Copyright © 2018 Павел Пичкуров. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "UNDPromise+CoreDataClass.h"
 
-@interface UNDDetailViewController : NSObject
+@interface UNDDetailViewController : UIViewController
+
+- (instancetype)initWithPromise:(UNDPromise *)promise;
 
 @end

@@ -17,12 +17,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self prepareRefreshControl];
+
 }
 
-- (void)didReceiveMemoryWarning
+- (void)prepareRefreshControl
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshControl) forControlEvents:UIControlEventValueChanged];
+    [self.tableView setRefreshControl:refreshControl];
+}
+
+- (void)refresh
+{
+    NSLog(@"Refresh!");
 }
 
 #pragma mark - Table view data source

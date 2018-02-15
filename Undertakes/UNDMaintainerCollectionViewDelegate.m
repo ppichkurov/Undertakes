@@ -37,9 +37,6 @@ static NSString *maintainerCollViewCell = @"maintainerCollViewCell";
 
 - (BOOL)isPromiseValid
 {
-    NSLog(@"self.promiseThatHaveLikes :%@", self.promiseThatHaveLikes);
-    NSLog(@"self.promiseThatHaveLikes.webVersion :%@", self.promiseThatHaveLikes.webVersion);
-
     if (!self.promiseThatHaveLikes
         || !self.promiseThatHaveLikes.webVersion
         || !self.promiseThatHaveLikes.webVersion.likeMans)
@@ -65,20 +62,13 @@ static NSString *maintainerCollViewCell = @"maintainerCollViewCell";
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if (![self isPromiseValid])
     {
         return nil;
     }
-    
     UNDMaintainerCollectionViewCell *cell = (UNDMaintainerCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:maintainerCollViewCell forIndexPath:indexPath];
-    
-//    cell.maintainerImage = [UIImage imageNamed:@"0"];
-    
     NSString *photoURLString = [self.promiseThatHaveLikes.webVersion.likeMans allObjects][indexPath.item].photo;
-    
-    NSLog(@"%@", [self.promiseThatHaveLikes.webVersion.likeMans allObjects][indexPath.item]);
-    
+    //NSLog(@"%@", [self.promiseThatHaveLikes.webVersion.likeMans allObjects][indexPath.item]);
     NSString *vkID = [self.promiseThatHaveLikes.webVersion.likeMans allObjects][indexPath.item].vkID;
     cell.maintainerImagePath = photoURLString;
     cell.vkID = vkID;
