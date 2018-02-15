@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		150CB0129502A9471A14A7B5 /* libPods-Undertakes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD6D3C0E2C9E7EAD2FB78CF /* libPods-Undertakes.a */; };
+		7F1517C8202B3B1D00F97473 /* UNDAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1517C2202B3B1D00F97473 /* UNDAuthViewController.m */; };
+		7F1517CA202B3B1D00F97473 /* UNDNetworkRequestURLService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1517C5202B3B1D00F97473 /* UNDNetworkRequestURLService.m */; };
+		7F1517CB202B3B1D00F97473 /* UNDNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1517C6202B3B1D00F97473 /* UNDNetworkService.m */; };
+		7F1517D8202B833900F97473 /* Undertakes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F1517D6202B833900F97473 /* Undertakes.xcdatamodeld */; };
 		7F36ABFD201E6C650043D00E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36ABFC201E6C650043D00E /* AppDelegate.m */; };
 		7F36AC00201E6C650043D00E /* UNDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36ABFF201E6C650043D00E /* UNDHomeViewController.m */; };
-		7F36AC06201E6C650043D00E /* Undertakes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AC04201E6C650043D00E /* Undertakes.xcdatamodeld */; };
-		7F36AC08201E6C650043D00E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F36AC07201E6C650043D00E /* Assets.xcassets */; };
 		7F36AC0E201E6C650043D00E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AC0D201E6C650043D00E /* main.m */; };
 		7F36AC18201E6C650043D00E /* UndertakesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AC17201E6C650043D00E /* UndertakesTests.m */; };
 		7F36AC23201E7C9C0043D00E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */; };
@@ -19,6 +21,29 @@
 		7F433BD020272C3300C40FAD /* UNDMaintainerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BCF20272C3300C40FAD /* UNDMaintainerCollectionViewCell.m */; };
 		7F433BD520272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */; };
 		7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */; };
+		7F50B98E202C62AC004BC9B3 /* UNDCoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B98D202C62AC004BC9B3 /* UNDCoreDataService.m */; };
+		7F50B992202C6B63004BC9B3 /* UNDCoreDataRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B991202C6B63004BC9B3 /* UNDCoreDataRequestService.m */; };
+		7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */; };
+		7F50B99D202DE267004BC9B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F50B99C202DE267004BC9B3 /* Assets.xcassets */; };
+		7F56866820307E0B003CB42B /* UNDUser+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56865220307E0A003CB42B /* UNDUser+CoreDataClass.m */; };
+		7F56866920307E0B003CB42B /* UNDUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56865320307E0A003CB42B /* UNDUser+CoreDataProperties.m */; };
+		7F56866A20307E0B003CB42B /* UNDLikeMan+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56865620307E0A003CB42B /* UNDLikeMan+CoreDataClass.m */; };
+		7F56866B20307E0B003CB42B /* UNDLikeMan+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56865720307E0A003CB42B /* UNDLikeMan+CoreDataProperties.m */; };
+		7F56866C20307E0B003CB42B /* UNDFriend+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56865A20307E0A003CB42B /* UNDFriend+CoreDataClass.m */; };
+		7F56866D20307E0B003CB42B /* UNDFriend+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56865B20307E0A003CB42B /* UNDFriend+CoreDataProperties.m */; };
+		7F56866E20307E0B003CB42B /* UNDPromise+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56865E20307E0A003CB42B /* UNDPromise+CoreDataClass.m */; };
+		7F56866F20307E0B003CB42B /* UNDPromise+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56865F20307E0A003CB42B /* UNDPromise+CoreDataProperties.m */; };
+		7F56867020307E0B003CB42B /* UNDHuman+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866220307E0A003CB42B /* UNDHuman+CoreDataClass.m */; };
+		7F56867120307E0B003CB42B /* UNDHuman+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866320307E0A003CB42B /* UNDHuman+CoreDataProperties.m */; };
+		7F56867220307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866620307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m */; };
+		7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */; };
+		7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5686772030BF1C003CB42B /* UNDNetworkParser.m */; };
+		7FDCEAE92033219F0081ABED /* UNDStringConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAE82033219F0081ABED /* UNDStringConstants.m */; };
+		7FDCEAEC203422460081ABED /* UNDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEB203422460081ABED /* UNDDetailViewController.m */; };
+		7FDCEAEF203428AB0081ABED /* UNDAlreadyDoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */; };
+		7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */; };
+		7FDCEAF620344AFE0081ABED /* UNDTemplatesUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */; };
+		7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */; };
 		F682493F0C2E8BDAC7C437A4 /* libPods-UndertakesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C47DCC7EBD44AC3528019D /* libPods-UndertakesTests.a */; };
 /* End PBXBuildFile section */
 
@@ -35,13 +60,19 @@
 /* Begin PBXFileReference section */
 		17C47DCC7EBD44AC3528019D /* libPods-UndertakesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UndertakesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19D6166B203EA7E96F2CBA60 /* Pods-Undertakes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Undertakes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Undertakes/Pods-Undertakes.release.xcconfig"; sourceTree = "<group>"; };
+		7F1517BD202B3B1C00F97473 /* UNDNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNDNetworkService.h; sourceTree = "<group>"; };
+		7F1517BE202B3B1C00F97473 /* UNDAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNDAuthViewController.h; sourceTree = "<group>"; };
+		7F1517C1202B3B1D00F97473 /* UNDNetworkRequestURLService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNDNetworkRequestURLService.h; sourceTree = "<group>"; };
+		7F1517C2202B3B1D00F97473 /* UNDAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNDAuthViewController.m; sourceTree = "<group>"; };
+		7F1517C3202B3B1D00F97473 /* UNDNetworkServiceIOProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNDNetworkServiceIOProtocol.h; sourceTree = "<group>"; };
+		7F1517C5202B3B1D00F97473 /* UNDNetworkRequestURLService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkRequestURLService.m; sourceTree = "<group>"; };
+		7F1517C6202B3B1D00F97473 /* UNDNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkService.m; sourceTree = "<group>"; };
+		7F1517D7202B833900F97473 /* Undertakes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Undertakes.xcdatamodel; sourceTree = "<group>"; };
 		7F36ABF8201E6C650043D00E /* Undertakes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Undertakes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F36ABFB201E6C650043D00E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7F36ABFC201E6C650043D00E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7F36ABFE201E6C650043D00E /* UNDHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDHomeViewController.h; sourceTree = "<group>"; };
 		7F36ABFF201E6C650043D00E /* UNDHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDHomeViewController.m; sourceTree = "<group>"; };
-		7F36AC05201E6C650043D00E /* Undertakes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Undertakes.xcdatamodel; sourceTree = "<group>"; };
-		7F36AC07201E6C650043D00E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F36AC0C201E6C650043D00E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F36AC0D201E6C650043D00E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7F36AC13201E6C650043D00E /* UndertakesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UndertakesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +87,53 @@
 		7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDPromiseCollectionViewDelegate.m; sourceTree = "<group>"; };
 		7F433BD620272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDMaintainerCollectionViewDelegate.h; sourceTree = "<group>"; };
 		7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDMaintainerCollectionViewDelegate.m; sourceTree = "<group>"; };
+		7F50B98C202C62AC004BC9B3 /* UNDCoreDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDCoreDataService.h; sourceTree = "<group>"; };
+		7F50B98D202C62AC004BC9B3 /* UNDCoreDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataService.m; sourceTree = "<group>"; };
+		7F50B990202C6B63004BC9B3 /* UNDCoreDataRequestService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDCoreDataRequestService.h; sourceTree = "<group>"; };
+		7F50B991202C6B63004BC9B3 /* UNDCoreDataRequestService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataRequestService.m; sourceTree = "<group>"; };
+		7F50B999202CA324004BC9B3 /* UNDAddPromiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDAddPromiceViewController.h; sourceTree = "<group>"; };
+		7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDAddPromiceViewController.m; sourceTree = "<group>"; };
+		7F50B99C202DE267004BC9B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7F56865020307E0A003CB42B /* UNDUser+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7F56865120307E0A003CB42B /* UNDUser+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDUser+CoreDataClass.h"; sourceTree = "<group>"; };
+		7F56865220307E0A003CB42B /* UNDUser+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDUser+CoreDataClass.m"; sourceTree = "<group>"; };
+		7F56865320307E0A003CB42B /* UNDUser+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7F56865420307E0A003CB42B /* UNDLikeMan+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDLikeMan+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7F56865520307E0A003CB42B /* UNDLikeMan+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDLikeMan+CoreDataClass.h"; sourceTree = "<group>"; };
+		7F56865620307E0A003CB42B /* UNDLikeMan+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDLikeMan+CoreDataClass.m"; sourceTree = "<group>"; };
+		7F56865720307E0A003CB42B /* UNDLikeMan+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDLikeMan+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7F56865820307E0A003CB42B /* UNDFriend+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDFriend+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7F56865920307E0A003CB42B /* UNDFriend+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDFriend+CoreDataClass.h"; sourceTree = "<group>"; };
+		7F56865A20307E0A003CB42B /* UNDFriend+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDFriend+CoreDataClass.m"; sourceTree = "<group>"; };
+		7F56865B20307E0A003CB42B /* UNDFriend+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDFriend+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7F56865C20307E0A003CB42B /* UNDPromise+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDPromise+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7F56865D20307E0A003CB42B /* UNDPromise+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDPromise+CoreDataClass.h"; sourceTree = "<group>"; };
+		7F56865E20307E0A003CB42B /* UNDPromise+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDPromise+CoreDataClass.m"; sourceTree = "<group>"; };
+		7F56865F20307E0A003CB42B /* UNDPromise+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDPromise+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7F56866020307E0A003CB42B /* UNDHuman+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDHuman+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7F56866120307E0A003CB42B /* UNDHuman+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDHuman+CoreDataClass.h"; sourceTree = "<group>"; };
+		7F56866220307E0A003CB42B /* UNDHuman+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDHuman+CoreDataClass.m"; sourceTree = "<group>"; };
+		7F56866320307E0A003CB42B /* UNDHuman+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDHuman+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7F56866420307E0A003CB42B /* UNDPromiseWeb+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDPromiseWeb+CoreDataProperties.h"; sourceTree = "<group>"; };
+		7F56866520307E0A003CB42B /* UNDPromiseWeb+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UNDPromiseWeb+CoreDataClass.h"; sourceTree = "<group>"; };
+		7F56866620307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDPromiseWeb+CoreDataClass.m"; sourceTree = "<group>"; };
+		7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UNDPromiseWeb+CoreDataProperties.m"; sourceTree = "<group>"; };
+		7F568674203084F7003CB42B /* UNDPromiseDataSourceOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDPromiseDataSourceOutputProtocol.h; sourceTree = "<group>"; };
+		7F5686762030BF1C003CB42B /* UNDNetworkParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDNetworkParser.h; sourceTree = "<group>"; };
+		7F5686772030BF1C003CB42B /* UNDNetworkParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkParser.m; sourceTree = "<group>"; };
+		7F5686792030BF8A003CB42B /* UNDParserOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDParserOutputProtocol.h; sourceTree = "<group>"; };
+		7FDCEAE72033219F0081ABED /* UNDStringConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDStringConstants.h; sourceTree = "<group>"; };
+		7FDCEAE82033219F0081ABED /* UNDStringConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDStringConstants.m; sourceTree = "<group>"; };
+		7FDCEAEA203422460081ABED /* UNDDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDDetailViewController.h; sourceTree = "<group>"; };
+		7FDCEAEB203422460081ABED /* UNDDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDDetailViewController.m; sourceTree = "<group>"; };
+		7FDCEAED203428AB0081ABED /* UNDAlreadyDoneTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDAlreadyDoneTableViewController.h; sourceTree = "<group>"; };
+		7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDAlreadyDoneTableViewController.m; sourceTree = "<group>"; };
+		7FDCEAF020343D7E0081ABED /* UNDFriendsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDFriendsTableViewController.h; sourceTree = "<group>"; };
+		7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDFriendsTableViewController.m; sourceTree = "<group>"; };
+		7FDCEAF420344AFE0081ABED /* UNDTemplatesUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDTemplatesUI.h; sourceTree = "<group>"; };
+		7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDTemplatesUI.m; sourceTree = "<group>"; };
+		7FDCEAF82034C3BF0081ABED /* NSDate+UNDStringPresentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+UNDStringPresentation.h"; sourceTree = "<group>"; };
+		7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+UNDStringPresentation.m"; sourceTree = "<group>"; };
 		901ED00352727172D6BB99A0 /* Pods-UndertakesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5F97F5AFEE0C146DAA3B375 /* Pods-UndertakesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3BA64324FDD367D0D2B6C12 /* Pods-Undertakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Undertakes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Undertakes/Pods-Undertakes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +171,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7F1517CE202B44E800F97473 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCEAF320344A990081ABED /* Templates */,
+				7F5686752030BE38003CB42B /* Parsers */,
+				7F50B98F202C62C7004BC9B3 /* CoreDataService */,
+				7F1517CF202B44F000F97473 /* NetworkService */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		7F1517CF202B44F000F97473 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				7F1517C1202B3B1D00F97473 /* UNDNetworkRequestURLService.h */,
+				7F1517C5202B3B1D00F97473 /* UNDNetworkRequestURLService.m */,
+				7F1517BD202B3B1C00F97473 /* UNDNetworkService.h */,
+				7F1517C6202B3B1D00F97473 /* UNDNetworkService.m */,
+				7F1517C3202B3B1D00F97473 /* UNDNetworkServiceIOProtocol.h */,
+			);
+			name = NetworkService;
+			sourceTree = "<group>";
+		};
 		7F36ABEF201E6C650043D00E = {
 			isa = PBXGroup;
 			children = (
@@ -116,14 +217,17 @@
 		7F36ABFA201E6C650043D00E /* Undertakes */ = {
 			isa = PBXGroup;
 			children = (
-				7F75E4E22021176500AC53C3 /* Delegates */,
+				7FDCEAF72034C2B20081ABED /* Categories */,
+				7FDCEAE5203320AC0081ABED /* Const */,
+				7F50B96C202BA1E4004BC9B3 /* CoreData */,
+				7F1517CE202B44E800F97473 /* Services */,
+				7F75E4E22021176500AC53C3 /* DelegatesAndDatasources */,
 				7F75E4E02021174900AC53C3 /* Views */,
 				7F75E4E32021179500AC53C3 /* Controllers */,
 				7F75E4DF202116E200AC53C3 /* Resources */,
 				7F36ABFB201E6C650043D00E /* AppDelegate.h */,
 				7F36ABFC201E6C650043D00E /* AppDelegate.m */,
 				7F36AC0D201E6C650043D00E /* main.m */,
-				7F36AC04201E6C650043D00E /* Undertakes.xcdatamodeld */,
 			);
 			path = Undertakes;
 			sourceTree = "<group>";
@@ -137,12 +241,65 @@
 			path = UndertakesTests;
 			sourceTree = "<group>";
 		};
+		7F50B96C202BA1E4004BC9B3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7F56865020307E0A003CB42B /* UNDUser+CoreDataProperties.h */,
+				7F56865120307E0A003CB42B /* UNDUser+CoreDataClass.h */,
+				7F56865220307E0A003CB42B /* UNDUser+CoreDataClass.m */,
+				7F56865320307E0A003CB42B /* UNDUser+CoreDataProperties.m */,
+				7F56865420307E0A003CB42B /* UNDLikeMan+CoreDataProperties.h */,
+				7F56865520307E0A003CB42B /* UNDLikeMan+CoreDataClass.h */,
+				7F56865620307E0A003CB42B /* UNDLikeMan+CoreDataClass.m */,
+				7F56865720307E0A003CB42B /* UNDLikeMan+CoreDataProperties.m */,
+				7F56865820307E0A003CB42B /* UNDFriend+CoreDataProperties.h */,
+				7F56865920307E0A003CB42B /* UNDFriend+CoreDataClass.h */,
+				7F56865A20307E0A003CB42B /* UNDFriend+CoreDataClass.m */,
+				7F56865B20307E0A003CB42B /* UNDFriend+CoreDataProperties.m */,
+				7F56865C20307E0A003CB42B /* UNDPromise+CoreDataProperties.h */,
+				7F56865D20307E0A003CB42B /* UNDPromise+CoreDataClass.h */,
+				7F56865E20307E0A003CB42B /* UNDPromise+CoreDataClass.m */,
+				7F56865F20307E0A003CB42B /* UNDPromise+CoreDataProperties.m */,
+				7F56866020307E0A003CB42B /* UNDHuman+CoreDataProperties.h */,
+				7F56866120307E0A003CB42B /* UNDHuman+CoreDataClass.h */,
+				7F56866220307E0A003CB42B /* UNDHuman+CoreDataClass.m */,
+				7F56866320307E0A003CB42B /* UNDHuman+CoreDataProperties.m */,
+				7F56866420307E0A003CB42B /* UNDPromiseWeb+CoreDataProperties.h */,
+				7F56866520307E0A003CB42B /* UNDPromiseWeb+CoreDataClass.h */,
+				7F56866620307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m */,
+				7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		7F50B98F202C62C7004BC9B3 /* CoreDataService */ = {
+			isa = PBXGroup;
+			children = (
+				7F50B98C202C62AC004BC9B3 /* UNDCoreDataService.h */,
+				7F50B98D202C62AC004BC9B3 /* UNDCoreDataService.m */,
+				7F50B990202C6B63004BC9B3 /* UNDCoreDataRequestService.h */,
+				7F50B991202C6B63004BC9B3 /* UNDCoreDataRequestService.m */,
+			);
+			name = CoreDataService;
+			sourceTree = "<group>";
+		};
+		7F5686752030BE38003CB42B /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				7F5686762030BF1C003CB42B /* UNDNetworkParser.h */,
+				7F5686772030BF1C003CB42B /* UNDNetworkParser.m */,
+				7F5686792030BF8A003CB42B /* UNDParserOutputProtocol.h */,
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
 		7F75E4DF202116E200AC53C3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7F50B99C202DE267004BC9B3 /* Assets.xcassets */,
+				7F1517D6202B833900F97473 /* Undertakes.xcdatamodeld */,
 				7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */,
 				7F36AC0C201E6C650043D00E /* Info.plist */,
-				7F36AC07201E6C650043D00E /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -158,24 +315,62 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		7F75E4E22021176500AC53C3 /* Delegates */ = {
+		7F75E4E22021176500AC53C3 /* DelegatesAndDatasources */ = {
 			isa = PBXGroup;
 			children = (
+				7F568674203084F7003CB42B /* UNDPromiseDataSourceOutputProtocol.h */,
 				7F433BD320272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.h */,
 				7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */,
 				7F433BD620272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.h */,
 				7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */,
 			);
-			name = Delegates;
+			name = DelegatesAndDatasources;
 			sourceTree = "<group>";
 		};
 		7F75E4E32021179500AC53C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F1517BE202B3B1C00F97473 /* UNDAuthViewController.h */,
+				7F1517C2202B3B1D00F97473 /* UNDAuthViewController.m */,
 				7F36ABFE201E6C650043D00E /* UNDHomeViewController.h */,
 				7F36ABFF201E6C650043D00E /* UNDHomeViewController.m */,
+				7F50B999202CA324004BC9B3 /* UNDAddPromiceViewController.h */,
+				7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */,
+				7FDCEAEA203422460081ABED /* UNDDetailViewController.h */,
+				7FDCEAEB203422460081ABED /* UNDDetailViewController.m */,
+				7FDCEAED203428AB0081ABED /* UNDAlreadyDoneTableViewController.h */,
+				7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */,
+				7FDCEAF020343D7E0081ABED /* UNDFriendsTableViewController.h */,
+				7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7FDCEAE5203320AC0081ABED /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCEAE72033219F0081ABED /* UNDStringConstants.h */,
+				7FDCEAE82033219F0081ABED /* UNDStringConstants.m */,
+			);
+			name = Const;
+			sourceTree = "<group>";
+		};
+		7FDCEAF320344A990081ABED /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCEAF420344AFE0081ABED /* UNDTemplatesUI.h */,
+				7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */,
+			);
+			name = Templates;
+			sourceTree = "<group>";
+		};
+		7FDCEAF72034C2B20081ABED /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7FDCEAF82034C3BF0081ABED /* NSDate+UNDStringPresentation.h */,
+				7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		997F88108763FD8C013F0DE5 /* Frameworks */ = {
@@ -275,7 +470,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F36AC08201E6C650043D00E /* Assets.xcassets in Resources */,
+				7F50B99D202DE267004BC9B3 /* Assets.xcassets in Resources */,
 				7F36AC23201E7C9C0043D00E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,14 +588,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F1517CB202B3B1D00F97473 /* UNDNetworkService.m in Sources */,
+				7FDCEAEC203422460081ABED /* UNDDetailViewController.m in Sources */,
 				7F433BD520272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m in Sources */,
+				7F1517D8202B833900F97473 /* Undertakes.xcdatamodeld in Sources */,
+				7F56867120307E0B003CB42B /* UNDHuman+CoreDataProperties.m in Sources */,
 				7F36AC00201E6C650043D00E /* UNDHomeViewController.m in Sources */,
-				7F36AC06201E6C650043D00E /* Undertakes.xcdatamodeld in Sources */,
+				7F50B98E202C62AC004BC9B3 /* UNDCoreDataService.m in Sources */,
+				7F1517CA202B3B1D00F97473 /* UNDNetworkRequestURLService.m in Sources */,
+				7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */,
+				7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */,
 				7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */,
+				7F56866820307E0B003CB42B /* UNDUser+CoreDataClass.m in Sources */,
+				7F56867020307E0B003CB42B /* UNDHuman+CoreDataClass.m in Sources */,
+				7FDCEAE92033219F0081ABED /* UNDStringConstants.m in Sources */,
+				7F56866920307E0B003CB42B /* UNDUser+CoreDataProperties.m in Sources */,
+				7F56866A20307E0B003CB42B /* UNDLikeMan+CoreDataClass.m in Sources */,
 				7F433BD020272C3300C40FAD /* UNDMaintainerCollectionViewCell.m in Sources */,
+				7F56866F20307E0B003CB42B /* UNDPromise+CoreDataProperties.m in Sources */,
+				7F56867220307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m in Sources */,
+				7F56866E20307E0B003CB42B /* UNDPromise+CoreDataClass.m in Sources */,
+				7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */,
+				7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */,
+				7FDCEAEF203428AB0081ABED /* UNDAlreadyDoneTableViewController.m in Sources */,
+				7F1517C8202B3B1D00F97473 /* UNDAuthViewController.m in Sources */,
+				7F56866C20307E0B003CB42B /* UNDFriend+CoreDataClass.m in Sources */,
+				7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */,
+				7F56866B20307E0B003CB42B /* UNDLikeMan+CoreDataProperties.m in Sources */,
+				7F56866D20307E0B003CB42B /* UNDFriend+CoreDataProperties.m in Sources */,
 				7F36AC0E201E6C650043D00E /* main.m in Sources */,
 				7F433BCD2025F31100C40FAD /* UNDPromiseCollectionViewCell.m in Sources */,
 				7F36ABFD201E6C650043D00E /* AppDelegate.m in Sources */,
+				7F50B992202C6B63004BC9B3 /* UNDCoreDataRequestService.m in Sources */,
+				7FDCEAF620344AFE0081ABED /* UNDTemplatesUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,12 +840,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7F36AC04201E6C650043D00E /* Undertakes.xcdatamodeld */ = {
+		7F1517D6202B833900F97473 /* Undertakes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7F36AC05201E6C650043D00E /* Undertakes.xcdatamodel */,
+				7F1517D7202B833900F97473 /* Undertakes.xcdatamodel */,
 			);
-			currentVersion = 7F36AC05201E6C650043D00E /* Undertakes.xcdatamodel */;
+			currentVersion = 7F1517D7202B833900F97473 /* Undertakes.xcdatamodel */;
 			path = Undertakes.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

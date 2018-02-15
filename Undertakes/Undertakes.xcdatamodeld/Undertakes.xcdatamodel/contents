@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="UNDFriend" representedClassName="UNDFriend" parentEntity="UNDHuman" syncable="YES">
+        <relationship name="promiseWeb" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UNDPromiseWeb" inverseName="friendOwner" inverseEntity="UNDPromiseWeb" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UNDUser" inverseName="friends" inverseEntity="UNDUser" syncable="YES"/>
+    </entity>
+    <entity name="UNDHuman" representedClassName="UNDHuman" isAbstract="YES" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vkID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UNDLikeMan" representedClassName="UNDLikeMan" parentEntity="UNDHuman" syncable="YES">
+        <relationship name="promiseWeb" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UNDPromiseWeb" inverseName="likeMans" inverseEntity="UNDPromiseWeb" syncable="YES"/>
+    </entity>
+    <entity name="UNDPromise" representedClassName="UNDPromise" syncable="YES">
+        <attribute name="fireDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fullText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="importance" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="ownerVkID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="webVersion" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="UNDPromiseWeb" inverseName="localVersion" inverseEntity="UNDPromiseWeb" syncable="YES"/>
+    </entity>
+    <entity name="UNDPromiseWeb" representedClassName="UNDPromiseWeb" syncable="YES">
+        <attribute name="fieldVkID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="friendOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UNDFriend" inverseName="promiseWeb" inverseEntity="UNDFriend" syncable="YES"/>
+        <relationship name="likeMans" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UNDLikeMan" inverseName="promiseWeb" inverseEntity="UNDLikeMan" syncable="YES"/>
+        <relationship name="localVersion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UNDPromise" inverseName="webVersion" inverseEntity="UNDPromise" syncable="YES"/>
+    </entity>
+    <entity name="UNDUser" representedClassName="UNDUser" parentEntity="UNDHuman" syncable="YES">
+        <attribute name="freeTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UNDFriend" inverseName="user" inverseEntity="UNDFriend" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="UNDFriend" positionX="-1026" positionY="261" width="128" height="73"/>
+        <element name="UNDHuman" positionX="-774" positionY="-1" width="128" height="88"/>
+        <element name="UNDLikeMan" positionX="-477" positionY="180" width="128" height="58"/>
+        <element name="UNDPromise" positionX="-1125" positionY="441" width="128" height="148"/>
+        <element name="UNDPromiseWeb" positionX="-747" positionY="441" width="128" height="103"/>
+        <element name="UNDUser" positionX="-1244" positionY="63" width="128" height="88"/>
+    </elements>
 </model>

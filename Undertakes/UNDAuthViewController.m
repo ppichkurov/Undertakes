@@ -7,6 +7,10 @@
 //
 
 #import "UNDAuthViewController.h"
+#import "UNDTemplatesUI.h"
+#import "UNDHomeViewController.h"
+#import "UNDAlreadyDoneTableViewController.h"
+#import "UNDFriendsTableViewController.h"
 #import <WebKit/WKWebView.h>
 #import <WebKit/WKUIDelegate.h>
 #import <WebKit/WKNavigationDelegate.h>
@@ -17,26 +21,42 @@
 @interface UNDAuthViewController () <WKUIDelegate, WKNavigationDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;
+@property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, strong) UNDHomeViewController *homeViewController;
+@property (nonatomic, strong) UNDAlreadyDoneTableViewController *alreadyDoneViewController;
+@property (nonatomic, strong) UNDFriendsTableViewController *friendsViewController;
 
 @end
 
 @implementation UNDAuthViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     [self prepareUI];
-    [self prepareWebView];
-    [self clearWebViewCache];
-    [self makeConstraints];
-    [self loadAuthRequest];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKToken"];
+    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
+    if (!token || !user)
+    {
+        [self prepareWebView];
+        [self clearWebViewCache];
+        [self makeConstraints];
+        [self loadAuthRequest];
+    }
+    else
+    {
+        [self presentMainTabBar];
+    }
+
 }
 
 - (void)prepareUI
 {
-    self.view.backgroundColor = UIColor.whiteColor;
+    self.view.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 }
 
 - (void)clearWebViewCache
@@ -60,6 +80,7 @@
 
 - (void)prepareWebView
 {
+    self.webView = nil;
     self.webView = [[WKWebView alloc] init];
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
@@ -73,6 +94,11 @@
      {
          make.edges.equalTo(self.view).with.insets(paddings);
      }];
+}
+
+- (void)saveUserInfo
+{
+    
 }
 
 - (void)loadAuthRequest
@@ -94,8 +120,43 @@
     }
     
     [urlString deleteCharactersInRange: NSMakeRange(0, prefix.length)];
-    NSArray* urlParamArray = [urlString componentsSeparatedByString:@"&"];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"VKToken" : urlParamArray[0] }];
+    NSArray *urlParamArray = [urlString componentsSeparatedByString:@"&"];
+    NSString *userId = [urlParamArray[2] componentsSeparatedByString:@"="][1];
+    
+    [[NSUserDefaults standardUserDefaults] setObject: urlParamArray[0] forKey:@"VKToken"];
+    [[NSUserDefaults standardUserDefaults] setObject: userId forKey:@"VKUser"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self presentMainTabBar];
+}
+
+- (void)presentMainTabBar
+{
+    if (!self.homeViewController)
+    {
+        self.homeViewController = [UNDHomeViewController new];
+        self.homeViewController.tabBarItem.title = @"Home";
+    }
+    if (!self.alreadyDoneViewController)
+    {
+        self.alreadyDoneViewController = [UNDAlreadyDoneTableViewController new];
+        self.alreadyDoneViewController.tabBarItem.title = @"Done";
+    }
+    if (!self.friendsViewController)
+    {
+        self.friendsViewController = [UNDFriendsTableViewController new];
+        self.friendsViewController.tabBarItem.title = @"Friends";
+    }
+    if (!self.tabBarController)
+    {
+        self.tabBarController = [UITabBarController new];
+    }
+    NSArray *viewControllersArray = @[self.friendsViewController, self.homeViewController, self.alreadyDoneViewController];
+    self.tabBarController.viewControllers = viewControllersArray;
+    self.tabBarController.selectedIndex = 1;
+    [self presentViewController:self.tabBarController animated:NO completion:^{
+        NSLog(@"Presented");
+    }];
 }
 
 @end

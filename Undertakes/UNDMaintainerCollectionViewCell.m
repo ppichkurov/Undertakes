@@ -7,11 +7,14 @@
 //
 
 #import "UNDMaintainerCollectionViewCell.h"
+#import "UNDTemplatesUI.h"
+#import "UNDStringConstants.h"
 #import "masonry.h"
 
 @interface UNDMaintainerCollectionViewCell ()
 
 @property (nonatomic, strong) UIImageView *maintainerImageView;
+//@property (nonatomic, strong) UILabel *idLabel;
 
 @end
 
@@ -21,19 +24,36 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        self.backgroundColor = [UIColor whiteColor];
-        _maintainerImageView = [[UIImageView alloc] init];
-        
-        [self.maintainerImageView setImage: [UIImage imageNamed:@"imageTest"]];
+//        _idLabel = [UILabel new];
+//        _idLabel.textColor = UIColor.grayColor;
+        self.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
+//        self.contentView.backgroundColor = [UIColor grayColor];
+        self.contentView.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
+
+        _maintainerImageView = [UIImageView new];
+        _maintainerImageView.layer.masksToBounds = YES;
+//        _maintainerImageView.layer.cornerRadius = CGRectGetWidth(frame)/2;
+        _maintainerImageView.layer.cornerRadius = 10;
+
+        _maintainerImageView.contentMode = UIViewContentModeCenter;
+//        [self.contentView addSubview:_idLabel];
         [self.contentView addSubview:_maintainerImageView];
     }
     return self;
 }
 
-- (void)setMaintainerImage:(UIImage *)maintainerImage
+- (void)setMaintainerImagePath:(NSString *)maintainerImagePath
 {
-    _maintainerImage = maintainerImage;
-    [self.maintainerImageView setImage:maintainerImage];
+    _maintainerImagePath = maintainerImagePath;
+    NSString *filePath = [[UNDStringConstants getDocumentDirPath] stringByAppendingString:maintainerImagePath];
+    NSData *dataImg = [NSData dataWithContentsOfFile:filePath];
+    [self.maintainerImageView setImage: [UIImage imageWithData:dataImg]];
+}
+
+- (void)setVkID:(NSString *)vkID
+{
+    _vkID = vkID;
+//    self.idLabel.text = vkID;
 }
 
 
@@ -43,7 +63,10 @@
      {
          make.edges.equalTo(self);
      }];
-    self.contentView.layer.cornerRadius = 20;
+//    [self.idLabel mas_makeConstraints: ^(MASConstraintMaker *make)
+//    {
+//        make.edges.equalTo(self.contentView);
+//    }];
 }
 
 
@@ -53,7 +76,7 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
 }
 
 @end

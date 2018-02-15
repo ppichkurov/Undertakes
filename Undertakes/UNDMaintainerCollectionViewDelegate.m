@@ -8,28 +8,51 @@
 
 #import "UNDMaintainerCollectionViewDelegate.h"
 #import "UNDMaintainerCollectionViewCell.h"
+#import "UNDLikeMan+CoreDataClass.h"
+#import "UNDCoreDataRequestService.h"
+#import "UNDPromiseWeb+CoreDataClass.h"
 
 static NSString *maintainerCollViewCell = @"maintainerCollViewCell";
 
-@interface UNDMaintainerCollectionViewDelegate ()
+
+@interface UNDMaintainerCollectionViewDelegate () <NSFetchedResultsControllerDelegate>
+
+//@property (nonatomic, strong) NSFetchedResultsController *maintainerResultsController;
+@property (nonatomic, weak) UICollectionView *maintainersCollectionView;
 
 @end
 
+
 @implementation UNDMaintainerCollectionViewDelegate
 
-
-- (instancetype)init
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
 {
     if (self = [super init])
     {
-        _testArray = @[@1,@2,@3,@1,@3,@5,@1,@5];
+        _promiseThatHaveLikes = nil;
+        _maintainersCollectionView = collectionView;
     }
     return self;
 }
 
+- (BOOL)isPromiseValid
+{
+    if (!self.promiseThatHaveLikes
+        || !self.promiseThatHaveLikes.webVersion
+        || !self.promiseThatHaveLikes.webVersion.likeMans)
+    {
+        return NO;
+    }
+    return YES;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.testArray.count;
+    if (![self isPromiseValid])
+    {
+        return 0;
+    }
+    return self.promiseThatHaveLikes.webVersion.likeMans.count;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -39,10 +62,16 @@ static NSString *maintainerCollViewCell = @"maintainerCollViewCell";
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![self isPromiseValid])
+    {
+        return nil;
+    }
     UNDMaintainerCollectionViewCell *cell = (UNDMaintainerCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:maintainerCollViewCell forIndexPath:indexPath];
-    
-    cell.maintainerImage = [UIImage imageNamed:@"0"];
-    
+    NSString *photoURLString = [self.promiseThatHaveLikes.webVersion.likeMans allObjects][indexPath.item].photo;
+    //NSLog(@"%@", [self.promiseThatHaveLikes.webVersion.likeMans allObjects][indexPath.item]);
+    NSString *vkID = [self.promiseThatHaveLikes.webVersion.likeMans allObjects][indexPath.item].vkID;
+    cell.maintainerImagePath = photoURLString;
+    cell.vkID = vkID;
     return cell;
 }
 
