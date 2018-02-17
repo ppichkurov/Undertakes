@@ -10,11 +10,9 @@
 #import "UNDParserOutputProtocol.h"
 #import "UNDNetworkServiceIOProtocol.h"
 
-
 @interface UNDNetworkParser : NSObject <UNDNetworkServiceOutputProtocol>
 
 @property (nonatomic, weak) id<UNDParserOutputProtocol> outputDelegate;
 @property (nonatomic, weak) NSManagedObjectID *currentPromiseID;
-
 
 @end

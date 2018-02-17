@@ -44,6 +44,10 @@
 
 - (void)setMaintainerImagePath:(NSString *)maintainerImagePath
 {
+    if (!maintainerImagePath)
+    {
+        return;
+    }
     _maintainerImagePath = maintainerImagePath;
     NSString *filePath = [[UNDStringConstants getDocumentDirPath] stringByAppendingString:maintainerImagePath];
     NSData *dataImg = [NSData dataWithContentsOfFile:filePath];

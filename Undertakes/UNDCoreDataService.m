@@ -170,7 +170,7 @@
     [[UNDCoreDataRequestService coreDataContext] save:nil];
 }
 
-- (void)correctLikeManID:(NSString *)likeManID Photo:(NSString *)photoPath
+- (void)correctLikeManID:(NSString *)likeManID photo:(NSString *)photoPath
 {
     NSArray<UNDLikeMan *> *ourLikeMans = [[UNDCoreDataRequestService coreDataContext]
                                          executeFetchRequest:[UNDCoreDataRequestService promiseLikeManRequest: likeManID] error:nil];
