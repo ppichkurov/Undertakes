@@ -118,7 +118,7 @@ static NSString *UNDPhotoHashTagUserID = @"UNDPhoto#%lu";
     }
     else if ([downloadTask.taskDescription isEqualToString: UNDUsersThatLikeWallDescription])
     {
-            [self.outputDelegate loadUsersThatLikeFieldDidFinishWithData:data];
+        [self.outputDelegate loadUsersThatLikeFieldDidFinishWithData:data];
     }
     else if ([downloadTask.taskDescription isEqualToString: UNDUsersURLPhotoDescription])
     {
@@ -130,11 +130,11 @@ static NSString *UNDPhotoHashTagUserID = @"UNDPhoto#%lu";
     }
 }
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-{
-    NSLog(@"Error: %@ with taskID: %lu", error, task.taskIdentifier);
-//    [session finishTasksAndInvalidate];
-}
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+//{
+//    NSLog(@"Error: %@ with taskID: %lu", error, task.taskIdentifier);
+////    [session finishTasksAndInvalidate];
+//}
 
 //- (void)URLSession:(NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 //{

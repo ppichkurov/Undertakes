@@ -14,7 +14,7 @@
 @interface UNDCoreDataRequestService : NSObject
 
 + (NSManagedObjectContext *)coreDataContext;
-+ (NSFetchRequest *)currentUserRequest;
+//+ (NSFetchRequest *)currentUserRequest;
 + (NSFetchRequest *)userPromisesRequest;
 + (NSFetchRequest *)promiseLikeManRequest:(NSString *)likeManID;
 

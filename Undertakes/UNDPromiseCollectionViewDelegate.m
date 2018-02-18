@@ -141,6 +141,10 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UNDPromise *promise = [self.promiceResultsController objectAtIndexPath:indexPath];
+    if (!promise)
+    {
+        return;
+    }
     [self.output presentPromise: promise];
 }
 

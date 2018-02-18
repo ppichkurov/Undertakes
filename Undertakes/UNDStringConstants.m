@@ -19,4 +19,15 @@
 {
     return @"/%@.jpg";
 }
+
++ (NSString *)getUserID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
+}
+
++ (NSString *)getToken
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"VKToken"];
+}
+
 @end

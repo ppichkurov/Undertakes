@@ -16,6 +16,7 @@
 #import <WebKit/WKNavigationDelegate.h>
 #import <WebKit/WKWebsiteDataStore.h>
 #import "UNDNetworkRequestURLService.h"
+#import "UNDStringConstants.h"
 #import "masonry.h"
 
 @interface UNDAuthViewController () <WKUIDelegate, WKNavigationDelegate>
@@ -38,8 +39,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKToken"];
-    NSString *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
+    NSString *user = [UNDStringConstants getUserID];
+    NSString *token = [UNDStringConstants getToken];
+
     if (!token || !user)
     {
         [self prepareWebView];

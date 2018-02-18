@@ -9,9 +9,8 @@
 #import "UNDNetworkParser.h"
 #import "UNDCoreDataService.h"
 #import "UNDStringConstants.h"
-
-//static NSString *UNDDocumentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-
+#import "NSDictionary+UNDMetaInfo.h"
+#import "NSString+UNDStringMetaInfo.h"
 
 @interface UNDNetworkParser ()
 
@@ -32,105 +31,205 @@
     return self;
 }
 
+
+#pragma mark - Update CoreData & notify controller
+
+- (void)notifyAboutManThatLikedPromise:(NSUInteger)userID receivePhotoURL:(NSString *)urlString
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.outputDelegate photosURLOfMan:userID thatLikedPromiseReceived:urlString];
+    });
+}
+
+- (void)correctLikeMansInAccordanceWith:(NSSet *)likeMans
+{
+    if (!self.currentPromiseID || !likeMans || likeMans.count == 0)
+    {
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.outputDelegate listOfMansThatLikedPromise:likeMans];
+        [self.coreDataService correctLikeManIDs:likeMans forPromise:self.currentPromiseID];
+    });
+}
+
+- (void)removeLikeMansFromCoreData
+{
+    if (self.currentPromiseID)
+    {
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.coreDataService correctLikeManIDs:nil forPromise:self.currentPromiseID];
+    });
+}
+
+- (void)savePromiseFieldIDToCoreData:(NSString *)fieldId
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.coreDataService savePromiseFieldIdToCoreData:fieldId.intValue];
+    });
+}
+
+- (void)savePhoto:(NSString *)fileName forLikeMan:(NSString *)userID
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.coreDataService correctLikeManID:userID photo:fileName];
+    });
+}
+
+#pragma mark - Parse Response
+
+- (NSDictionary *)parseResponseFromVK:(NSData *)data
+{
+    if (!data)
+    {
+        return nil;
+    }
+    NSDictionary *dataFromVkDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    if (!dataFromVkDictionary || dataFromVkDictionary.count == 0)
+    {
+        return nil;
+    }
+    if ([dataFromVkDictionary und_haveKey:@"error"]
+        || ![dataFromVkDictionary und_haveKey:@"response"] )
+    {
+        return nil;
+    }
+    NSDictionary *responseVkDictionary = dataFromVkDictionary[@"response"];
+    if (!responseVkDictionary
+        || ![responseVkDictionary isKindOfClass:[NSDictionary class]])
+    {
+        return nil;
+    }
+    return responseVkDictionary;
+}
+
+
+#pragma mark - Network Output Protocol
+
 - (void)loadUsersThatLikeFieldDidFinishWithData:(NSData *)data
 {
-//    {
-//        "response": {
-//            "count": 2,
-//            "items": [25839411]
-//        }
-//    }
-    
-//если нет такой записи
-//    {
-//        "response": {
-//            "count": 0,
-//            "items": []
-//        }
-//    }
-    
     if (!self.currentPromiseID)
     {
         return;
     }
-    
-    NSDictionary *dataFromVkDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    if (!dataFromVkDictionary)
+    NSDictionary *responseVkDictionary = [self parseResponseFromVK:data];
+    if (!responseVkDictionary
+        || ![responseVkDictionary und_haveKey:@"count"]
+        || ![responseVkDictionary und_haveKey:@"items"])
     {
         return;
     }
-    
-    if ([[dataFromVkDictionary allKeys] containsObject:@"error"])
+    NSNumber *countNumber = responseVkDictionary[@"count"];
+    if (!countNumber || ![countNumber isKindOfClass: [NSNumber class]])
     {
         return;
     }
-    
-    NSDictionary *responseVkDictionary = dataFromVkDictionary[@"response"];
-    NSNumber *count = responseVkDictionary[@"count"];
-    if (count.intValue == 0)
+    if (countNumber.intValue == 0)
     {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.coreDataService correctLikeManIDs:nil forPromise:self.currentPromiseID];
-        });
+        [self removeLikeMansFromCoreData];
         return;
     }
-    else
+    NSArray *usersArray = responseVkDictionary[@"items"];
+    if (!usersArray || ![usersArray isKindOfClass:[NSArray class]])
     {
-        NSArray *usersArray = responseVkDictionary[@"items"];
-        NSSet *users = [NSSet setWithArray:usersArray];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.outputDelegate listOfMansThatLikedPromise:users];
-            [self.coreDataService correctLikeManIDs:users forPromise:self.currentPromiseID];
-        });
+        return;
     }
+    NSSet *users = [NSSet setWithArray:usersArray];
+    [self correctLikeMansInAccordanceWith:users];
 }
 
 - (void)loadPostPromiseOnUserWallFinishWithData:(NSData *)data
 {
-    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-    NSDictionary *postIdDict = dataDictionary[@"response"];
+    NSDictionary *postIdDict = [self parseResponseFromVK:data];
+    if (!postIdDict || ![postIdDict und_haveKey:@"post_id"])
+    {
+        return;
+    }
     NSString *fieldId = postIdDict[@"post_id"];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.coreDataService savePromiseFieldIdToCoreData: fieldId.intValue];
-    });
+    if (!fieldId || ![fieldId und_isNumericString])
+    {
+        return;
+    }
+    [self savePromiseFieldIDToCoreData:fieldId];
 }
 
 - (void)loadUserPhotoURLDidFinishWithData:(NSData *)data
 {
-    NSDictionary *dataFromVkDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    if (!dataFromVkDictionary)
+    NSDictionary *responseVkDictionary = [self parseResponseFromVK:data];
+    if (!responseVkDictionary || ![responseVkDictionary und_haveKey:@"items"])
     {
         return;
     }
-    
-    if ([[dataFromVkDictionary allKeys] containsObject:@"error"])
+    NSArray *itemsArray = responseVkDictionary[@"items"];
+    if (!itemsArray
+        || ![itemsArray isKindOfClass:[NSArray class]]
+        || itemsArray.count == 0)
     {
         return;
     }
-    NSDictionary *responseVkDictionary = dataFromVkDictionary[@"response"];
-    NSArray *itemsDictionary = responseVkDictionary[@"items"];
-    NSDictionary *izdevatelstvo = [itemsDictionary firstObject];
-    NSNumber *userId = izdevatelstvo[@"owner_id"];
-    if (![[izdevatelstvo allKeys] containsObject:@"photo_75"])
+    NSDictionary *mainDictionary = [itemsArray firstObject];
+    if (!mainDictionary
+        || ![mainDictionary isKindOfClass:[NSDictionary class]]
+        || ![mainDictionary und_haveKey:@"owner_id"]
+        || ![mainDictionary und_haveKey:@"photo_75"])
     {
         return;
     }
-    NSString *urlString = izdevatelstvo[@"photo_75"];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.outputDelegate photosURLOfMan: userId.intValue thatLikedPromiseReceived: urlString];
-    });
+    NSNumber *userId = mainDictionary[@"owner_id"];
+    if (!userId || ![userId isKindOfClass:[NSNumber class]])
+    {
+        return;
+    }
+    NSString *urlString = mainDictionary[@"photo_75"];
+    if (!urlString || urlString.length <= 0)
+    {
+        return;
+    }
+    [self notifyAboutManThatLikedPromise:userId.intValue receivePhotoURL:urlString];
 }
 
 - (void)loadPhotoDidFinishWithData:(NSData *)data taskDescription:(NSString *)description
 {
-    NSLog(@"фото прилетело: %@", description);
-    NSArray *descriptioData = [description componentsSeparatedByString:@"#"];
-    NSString *userID = descriptioData[1];
+    if (!data
+        || !description
+        || (description.length <=0)
+        || ![description containsString:@"#"])
+    {
+        return;
+    }
+    NSArray *descriptionData = [description componentsSeparatedByString:@"#"];
+    if (!descriptionData)
+    {
+        return;
+    }
+    NSString *userID = [descriptionData lastObject];
+    if (!userID
+        || (userID.length <= 0)
+        || ![userID und_isNumericString])
+    {
+        return;
+    }
     NSString *fileName = [NSString stringWithFormat: [UNDStringConstants getPhotoStringTemplate], userID];
+    if (!fileName || [fileName isEqualToString:[UNDStringConstants getPhotoStringTemplate]])
+    {
+        return;
+    }
     NSString *filePath = [[UNDStringConstants getDocumentDirPath] stringByAppendingString:fileName];
-    
+    if (!filePath)
+    {
+        return;
+    }
+    [self saveData:data toDocumentsFile:filePath];
+    [self savePhoto:fileName forLikeMan:userID];
+}
+
+
+#pragma mark - Save to Documents
+
+- (void)saveData:(NSData *)data toDocumentsFile:(NSString *)filePath
+{
     [self.mutex lock];
     NSError *error = nil;
     if (![data writeToFile:filePath options:0 error:&error])
@@ -139,12 +238,6 @@
     }
     error = nil;
     [self.mutex unlock];
-    
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.coreDataService correctLikeManID:userID Photo:fileName];
-    });
 }
-
 
 @end

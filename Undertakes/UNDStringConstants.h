@@ -14,4 +14,9 @@
 
 + (NSString *)getPhotoStringTemplate;
 
++ (NSString *)getUserID;
+
++ (NSString *)getToken;
+
+
 @end

@@ -43,8 +43,16 @@
 }
 
 
-+ (UIButton *)getButtonWithTitle:(NSString *)title action:(SEL)selector target:(id)target forView:(UIView *)view
++ (UIButton *)getButtonWithTitle:(NSString *)title
+                          action:(SEL)selector
+                          target:(id)target
+                         forView:(UIView *)view
 {
+    if (!title || (title.length <=0)
+        || !selector || !target || !view)
+    {
+        return nil;
+    }
     UIButton *button = [UIButton new];
     [button setTitle:title forState:UIControlStateNormal];
     
@@ -67,6 +75,10 @@
 
 + (UILabel *)getLabel:(NSString *)text forView:(UIView *)view
 {
+    if (!text || (text.length <= 0) || !view)
+    {
+        return nil;
+    }
     UILabel *label = [UILabel new];
     label.text = text;
     label.textColor = UIColor.blackColor;

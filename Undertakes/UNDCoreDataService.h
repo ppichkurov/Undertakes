@@ -29,6 +29,6 @@
 
 - (void)correctLikeManIDs:(NSSet *)likeMans forPromise:(NSManagedObjectID *)promiseID;
 
-- (void)correctLikeManID:(NSString *)likeManID Photo:(NSString *)photoPath;
+- (void)correctLikeManID:(NSString *)likeManID photo:(NSString *)photoPath;
 
 @end

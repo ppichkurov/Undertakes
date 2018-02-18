@@ -21,8 +21,8 @@
 
 // не реализовано
 
-+ (NSURL *)getLikeFriendPromiseRequestURL;
-+ (NSURL *)getFriendListRequestURL;
+//+ (NSURL *)getLikeFriendPromiseRequestURL;
+//+ (NSURL *)getFriendListRequestURL;
 //+ (NSURL *)getWallRequestURL;
 
 

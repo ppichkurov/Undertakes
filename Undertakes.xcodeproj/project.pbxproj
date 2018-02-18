@@ -15,12 +15,19 @@
 		7F36ABFD201E6C650043D00E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36ABFC201E6C650043D00E /* AppDelegate.m */; };
 		7F36AC00201E6C650043D00E /* UNDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36ABFF201E6C650043D00E /* UNDHomeViewController.m */; };
 		7F36AC0E201E6C650043D00E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AC0D201E6C650043D00E /* main.m */; };
-		7F36AC18201E6C650043D00E /* UndertakesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AC17201E6C650043D00E /* UndertakesTests.m */; };
 		7F36AC23201E7C9C0043D00E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */; };
+		7F3D2F33203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F32203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m */; };
+		7F3D2F352038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F342038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m */; };
+		7F3D2F372038C45F00E0AD4A /* UNDCoreDataServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F362038C45F00E0AD4A /* UNDCoreDataServiceTests.m */; };
+		7F3EF76120385F8000D8EBD4 /* UNDTemplatesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EF76020385F8000D8EBD4 /* UNDTemplatesUITests.m */; };
+		7F3EF763203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EF762203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m */; };
 		7F433BCD2025F31100C40FAD /* UNDPromiseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BCC2025F31100C40FAD /* UNDPromiseCollectionViewCell.m */; };
 		7F433BD020272C3300C40FAD /* UNDMaintainerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BCF20272C3300C40FAD /* UNDMaintainerCollectionViewCell.m */; };
 		7F433BD520272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */; };
 		7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */; };
+		7F4912B62037116400C18AA6 /* NSDictionary+UNDMetaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4912B52037116400C18AA6 /* NSDictionary+UNDMetaInfo.m */; };
+		7F4912B92037593900C18AA6 /* NSString+UNDStringMetaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4912B82037593900C18AA6 /* NSString+UNDStringMetaInfo.m */; };
+		7F4912BC203761FB00C18AA6 /* UIView+UNDGradientEasy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4912BB203761FB00C18AA6 /* UIView+UNDGradientEasy.m */; };
 		7F50B98E202C62AC004BC9B3 /* UNDCoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B98D202C62AC004BC9B3 /* UNDCoreDataService.m */; };
 		7F50B992202C6B63004BC9B3 /* UNDCoreDataRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B991202C6B63004BC9B3 /* UNDCoreDataRequestService.m */; };
 		7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F50B99A202CA324004BC9B3 /* UNDAddPromiceViewController.m */; };
@@ -44,6 +51,7 @@
 		7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF120343D7E0081ABED /* UNDFriendsTableViewController.m */; };
 		7FDCEAF620344AFE0081ABED /* UNDTemplatesUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */; };
 		7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */; };
+		7FDCEAFC20356D380081ABED /* UNDNetworkParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAFB20356D380081ABED /* UNDNetworkParserTests.m */; };
 		F682493F0C2E8BDAC7C437A4 /* libPods-UndertakesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C47DCC7EBD44AC3528019D /* libPods-UndertakesTests.a */; };
 /* End PBXBuildFile section */
 
@@ -76,9 +84,13 @@
 		7F36AC0C201E6C650043D00E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F36AC0D201E6C650043D00E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7F36AC13201E6C650043D00E /* UndertakesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UndertakesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F36AC17201E6C650043D00E /* UndertakesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UndertakesTests.m; sourceTree = "<group>"; };
 		7F36AC19201E6C650043D00E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		7F3D2F32203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkRequestURLServiceTests.m; sourceTree = "<group>"; };
+		7F3D2F342038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataRequestServiceTests.m; sourceTree = "<group>"; };
+		7F3D2F362038C45F00E0AD4A /* UNDCoreDataServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataServiceTests.m; sourceTree = "<group>"; };
+		7F3EF76020385F8000D8EBD4 /* UNDTemplatesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDTemplatesUITests.m; sourceTree = "<group>"; };
+		7F3EF762203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDPromiseCollectionViewDelegateTests.m; sourceTree = "<group>"; };
 		7F433BCB2025F31100C40FAD /* UNDPromiseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDPromiseCollectionViewCell.h; sourceTree = "<group>"; };
 		7F433BCC2025F31100C40FAD /* UNDPromiseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDPromiseCollectionViewCell.m; sourceTree = "<group>"; };
 		7F433BCE20272C3300C40FAD /* UNDMaintainerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDMaintainerCollectionViewCell.h; sourceTree = "<group>"; };
@@ -87,6 +99,12 @@
 		7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDPromiseCollectionViewDelegate.m; sourceTree = "<group>"; };
 		7F433BD620272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDMaintainerCollectionViewDelegate.h; sourceTree = "<group>"; };
 		7F433BD720272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDMaintainerCollectionViewDelegate.m; sourceTree = "<group>"; };
+		7F4912B42037116400C18AA6 /* NSDictionary+UNDMetaInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UNDMetaInfo.h"; sourceTree = "<group>"; };
+		7F4912B52037116400C18AA6 /* NSDictionary+UNDMetaInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UNDMetaInfo.m"; sourceTree = "<group>"; };
+		7F4912B72037593900C18AA6 /* NSString+UNDStringMetaInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+UNDStringMetaInfo.h"; sourceTree = "<group>"; };
+		7F4912B82037593900C18AA6 /* NSString+UNDStringMetaInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+UNDStringMetaInfo.m"; sourceTree = "<group>"; };
+		7F4912BA203761FB00C18AA6 /* UIView+UNDGradientEasy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+UNDGradientEasy.h"; sourceTree = "<group>"; };
+		7F4912BB203761FB00C18AA6 /* UIView+UNDGradientEasy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+UNDGradientEasy.m"; sourceTree = "<group>"; };
 		7F50B98C202C62AC004BC9B3 /* UNDCoreDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDCoreDataService.h; sourceTree = "<group>"; };
 		7F50B98D202C62AC004BC9B3 /* UNDCoreDataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataService.m; sourceTree = "<group>"; };
 		7F50B990202C6B63004BC9B3 /* UNDCoreDataRequestService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDCoreDataRequestService.h; sourceTree = "<group>"; };
@@ -134,6 +152,7 @@
 		7FDCEAF520344AFE0081ABED /* UNDTemplatesUI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDTemplatesUI.m; sourceTree = "<group>"; };
 		7FDCEAF82034C3BF0081ABED /* NSDate+UNDStringPresentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+UNDStringPresentation.h"; sourceTree = "<group>"; };
 		7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+UNDStringPresentation.m"; sourceTree = "<group>"; };
+		7FDCEAFB20356D380081ABED /* UNDNetworkParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkParserTests.m; sourceTree = "<group>"; };
 		901ED00352727172D6BB99A0 /* Pods-UndertakesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.release.xcconfig"; sourceTree = "<group>"; };
 		A5F97F5AFEE0C146DAA3B375 /* Pods-UndertakesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UndertakesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UndertakesTests/Pods-UndertakesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3BA64324FDD367D0D2B6C12 /* Pods-Undertakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Undertakes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Undertakes/Pods-Undertakes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -235,8 +254,13 @@
 		7F36AC16201E6C650043D00E /* UndertakesTests */ = {
 			isa = PBXGroup;
 			children = (
-				7F36AC17201E6C650043D00E /* UndertakesTests.m */,
 				7F36AC19201E6C650043D00E /* Info.plist */,
+				7FDCEAFB20356D380081ABED /* UNDNetworkParserTests.m */,
+				7F3EF76020385F8000D8EBD4 /* UNDTemplatesUITests.m */,
+				7F3EF762203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m */,
+				7F3D2F32203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m */,
+				7F3D2F342038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m */,
+				7F3D2F362038C45F00E0AD4A /* UNDCoreDataServiceTests.m */,
 			);
 			path = UndertakesTests;
 			sourceTree = "<group>";
@@ -369,6 +393,12 @@
 			children = (
 				7FDCEAF82034C3BF0081ABED /* NSDate+UNDStringPresentation.h */,
 				7FDCEAF92034C3BF0081ABED /* NSDate+UNDStringPresentation.m */,
+				7F4912B42037116400C18AA6 /* NSDictionary+UNDMetaInfo.h */,
+				7F4912B52037116400C18AA6 /* NSDictionary+UNDMetaInfo.m */,
+				7F4912B72037593900C18AA6 /* NSString+UNDStringMetaInfo.h */,
+				7F4912B82037593900C18AA6 /* NSString+UNDStringMetaInfo.m */,
+				7F4912BA203761FB00C18AA6 /* UIView+UNDGradientEasy.h */,
+				7F4912BB203761FB00C18AA6 /* UIView+UNDGradientEasy.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -605,12 +635,15 @@
 				7F56866920307E0B003CB42B /* UNDUser+CoreDataProperties.m in Sources */,
 				7F56866A20307E0B003CB42B /* UNDLikeMan+CoreDataClass.m in Sources */,
 				7F433BD020272C3300C40FAD /* UNDMaintainerCollectionViewCell.m in Sources */,
+				7F4912B62037116400C18AA6 /* NSDictionary+UNDMetaInfo.m in Sources */,
+				7F4912BC203761FB00C18AA6 /* UIView+UNDGradientEasy.m in Sources */,
 				7F56866F20307E0B003CB42B /* UNDPromise+CoreDataProperties.m in Sources */,
 				7F56867220307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m in Sources */,
 				7F56866E20307E0B003CB42B /* UNDPromise+CoreDataClass.m in Sources */,
 				7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */,
 				7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */,
 				7FDCEAEF203428AB0081ABED /* UNDAlreadyDoneTableViewController.m in Sources */,
+				7F4912B92037593900C18AA6 /* NSString+UNDStringMetaInfo.m in Sources */,
 				7F1517C8202B3B1D00F97473 /* UNDAuthViewController.m in Sources */,
 				7F56866C20307E0B003CB42B /* UNDFriend+CoreDataClass.m in Sources */,
 				7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */,
@@ -628,7 +661,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F36AC18201E6C650043D00E /* UndertakesTests.m in Sources */,
+				7F3D2F352038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m in Sources */,
+				7FDCEAFC20356D380081ABED /* UNDNetworkParserTests.m in Sources */,
+				7F3D2F372038C45F00E0AD4A /* UNDCoreDataServiceTests.m in Sources */,
+				7F3EF76120385F8000D8EBD4 /* UNDTemplatesUITests.m in Sources */,
+				7F3D2F33203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m in Sources */,
+				7F3EF763203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
