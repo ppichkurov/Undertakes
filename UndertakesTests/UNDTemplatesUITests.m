@@ -58,37 +58,38 @@
     id target = OCMClassMock([UIViewController class]);
     id view = OCMClassMock([UIView class]);
     
-    UIButton *button = [UNDTemplatesUI getButtonWithTitle:@"bla" action:@selector(bla) target:target forView:view];
+    UIButton *button = [UNDTemplatesUI getButtonWithTitle:@"bla" action:nil target:target forView:view];
     
     expect(button).to.beNil();
 }
 
-//+ (UIButton *)getButtonWithTitle:(NSString *)title action:(SEL)selector target:(id)target forView:(UIView *)view
-//{
-//    if (!title || (title.length <=0)
-//        || !selector || !target || !view)
-//    {
-//        return nil;
-//    }
-//    UIButton *button = [UIButton new];
-//    [button setTitle:title forState:UIControlStateNormal];
-//
-//    button.backgroundColor = [UIColor colorWithRed:223/255.0f
-//                                             green:223/255.0f
-//                                              blue:223/255.0f
-//                                             alpha:1];
-//    [button setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-//    button.layer.cornerRadius = 10;
-//    button.alpha = 0.48;
-//    [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
-//    button.layer.masksToBounds = NO;
-//    button.layer.shadowColor = [UIColor blackColor].CGColor;
-//    button.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-//    button.layer.shadowOpacity = 0.5f;
-//
-//    [view addSubview: button];
-//    return button;
-//}
+- (void)testGetButtonWithTitleActionTargetForViewNilTitleNilTarget
+{
+    id view = OCMClassMock([UIView class]);
+    
+    UIButton *button = [UNDTemplatesUI getButtonWithTitle:@"bla" action:@selector(bla) target:nil forView:view];
+    
+    expect(button).to.beNil();
+}
+
+- (void)testGetButtonWithTitleActionTargetForViewNilTitleNilView
+{
+    id target = OCMClassMock([UIViewController class]);
+    
+    UIButton *button = [UNDTemplatesUI getButtonWithTitle:@"bla" action:@selector(bla) target:target forView:nil];
+    
+    expect(button).to.beNil();
+}
+
+- (void)testGetButtonWithTitleActionTargetForViewNormal
+{
+    id target = OCMClassMock([UIViewController class]);
+    id view = OCMClassMock([UIView class]);
+
+    UIButton *button = [UNDTemplatesUI getButtonWithTitle:@"bla" action:@selector(bla) target:target forView:view];
+    
+    expect(button).toNot.beNil();
+}
 
 
 #pragma mark - + (UILabel *)getLabel:(NSString *)text forView:(UIView *)view

@@ -281,22 +281,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.73133"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-savePromiseToCoreDataWithTitle:description:importance:fireDate:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDUserPromisesModel.m"
             timestampString = "539952970.18028"
             startingColumnNumber = "9223372036854775807"
@@ -330,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkService.m"
-            timestampString = "540327882.750968"
+            timestampString = "540656801.535446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -364,54 +348,8 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
-            endingLineNumber = "176">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.7315381"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-savePromiseToCoreDataWithTitle:description:importance:fireDate:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Undertakes/UNDCoreDataRequestService.m"
-            timestampString = "540286606.420851"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "+currentUserRequest"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Undertakes/UNDCoreDataRequestService.m"
-            timestampString = "540286606.421044"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "+userPromisesRequest"
+            endingLineNumber = "176"
+            landmarkName = "-maintainersNeedToInit"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -501,22 +439,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Undertakes/UNDCoreDataRequestService.m"
-            timestampString = "540286606.421258"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "+userPromisesRequest"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDPromiseCollectionViewDelegate.m"
             timestampString = "540418067.460539"
             startingColumnNumber = "9223372036854775807"
@@ -550,7 +472,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.731859"
+            timestampString = "540656801.535741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -566,43 +488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.731931"
+            timestampString = "540656801.5359319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "-savePromiseToCoreDataWithTitle:description:importance:fireDate:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.73198"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-savePromiseToCoreDataWithTitle:description:importance:fireDate:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.732029"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-savePromiseFieldIdToCoreData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -678,11 +568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkRequestURLService.m"
-            timestampString = "540327882.752753"
+            timestampString = "540656801.536247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "+getUsersLikeFieldRequestURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -694,11 +584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.7323101"
+            timestampString = "540656801.5363311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-correctLikeManIDs:forPromise:"
             landmarkType = "7">
          </BreakpointContent>
@@ -774,7 +664,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkService.m"
-            timestampString = "540327882.753435"
+            timestampString = "540656801.536602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -790,7 +680,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkService.m"
-            timestampString = "540327882.753493"
+            timestampString = "540656801.5366631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -838,7 +728,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkService.m"
-            timestampString = "540327882.753708"
+            timestampString = "540656801.536768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -854,7 +744,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkRequestURLService.m"
-            timestampString = "540327882.753764"
+            timestampString = "540656801.536822"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -870,7 +760,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkService.m"
-            timestampString = "540327882.753812"
+            timestampString = "540656801.536872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -886,7 +776,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkService.m"
-            timestampString = "540327882.753865"
+            timestampString = "540656801.536922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -934,7 +824,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkService.m"
-            timestampString = "540327882.754126"
+            timestampString = "540656801.537021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -950,7 +840,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDNetworkService.m"
-            timestampString = "540327882.754185"
+            timestampString = "540656801.537071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -966,11 +856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.733445"
+            timestampString = "540656801.537123"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-correctLikeManIDs:forPromise:"
             landmarkType = "7">
          </BreakpointContent>
@@ -982,11 +872,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.7334991"
+            timestampString = "540656801.537248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-correctLikeManIDs:forPromise:"
             landmarkType = "7">
          </BreakpointContent>
@@ -998,11 +888,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.733557"
+            timestampString = "540656801.537359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-correctLikeManIDs:forPromise:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1019,7 +909,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
             endingLineNumber = "172"
-            landmarkName = "-maintainersNeedToInit"
+            landmarkName = "-choosePromiseForLikeDisplay"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1035,8 +925,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
-            landmarkName = "-choosePromiseForLikeDisplay"
-            landmarkType = "7">
+            landmarkName = "UNDPromiseCollectionViewDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1174,11 +1064,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507110.7338459"
+            timestampString = "540656801.537692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "-correctLikeManID:photo:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1222,7 +1112,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDStringConstants.m"
-            timestampString = "540564982.545978"
+            timestampString = "540582847.529307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -1350,11 +1240,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDCoreDataService.m"
-            timestampString = "540507506.350459"
+            timestampString = "540656801.538036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-saveAllLikeMans:forPromise:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1414,7 +1304,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDTemplatesUI.m"
-            timestampString = "540569405.653021"
+            timestampString = "540570361.661137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -1430,7 +1320,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDTemplatesUI.m"
-            timestampString = "540569405.65309"
+            timestampString = "540570361.661234"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -1442,11 +1332,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Undertakes/UNDTemplatesUI.m"
-            timestampString = "540569405.653149"
+            timestampString = "540570361.661291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -1458,16 +1348,222 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UndertakesTests/UNDTemplatesUITests.m"
-            timestampString = "540569405.653196"
+            timestampString = "540656801.538275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
             landmarkName = "-testGetButtonWithTitleActionTargetForViewNilTitleNilTitle"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Undertakes/UNDCoreDataRequestService.m"
+            timestampString = "540656801.53833"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "+userPromisesRequest"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Undertakes/UNDCoreDataService.m"
+            timestampString = "540656801.538388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-savePromiseToCoreDataWithTitle:description:importance:fireDate:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UndertakesTests/UNDCoreDataServiceTests.m"
+            timestampString = "540656801.538498"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-testCorrectLikeManIDsForPromiseNilPromiseWeb"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UNDCoreDataServiceTests testCorrectLikeManIDsForPromiseNilPromiseWeb]"
+                  moduleName = "UndertakesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelpickurov/Documents/develop/undertakes2/Undertakes/UndertakesTests/UNDCoreDataServiceTests.m"
+                  timestampString = "540653547.519591"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UNDCoreDataServiceTests testCorrectLikeManIDsForPromiseNilPromiseWeb]"
+                  moduleName = "UndertakesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelpickurov/Documents/develop/undertakes2/Undertakes/UndertakesTests/UNDCoreDataServiceTests.m"
+                  timestampString = "540653547.523665"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "382">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UNDCoreDataServiceTests testCorrectLikeManIDsForPromiseNilPromiseWeb]"
+                  moduleName = "UndertakesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelpickurov/Documents/develop/undertakes2/Undertakes/UndertakesTests/UNDCoreDataServiceTests.m"
+                  timestampString = "540653547.52755"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
+                  offsetFromSymbolStart = "439">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Undertakes/UNDCoreDataService.m"
+            timestampString = "540656801.539241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-correctLikeManIDs:forPromise:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Undertakes/UNDCoreDataService.m"
+            timestampString = "540656801.539333"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-correctLikeManIDs:forPromise:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UndertakesTests/UNDCoreDataServiceTests.m"
+            timestampString = "540656801.539404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-testSavePromiseFieldIdToCoreDataNormal"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UNDCoreDataServiceTests testSavePromiseFieldIdToCoreDataNormal]"
+                  moduleName = "UndertakesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelpickurov/Documents/develop/undertakes2/Undertakes/UndertakesTests/UNDCoreDataServiceTests.m"
+                  timestampString = "540654561.22481"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "50">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UNDCoreDataServiceTests testSavePromiseFieldIdToCoreDataNormal]"
+                  moduleName = "UndertakesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelpickurov/Documents/develop/undertakes2/Undertakes/UndertakesTests/UNDCoreDataServiceTests.m"
+                  timestampString = "540654561.227288"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UNDCoreDataServiceTests testSavePromiseFieldIdToCoreDataNormal]"
+                  moduleName = "UndertakesTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelpickurov/Documents/develop/undertakes2/Undertakes/UndertakesTests/UNDCoreDataServiceTests.m"
+                  timestampString = "540654561.230249"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "453">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Undertakes/UNDCoreDataService.m"
+            timestampString = "540656801.539767"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-correctLikeManID:photo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

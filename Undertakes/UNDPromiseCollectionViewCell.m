@@ -10,6 +10,7 @@
 #import "UNDTemplatesUI.h"
 #import <Masonry/Masonry.h>
 
+
 @interface UNDPromiseCollectionViewCell ()
 
 @property (nonatomic, strong) UIView *substrateView;
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) UILabel *fullTextLabel;
 
 @end
+
 
 @implementation UNDPromiseCollectionViewCell
 
@@ -114,38 +116,12 @@
     _fullText = fullText;
 }
 
-//- (UIColor *)colorForImportance:(int64_t)importance
-//{
-//    switch ((int)importance) {
-//        case 1:
-//            return UIColor.darkGrayColor;
-//            break;
-//        case 2:
-//            return [UIColor colorWithRed:0
-//                                   green:153/255.0f
-//                                    blue:153/255.0f
-//                                   alpha:1];
-//            break;
-//        case 3:
-//            return UIColor.brownColor;
-//            break;
-//        case 4:
-//            return UIColor.purpleColor;
-//            break;
-//        case 5:
-//            return UIColor.orangeColor;
-//            break;
-//        default:
-//            return UIColor.greenColor;
-//            break;
-//    }
-//}
-
 - (void)setImportance:(int64_t)importance
 {
     _importance = importance;
     self.contentView.backgroundColor = [UNDTemplatesUI colorForImportance:importance];
 }
+
 
 #pragma mark - Overriden UICollectionViewCell methods
 

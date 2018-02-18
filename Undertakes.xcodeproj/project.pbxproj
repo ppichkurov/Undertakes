@@ -16,7 +16,11 @@
 		7F36AC00201E6C650043D00E /* UNDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36ABFF201E6C650043D00E /* UNDHomeViewController.m */; };
 		7F36AC0E201E6C650043D00E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AC0D201E6C650043D00E /* main.m */; };
 		7F36AC23201E7C9C0043D00E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */; };
+		7F3D2F33203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F32203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m */; };
+		7F3D2F352038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F342038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m */; };
+		7F3D2F372038C45F00E0AD4A /* UNDCoreDataServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F362038C45F00E0AD4A /* UNDCoreDataServiceTests.m */; };
 		7F3EF76120385F8000D8EBD4 /* UNDTemplatesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EF76020385F8000D8EBD4 /* UNDTemplatesUITests.m */; };
+		7F3EF763203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EF762203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m */; };
 		7F433BCD2025F31100C40FAD /* UNDPromiseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BCC2025F31100C40FAD /* UNDPromiseCollectionViewCell.m */; };
 		7F433BD020272C3300C40FAD /* UNDMaintainerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BCF20272C3300C40FAD /* UNDMaintainerCollectionViewCell.m */; };
 		7F433BD520272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BD420272F7F00C40FAD /* UNDPromiseCollectionViewDelegate.m */; };
@@ -82,7 +86,11 @@
 		7F36AC13201E6C650043D00E /* UndertakesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UndertakesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F36AC19201E6C650043D00E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		7F3D2F32203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkRequestURLServiceTests.m; sourceTree = "<group>"; };
+		7F3D2F342038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataRequestServiceTests.m; sourceTree = "<group>"; };
+		7F3D2F362038C45F00E0AD4A /* UNDCoreDataServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataServiceTests.m; sourceTree = "<group>"; };
 		7F3EF76020385F8000D8EBD4 /* UNDTemplatesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDTemplatesUITests.m; sourceTree = "<group>"; };
+		7F3EF762203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDPromiseCollectionViewDelegateTests.m; sourceTree = "<group>"; };
 		7F433BCB2025F31100C40FAD /* UNDPromiseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDPromiseCollectionViewCell.h; sourceTree = "<group>"; };
 		7F433BCC2025F31100C40FAD /* UNDPromiseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDPromiseCollectionViewCell.m; sourceTree = "<group>"; };
 		7F433BCE20272C3300C40FAD /* UNDMaintainerCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDMaintainerCollectionViewCell.h; sourceTree = "<group>"; };
@@ -249,6 +257,10 @@
 				7F36AC19201E6C650043D00E /* Info.plist */,
 				7FDCEAFB20356D380081ABED /* UNDNetworkParserTests.m */,
 				7F3EF76020385F8000D8EBD4 /* UNDTemplatesUITests.m */,
+				7F3EF762203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m */,
+				7F3D2F32203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m */,
+				7F3D2F342038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m */,
+				7F3D2F362038C45F00E0AD4A /* UNDCoreDataServiceTests.m */,
 			);
 			path = UndertakesTests;
 			sourceTree = "<group>";
@@ -649,8 +661,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F3D2F352038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m in Sources */,
 				7FDCEAFC20356D380081ABED /* UNDNetworkParserTests.m in Sources */,
+				7F3D2F372038C45F00E0AD4A /* UNDCoreDataServiceTests.m in Sources */,
 				7F3EF76120385F8000D8EBD4 /* UNDTemplatesUITests.m in Sources */,
+				7F3D2F33203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m in Sources */,
+				7F3EF763203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

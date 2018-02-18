@@ -7,6 +7,7 @@
 //
 
 #import "UNDCoreDataService.h"
+#import "UNDStringConstants.h"
 
 @interface UNDCoreDataService ()
 
@@ -36,27 +37,26 @@
                             importance:(NSInteger)importance
                               fireDate:(NSDate *)fireDate
 {
+    if (!title
+        || (title.length == 0)
+        || !fullText
+        || (fullText.length == 0)
+        || (importance <= 0)
+        || !fireDate)
+    {
+        return;
+    }
     UNDPromise *promise = [NSEntityDescription
                            insertNewObjectForEntityForName:@"UNDPromise"
                                     inManagedObjectContext:[UNDCoreDataRequestService coreDataContext]];
-    
-//    self.lastSavedPromise = promise;
-    
     promise.title = title;
     promise.fullText = fullText;
     promise.importance = importance;
     promise.fireDate = fireDate;
     promise.startDate = [NSDate date];
-    promise.ownerVkID = [[NSUserDefaults standardUserDefaults] objectForKey:@"VKUser"];
-    
-    NSError *error = nil;
-    
-    if (![promise.managedObjectContext save:&error])
-    {
-        NSLog(@"bad save try, error : %@", error);
-    }
-    
-    error = nil;
+    promise.ownerVkID = [UNDStringConstants getUserID];
+
+    [promise.managedObjectContext save:nil];
 }
 
 - (void)savePromiseFieldIdToCoreData:(int64_t)fieldId
@@ -65,20 +65,18 @@
                            insertNewObjectForEntityForName:@"UNDPromiseWeb"
                            inManagedObjectContext:[UNDCoreDataRequestService coreDataContext]];
     
+    if (!promiseWeb)
+    {
+        return;
+    }
+    
     promiseWeb.fieldVkID = [NSString stringWithFormat:@"%lld",fieldId];
-//    self.lastSavedPromise.webVersion = promiseWeb;
     
     NSArray<UNDPromise *> *arrayOfPromises = [self getPromisesForCurrentUser];
     UNDPromise *lastAddPromise =  [arrayOfPromises firstObject];
     lastAddPromise.webVersion = promiseWeb;
-    NSError *error = nil;
 
-    if (![promiseWeb.managedObjectContext save:&error])
-    {
-        NSLog(@"bad save try, error : %@", error);
-    }
-
-    error = nil;
+    [promiseWeb.managedObjectContext save:nil];
 }
 
 - (void)correctLikeManIDs:(NSSet<NSNumber *> *)likeMans forPromise:(NSManagedObjectID *)promiseID
@@ -91,7 +89,7 @@
     UNDPromise *promiseForSaveLikes = [[UNDCoreDataRequestService coreDataContext]
                                        existingObjectWithID:promiseID error:nil];
     
-    if (!promiseForSaveLikes.webVersion)
+    if (!promiseForSaveLikes || !promiseForSaveLikes.webVersion)
     {
         return;
     }
@@ -99,6 +97,7 @@
     if (!likeMans)
     {
         [self removeAllLikeMansForPromise:promiseForSaveLikes];
+        return;
     }
     
     //получили тех, кто уже в базе
@@ -107,32 +106,29 @@
     if (![weHaveSaved count]) // если в базе ничего - просто сохраняем (выделить в метод тупого сохранения)
     {
         [self saveAllLikeMans:likeMans forPromise:promiseForSaveLikes];
+        return;
     }
-    else // нужно откорректировать (узнать, кто добавился (их сохранить), кто удалился (соотв), кто остался (не трогать))
-    {
         // добавляем их id в сет
-        NSMutableSet *weHaveMansIDMutableSet = [NSMutableSet setWithCapacity: weHaveSaved.count];
-        for (UNDLikeMan *entity in weHaveSaved)
-        {
-            [weHaveMansIDMutableSet addObject: [NSNumber numberWithInt: entity.vkID.intValue]];
-        }
+    NSMutableSet *weHaveMansIDMutableSet = [NSMutableSet setWithCapacity: weHaveSaved.count];
+    for (UNDLikeMan *entity in weHaveSaved)
+    {
+        [weHaveMansIDMutableSet addObject: [NSNumber numberWithInt: entity.vkID.intValue]];
+    }
         
-        NSMutableSet *weNeedToAddMutableSet = [likeMans mutableCopy];
-        [weNeedToAddMutableSet minusSet:weHaveMansIDMutableSet];
-        
-        if (weNeedToAddMutableSet.count)
-        {
-            [self saveAllLikeMans:[weNeedToAddMutableSet copy] forPromise:promiseForSaveLikes];
-        }
-        
-        NSMutableSet *weNeedToDeleteMutableSet = [weHaveMansIDMutableSet mutableCopy];
-        [weNeedToDeleteMutableSet minusSet: [likeMans mutableCopy]];
-        
-        if (weNeedToDeleteMutableSet.count)
-        {
-            [self removeLikeMans:[weNeedToDeleteMutableSet copy] forPromise:promiseForSaveLikes];
-        }
-        
+    NSMutableSet *weNeedToAddMutableSet = [likeMans mutableCopy];
+    [weNeedToAddMutableSet minusSet:weHaveMansIDMutableSet];
+    
+    if (weNeedToAddMutableSet.count)
+    {
+        [self saveAllLikeMans:[weNeedToAddMutableSet copy] forPromise:promiseForSaveLikes];
+    }
+    
+    NSMutableSet *weNeedToDeleteMutableSet = [NSMutableSet setWithSet:weHaveMansIDMutableSet];
+    [weNeedToDeleteMutableSet minusSet: likeMans];
+    
+    if (weNeedToDeleteMutableSet.count)
+    {
+        [self removeLikeMans:[weNeedToDeleteMutableSet copy] forPromise:promiseForSaveLikes];
     }
 }
 
@@ -172,8 +168,21 @@
 
 - (void)correctLikeManID:(NSString *)likeManID photo:(NSString *)photoPath
 {
+    if (!likeManID
+        || likeManID.length == 0
+        || !photoPath
+        || photoPath.length == 0)
+    {
+        return;
+    }
+    
     NSArray<UNDLikeMan *> *ourLikeMans = [[UNDCoreDataRequestService coreDataContext]
                                          executeFetchRequest:[UNDCoreDataRequestService promiseLikeManRequest: likeManID] error:nil];
+    
+    if (!ourLikeMans)
+    {
+        return;
+    }
     
     for (UNDLikeMan *man in ourLikeMans) {
         man.photo = photoPath;
