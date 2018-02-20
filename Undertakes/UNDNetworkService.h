@@ -12,6 +12,10 @@
 
 @interface UNDNetworkService : NSObject <UNDNetworkServiceInputProtocol, NSURLSessionDelegate, NSURLSessionDownloadDelegate>
 
+
+/**
+ * <p>Делегат, получающий респонсы от VK</p>
+ */
 @property (nonatomic, weak) id <UNDNetworkServiceOutputProtocol> outputDelegate;
 
 @end

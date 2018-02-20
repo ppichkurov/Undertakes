@@ -9,15 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "UIButton+UNDButtonAnimation.h"
 
-static NSString *groupAnimationKey = @"groupAnimationKey";
-
 
 CALayer *UNDCircleLayer;
-
+static NSString *UNDGroupAnimationKey = @"groupAnimationKey";
 static const CGFloat UNDForwardAndBackwardDuration = 1.0f;
 static const CGFloat UNDCircleAnimationDuration = 1.0f;
 static const NSUInteger UNDCircleAnimationRepeatCount = 4;
-
 
 @implementation UIButton (UNDButtonAnimation)
 
@@ -30,7 +27,6 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
 
 - (void)firstAnimationGrooup
 {
-    
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
     animationGroup.repeatCount = 1;
     animationGroup.duration = UNDForwardAndBackwardDuration;
@@ -63,7 +59,7 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
     animationGroup.animations = @[sizeDecreaseAnimation, cornerRadiusAnimation, shadowAnimation];
     [animationGroup setValue:@"animationGroupFirst" forKey:@"id"];
     
-    [self.layer addAnimation:animationGroup forKey:groupAnimationKey];
+    [self.layer addAnimation:animationGroup forKey:UNDGroupAnimationKey];
 }
 
 - (void)secondAnimationGroup
@@ -73,7 +69,6 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
     CGFloat circleSize = size.width / 5;
     CAMediaTimingFunction *timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.7f :-0.13f :0.22f :0.86f];
     
-    // Scale animation
     CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     
     scaleAnimation.keyTimes = @[@0.0f, @0.5f, @1.0f];
@@ -83,7 +78,6 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
     scaleAnimation.duration = UNDCircleAnimationDuration;
     scaleAnimation.timingFunctions = @[timingFunction, timingFunction];
     
-    // Rotate animation
     CAKeyframeAnimation *rotateAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
     
     rotateAnimation.keyTimes = @[@0.0f, @0.5f, @1.0f];
@@ -91,7 +85,6 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
     rotateAnimation.duration = UNDCircleAnimationDuration;
     rotateAnimation.timingFunctions = @[timingFunction, timingFunction];
     
-    // Animation
     CAAnimationGroup *animation = [CAAnimationGroup animation];
     
     animation.animations = @[scaleAnimation, rotateAnimation];
@@ -100,8 +93,6 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
     animation.removedOnCompletion = YES;
     animation.delegate = self;
     [animation setValue:@"animationGroupSecond" forKey:@"id"];
-
-    // Draw circles
     
     CALayer *leftCircle = [CALayer layer];
     
@@ -167,7 +158,7 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
     animationGroup.animations = @[sizeIncreaseAnimation, cornerRadiusAnimation, shadowAnimation];
     [animationGroup setValue:@"animationGroupThird" forKey:@"id"];
     
-    [self.layer addAnimation:animationGroup forKey:groupAnimationKey];
+    [self.layer addAnimation:animationGroup forKey:UNDGroupAnimationKey];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -189,6 +180,9 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
     [self setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     self.userInteractionEnabled = YES;
 }
+
+
+#pragma mark - Fail animation
 
 - (void)und_startFailAnimation
 {

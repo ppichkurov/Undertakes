@@ -11,9 +11,12 @@
 #import "UNDPromise+CoreDataClass.h"
 #import "UNDCoreDataRequestService.h"
 
+
 static NSString *promiseCollViewCell = @"promiseCollViewCell";
 
+
 @interface UNDPromiseCollectionViewDelegate () <NSFetchedResultsControllerDelegate>
+
 
 @property (nonatomic, strong) NSFetchedResultsController *promiceResultsController;
 @property (nonatomic, weak) UICollectionView *promisesCollectionView;
@@ -38,7 +41,6 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     return self;
 }
 
-
 - (void)prepareCell: (UNDPromiseCollectionViewCell *) cell withPromise:(UNDPromise *)promise
 {
     if (!cell || !promise)
@@ -49,8 +51,6 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     cell.fullText = promise.fullText;
     cell.importance = promise.importance;
     cell.promiseObject = promise;
-    
-    //TODO передавать только объект и настраивать внутри cell?
 }
 
 
@@ -96,7 +96,8 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
     [self.promisesCollectionView reloadData];
 }
 
@@ -147,6 +148,7 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     }
     [self.output presentPromise: promise];
 }
+
 
 #pragma mark - Choose cell logic
 

@@ -19,13 +19,14 @@
 #import "UNDStringConstants.h"
 #import "masonry.h"
 
+
 @interface UNDAuthViewController () <WKUIDelegate, WKNavigationDelegate>
+
 
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UNDHomeViewController *homeViewController;
 @property (nonatomic, strong) UNDAlreadyDoneTableViewController *alreadyDoneViewController;
-//@property (nonatomic, strong) UNDFriendsTableViewController *friendsViewController;
 
 @end
 
@@ -98,11 +99,6 @@
      }];
 }
 
-- (void)saveUserInfo
-{
-    
-}
-
 - (void)loadAuthRequest
 {
     NSURL *authUrl = [UNDNetworkRequestURLService getAuthVKRequestURL];
@@ -137,7 +133,6 @@
     if (!self.homeViewController)
     {
         self.homeViewController = [UNDHomeViewController new];
-//        self.homeViewController.tabBarItem.title = @"Home";
         self.homeViewController.tabBarItem.image = [UIImage imageNamed:@"homeTabBarIcon"];
     }
     if (!self.alreadyDoneViewController)
@@ -145,11 +140,6 @@
         self.alreadyDoneViewController = [UNDAlreadyDoneTableViewController new];
         self.alreadyDoneViewController.tabBarItem.image = [UIImage imageNamed:@"doneTabBarIcon"];
     }
-//    if (!self.friendsViewController)
-//    {
-//        self.friendsViewController = [UNDFriendsTableViewController new];
-//        self.friendsViewController.tabBarItem.image = [UIImage imageNamed:@"friendTabBarIcon"];
-//    }
     if (!self.tabBarController)
     {
         self.tabBarController = [UITabBarController new];

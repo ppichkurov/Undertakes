@@ -10,14 +10,15 @@
 #import "UNDHomeViewController.h"
 #import "UNDAuthViewController.h"
 
+
 @interface AppDelegate ()
+
 
 @property (nonatomic, strong)  UITabBarController * tabBarController;
 
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -29,13 +30,17 @@
     return YES;
 }
 
+
 #pragma mark - Core Data stack
 
 @synthesize persistentContainer = _persistentContainer;
 
-- (NSPersistentContainer *)persistentContainer {
-    @synchronized (self) {
-        if (_persistentContainer == nil) {
+- (NSPersistentContainer *)persistentContainer
+{
+    @synchronized (self)
+    {
+        if (_persistentContainer == nil)
+        {
             _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"Undertakes"];
             [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
                 if (error != nil) {
@@ -49,9 +54,11 @@
     return _persistentContainer;
 }
 
+
 #pragma mark - Core Data Saving support
 
-- (void)saveContext {
+- (void)saveContext
+{
     NSManagedObjectContext *context = self.persistentContainer.viewContext;
     NSError *error = nil;
     if ([context hasChanges] && ![context save:&error]) {

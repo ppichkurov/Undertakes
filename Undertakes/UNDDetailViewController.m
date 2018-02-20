@@ -14,22 +14,20 @@
 #import "UNDCoreDataService.h"
 #import "masonry.h"
 
+
 @interface UNDDetailViewController ()
 
-@property (nonatomic, strong) UIView *subView;
 
+@property (nonatomic, strong) UIView *subView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextView *fullTextView;
 @property (nonatomic, strong) UILabel *startDateLabel;
 @property (nonatomic, strong) UILabel *fireDateLabel;
 @property (nonatomic, strong) UILabel *daysToEndLabel;
 @property (nonatomic, strong) UILabel *likeCountLabel;
-
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UIButton *deleteButton;
-
 @property (nonatomic, strong) UNDPromise *detailedPromise;
-
 @property (nonatomic, strong) UNDCoreDataService *coreDataService;
 
 @end
@@ -78,7 +76,6 @@
     self.fullTextView.font = [UIFont systemFontOfSize:17];
     self.fullTextView.layer.cornerRadius = 10;
     self.fullTextView.alpha = 0.7;
-
     self.fullTextView.editable = NO;
     [self.view addSubview:self.fullTextView];
 }
@@ -87,9 +84,13 @@
 {
     self.titleLabel = [UNDTemplatesUI getLabel:self.detailedPromise.title
                                        forView:self.subView];
-    self.startDateLabel = [UNDTemplatesUI getLabel: [self.detailedPromise.startDate und_toString] forView:self.subView];
-    self.fireDateLabel = [UNDTemplatesUI getLabel: [self.detailedPromise.fireDate und_toString] forView:self.subView];
-    self.likeCountLabel = [UNDTemplatesUI getLabel: [NSString stringWithFormat: @"%lu",[self.detailedPromise.webVersion.likeMans count]] forView:self.subView];
+    self.startDateLabel = [UNDTemplatesUI getLabel: [self.detailedPromise.startDate und_toString]
+                                           forView:self.subView];
+    self.fireDateLabel = [UNDTemplatesUI getLabel: [self.detailedPromise.fireDate und_toString]
+                                          forView:self.subView];
+    self.likeCountLabel = [UNDTemplatesUI getLabel:
+                           [NSString stringWithFormat: @"%lu",[self.detailedPromise.webVersion.likeMans count]]
+                                           forView:self.subView];
     
     self.titleLabel.font = [UIFont systemFontOfSize:24];
     self.titleLabel.numberOfLines = 2;

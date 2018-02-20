@@ -8,12 +8,12 @@
 
 #import "NSDate+UNDStringPresentation.h"
 
+
 @implementation NSDate (UNDStringPresentation)
 
 - (NSString *)und_toString
 {
     return [NSString stringWithFormat:@"%@",self];
 }
-
 
 @end

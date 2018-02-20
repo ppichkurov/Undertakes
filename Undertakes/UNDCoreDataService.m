@@ -9,6 +9,7 @@
 #import "UNDCoreDataService.h"
 #import "UNDStringConstants.h"
 
+
 @interface UNDCoreDataService ()
 
 
@@ -18,19 +19,11 @@
 
 @implementation UNDCoreDataService
 
-
-- (NSArray<UNDPromise *> *)getPromisesForCurrentUser:(BOOL)new
+- (NSArray<UNDPromise *> *)getPromisesForCurrentUser:(BOOL)newest
 {
-    NSArray *result = [[UNDCoreDataRequestService coreDataContext] executeFetchRequest: [UNDCoreDataRequestService userPromisesRequest:new] error:nil];
+    NSArray *result = [[UNDCoreDataRequestService coreDataContext] executeFetchRequest: [UNDCoreDataRequestService userPromisesRequest:newest] error:nil];
     return result;
 }
-
-//- (UNDUser *)getCurrentUser
-//{
-//    NSArray *result = [self.requestService.coreDataContext executeFetchRequest: [self.requestService userPromisesRequest] error:nil];
-//    UNDUser *user = result[0];
-//    return user;
-//}
 
 - (void)savePromiseToCoreDataWithTitle:(NSString *)title
                            description:(NSString *)fullText
@@ -150,7 +143,6 @@
         }
     }
     [[UNDCoreDataRequestService coreDataContext] save:nil];
-    
     return;
 }
 
@@ -182,31 +174,16 @@
     {
         return;
     }
-    
     NSArray<UNDLikeMan *> *ourLikeMans = [[UNDCoreDataRequestService coreDataContext]
                                          executeFetchRequest:[UNDCoreDataRequestService promiseLikeManRequest: likeManID] error:nil];
-    
     if (!ourLikeMans)
     {
         return;
     }
-    
     for (UNDLikeMan *man in ourLikeMans) {
         man.photo = photoPath;
     }
     [[UNDCoreDataRequestService coreDataContext] save:nil];
 }
-
-//- (void)touchAnOldObject
-//{
-//    NSArray<UNDPromise *> *oldGuysNeedToBeTouched = [self getPromisesForCurrentUser:NO];
-//    if (!oldGuysNeedToBeTouched.count)
-//    {
-//        return;
-//    }
-//    for (UNDPromise *man in oldGuysNeedToBeTouched) {
-//        man.fireDate = man.fireDate;
-//    }
-//}
 
 @end

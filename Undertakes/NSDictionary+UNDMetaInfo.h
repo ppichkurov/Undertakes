@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface NSDictionary (UNDMetaInfo)
 
+
+/**
+ * <p>Проверяет наличие ключа key в словаре</p>
+ * @param key - строковый ключ
+ * @return YES если в словаре присутствует ключ, иначе NO
+ */
 - (BOOL)und_haveKey:(NSString *)key;
 
 @end

@@ -14,6 +14,7 @@
 
 @interface UNDCoreDataService(Tests)
 
+
 - (void)removeLikeMans:(NSSet<NSNumber *> *)likeMans forPromise:(UNDPromise *)promise;
 - (void)saveAllLikeMans:(NSSet<NSNumber *> *)likeMans forPromise:(UNDPromise *)promise;
 - (void)removeAllLikeMansForPromise:(UNDPromise *)promise;
@@ -22,6 +23,7 @@
 
 
 @interface UNDCoreDataServiceTests : XCTestCase
+
 
 @property (nonatomic, strong) UNDCoreDataService *coreDataService;
 @property (nonatomic, strong) id entityDescriptionClass;
@@ -424,18 +426,5 @@
     
     OCMVerify([self.context save:nil]);
 }
-
-//NSArray<UNDLikeMan *> *ourLikeMans = [[UNDCoreDataRequestService coreDataContext]
-//                                      executeFetchRequest:[UNDCoreDataRequestService promiseLikeManRequest: likeManID] error:nil];
-//
-//if (!ourLikeMans)
-//{
-//    return;
-//}
-//
-//for (UNDLikeMan *man in ourLikeMans) {
-//    man.photo = photoPath;
-//}
-//[[UNDCoreDataRequestService coreDataContext] save:nil];
 
 @end

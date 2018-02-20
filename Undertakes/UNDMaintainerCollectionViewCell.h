@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface UNDMaintainerCollectionViewCell : UICollectionViewCell
+
 
 @property (nonatomic, strong) NSString *maintainerImagePath;
 @property (nonatomic, strong) NSString *vkID;

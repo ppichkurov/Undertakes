@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface UIView (UNDGradientEasy)
 
+
+/**
+ * <p>Добавляет к UI градиент</p>
+ * @param colorBegin - цвет 1
+ * @param colorEnd - цвет 2
+ */
 - (void)und_gradientFrom:(UIColor *)colorBegin to:(UIColor *)colorEnd;
 
 @end

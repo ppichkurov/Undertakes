@@ -10,7 +10,9 @@
 #import "UNDTemplatesUI.h"
 #import "masonry.h"
 
+
 @interface UNDAlreadyDoneTableViewCell ()
+
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextView *fullTextView;
@@ -27,7 +29,6 @@
     {
         self.backgroundView.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
         self.contentView.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
-        
         [self prepareTitleLabel];
         [self prepareFullTextView];
         [self prepareImportanceView];
@@ -127,7 +128,4 @@
     }];
 }
 
-
 @end
-
-

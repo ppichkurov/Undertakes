@@ -12,12 +12,15 @@
 #import "UNDTemplatesUI.h"
 #import "masonry.h"
 
+
 /**
- для тестов - сделано 1 минута вместо дня (60 * 60 * 24)
+ для тестов - сделана 1 минута вместо дня (60 * 60 * 24)
  */
 static const NSTimeInterval UNDTomorrow = 60;
 
+
 @interface UNDAddPromiceViewController ()
+
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextField *titleText;
@@ -30,8 +33,6 @@ static const NSTimeInterval UNDTomorrow = 60;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIButton *addButton;
 @property (nonatomic, strong) UIButton *backButton;
-
-
 @property (nonatomic, strong) UNDCoreDataService *coreDataService;
 
 @end
@@ -101,7 +102,9 @@ static const NSTimeInterval UNDTomorrow = 60;
     self.importanceSlider.value = 1;
     self.importance = 1;
     
-    [self.importanceSlider addTarget:self action:@selector(changeImportance) forControlEvents:UIControlEventValueChanged];
+    [self.importanceSlider addTarget:self
+                              action:@selector(changeImportance)
+                    forControlEvents:UIControlEventValueChanged];
     
     [self.view addSubview: self.importanceSlider];
 }
@@ -132,6 +135,7 @@ static const NSTimeInterval UNDTomorrow = 60;
                                                   target:self
                                                  forView:self.view];
 }
+
 
 #pragma mark - Constraints
 
@@ -207,8 +211,6 @@ static const NSTimeInterval UNDTomorrow = 60;
          make.right.equalTo(self.addButton.mas_left).with.offset(-paddingMiddleItem.right);
          make.height.equalTo(@44);
      }];
-    
-    
 }
 
 - (void)changeImportance

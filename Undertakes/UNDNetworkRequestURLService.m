@@ -9,12 +9,8 @@
 #import "UNDNetworkRequestURLService.h"
 #import "UNDStringConstants.h"
 
-@implementation UNDNetworkRequestURLService
 
-//+ (NSURL *)getWallRequestURL
-//{
-//    return [NSURL URLWithString:@""];
-//}
+@implementation UNDNetworkRequestURLService
 
 + (NSURL *)getUserPhotoRequestURL:(NSUInteger)userID
 {
@@ -27,16 +23,6 @@
     NSString *urlString = [NSString stringWithFormat:@"https://api.vk.com/method/photos.get?owner_id=%@&album_id=profile&rev=1&extended=0&photo_sizes=0&count=1&v=5.71&access_token=%@", userString, token];
     return [NSURL URLWithString: urlString];
 }
-
-//+ (NSURL *)getFriendListRequestURL
-//{
-//    return [NSURL URLWithString:@""];
-//}
-//
-//+ (NSURL *)getLikeFriendPromiseRequestURL
-//{
-//    return [NSURL URLWithString:@""];
-//}
 
 + (NSURL *)getAuthVKRequestURL {
     return [NSURL URLWithString:@"https://oauth.vk.com/authorize?client_id=6362455&display=mobile&redirect_uri=https://oauth.vk.com/blank.html&scope=73734&response_type=token&v=5.71&state=123456"];

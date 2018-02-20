@@ -12,7 +12,9 @@
 #import "NSDictionary+UNDMetaInfo.h"
 #import "NSString+UNDStringMetaInfo.h"
 
+
 @interface UNDNetworkParser ()
+
 
 @property (nonatomic, strong) UNDCoreDataService *coreDataService;
 @property (nonatomic, strong) NSLock *mutex;
@@ -84,6 +86,7 @@
         [self.coreDataService correctLikeManID:userID photo:fileName];
     });
 }
+
 
 #pragma mark - Parse Response
 

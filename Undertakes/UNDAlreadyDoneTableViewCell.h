@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "UNDPromise+CoreDataClass.h"
 
+
 @interface UNDAlreadyDoneTableViewCell : UITableViewCell
+
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *fullText;

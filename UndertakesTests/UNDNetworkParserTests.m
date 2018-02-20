@@ -18,6 +18,7 @@
 
 @interface UNDNetworkParser (Tests)
 
+
 - (NSDictionary *)parseResponseFromVK:(NSData *)data;
 - (BOOL)isCurrentPromiseSet;
 - (NSManagedObjectID *)currentPromiseID;
@@ -34,10 +35,10 @@
 
 @interface UNDNetworkParserTests : XCTestCase
 
+
 @property (nonatomic, strong) UNDNetworkParser *parser;
 
 @end
-
 
 @implementation UNDNetworkParserTests
 
@@ -54,9 +55,7 @@
 }
 
 
-
 #pragma mark - (NSDictionary *)parseResponseFromVK:(NSData *)data
-
 
 - (void)testParseResponseFromVKNilData
 {
@@ -150,8 +149,6 @@
     OCMReject([self.parser removeLikeMansFromCoreData]);
 
     [self.parser loadUsersThatLikeFieldDidFinishWithData:data];
-    
-//    OCMVerify([self.parser removeLikeMansFromCoreData]);
 }
 
 - (void)testLoadUsersThatLikeFieldDidFinishWithDataEmptyResponse
@@ -488,41 +485,5 @@
     OCMVerify([self.parser savePhoto:@"/123456.jpg" forLikeMan:@"123456"]);
 
 }
-
-//- (void)loadPhotoDidFinishWithData:(NSData *)data taskDescription:(NSString *)description
-//{
-//    if (!data
-//        || !description
-//        || (description.length <=0)
-//        || ![description containsString:@"#"])
-//    {
-//        return;
-//    }
-//    NSArray *descriptionData = [description componentsSeparatedByString:@"#"];
-//    if (!descriptionData)
-//    {
-//        return;
-//    }
-//    NSString *userID = [descriptionData lastObject];
-//    if (!userID
-//        || !(userID.length <= 0)
-//        || ![userID und_isNumericString])
-//    {
-//        return;
-//    }
-//    NSString *fileName = [NSString stringWithFormat: [UNDStringConstants getPhotoStringTemplate], userID];
-//    if (!fileName || [fileName isEqualToString:[UNDStringConstants getPhotoStringTemplate]])
-//    {
-//        return;
-//    }
-//    NSString *filePath = [[UNDStringConstants getDocumentDirPath] stringByAppendingString:fileName];
-//    if (!filePath)
-//    {
-//        return;
-//    }
-//    [self saveData:data toDocumentsFile:filePath];
-//    [self savePhoto:fileName forLikeMan:userID];
-//}
-
 
 @end

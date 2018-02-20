@@ -8,6 +8,11 @@
 
 #import "UNDTemplatesUI.h"
 
+
+static const CGFloat UNDButtonShadowOpacity = 0.5f;
+static const CGFloat UNDButtonCornerRadius = 10.0f;
+static const CGFloat UNDButtonAlpha = 0.48;
+
 @implementation UNDTemplatesUI
 
 + (UIColor *)getMainBackgroundColor
@@ -61,13 +66,13 @@
                                               blue:223/255.0f
                                              alpha:1];
     [button setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    button.layer.cornerRadius = 10;
-    button.alpha = 0.48;
+    button.layer.cornerRadius = UNDButtonCornerRadius;
+    button.alpha = UNDButtonAlpha;
     [button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
     button.layer.masksToBounds = NO;
     button.layer.shadowColor = [UIColor blackColor].CGColor;
     button.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    button.layer.shadowOpacity = 0.5f;
+    button.layer.shadowOpacity = UNDButtonShadowOpacity;
     
     [view addSubview: button];
     return button;
@@ -85,4 +90,5 @@
     [view addSubview: label];
     return label;
 }
+
 @end

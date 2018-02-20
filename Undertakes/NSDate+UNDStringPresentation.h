@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface NSDate (UNDStringPresentation)
 
+
+/**
+ * <p>Преобразует дату с строковое представление</p>
+ * @return строковое представление даты
+ */
 - (NSString *)und_toString;
 
 @end
