@@ -65,7 +65,7 @@
 //    return fetchRequest;
 //}
 
-+ (NSFetchRequest *)userPromisesRequest
++ (NSFetchRequest *)userPromisesRequest:(BOOL)new
 {
     NSString *user = [UNDStringConstants getUserID];
     
@@ -81,7 +81,15 @@
         return nil;
     }
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ownerVkID CONTAINS %@", user];
+    NSPredicate *predicate;
+    if (new)
+    {
+        predicate = [NSPredicate predicateWithFormat:@"(ownerVkID CONTAINS %@) AND (fireDate > %@)", user, [NSDate date]];
+    }
+    else
+    {
+        predicate = [NSPredicate predicateWithFormat:@"(ownerVkID CONTAINS %@) AND (fireDate <= %@)", user, [NSDate date]];
+    }
     
     if (!predicate)
     {

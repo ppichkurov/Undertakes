@@ -15,10 +15,10 @@
 		7F36ABFD201E6C650043D00E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36ABFC201E6C650043D00E /* AppDelegate.m */; };
 		7F36AC00201E6C650043D00E /* UNDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36ABFF201E6C650043D00E /* UNDHomeViewController.m */; };
 		7F36AC0E201E6C650043D00E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AC0D201E6C650043D00E /* main.m */; };
-		7F36AC23201E7C9C0043D00E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */; };
 		7F3D2F33203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F32203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m */; };
 		7F3D2F352038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F342038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m */; };
 		7F3D2F372038C45F00E0AD4A /* UNDCoreDataServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F362038C45F00E0AD4A /* UNDCoreDataServiceTests.m */; };
+		7F3D2F3A203A037100E0AD4A /* UIButton+UNDButtonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3D2F39203A037100E0AD4A /* UIButton+UNDButtonAnimation.m */; };
 		7F3EF76120385F8000D8EBD4 /* UNDTemplatesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EF76020385F8000D8EBD4 /* UNDTemplatesUITests.m */; };
 		7F3EF763203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EF762203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m */; };
 		7F433BCD2025F31100C40FAD /* UNDPromiseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F433BCC2025F31100C40FAD /* UNDPromiseCollectionViewCell.m */; };
@@ -45,6 +45,7 @@
 		7F56867220307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866620307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m */; };
 		7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */; };
 		7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5686772030BF1C003CB42B /* UNDNetworkParser.m */; };
+		7F964974203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F964973203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m */; };
 		7FDCEAE92033219F0081ABED /* UNDStringConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAE82033219F0081ABED /* UNDStringConstants.m */; };
 		7FDCEAEC203422460081ABED /* UNDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEB203422460081ABED /* UNDDetailViewController.m */; };
 		7FDCEAEF203428AB0081ABED /* UNDAlreadyDoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */; };
@@ -85,10 +86,11 @@
 		7F36AC0D201E6C650043D00E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7F36AC13201E6C650043D00E /* UndertakesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UndertakesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F36AC19201E6C650043D00E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		7F3D2F32203898CC00E0AD4A /* UNDNetworkRequestURLServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkRequestURLServiceTests.m; sourceTree = "<group>"; };
 		7F3D2F342038A77F00E0AD4A /* UNDCoreDataRequestServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataRequestServiceTests.m; sourceTree = "<group>"; };
 		7F3D2F362038C45F00E0AD4A /* UNDCoreDataServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDCoreDataServiceTests.m; sourceTree = "<group>"; };
+		7F3D2F38203A037100E0AD4A /* UIButton+UNDButtonAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+UNDButtonAnimation.h"; sourceTree = "<group>"; };
+		7F3D2F39203A037100E0AD4A /* UIButton+UNDButtonAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UNDButtonAnimation.m"; sourceTree = "<group>"; };
 		7F3EF76020385F8000D8EBD4 /* UNDTemplatesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDTemplatesUITests.m; sourceTree = "<group>"; };
 		7F3EF762203875F600D8EBD4 /* UNDPromiseCollectionViewDelegateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDPromiseCollectionViewDelegateTests.m; sourceTree = "<group>"; };
 		7F433BCB2025F31100C40FAD /* UNDPromiseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDPromiseCollectionViewCell.h; sourceTree = "<group>"; };
@@ -140,6 +142,8 @@
 		7F5686762030BF1C003CB42B /* UNDNetworkParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDNetworkParser.h; sourceTree = "<group>"; };
 		7F5686772030BF1C003CB42B /* UNDNetworkParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkParser.m; sourceTree = "<group>"; };
 		7F5686792030BF8A003CB42B /* UNDParserOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDParserOutputProtocol.h; sourceTree = "<group>"; };
+		7F964972203C442D004690B0 /* UNDAlreadyDoneTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDAlreadyDoneTableViewCell.h; sourceTree = "<group>"; };
+		7F964973203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDAlreadyDoneTableViewCell.m; sourceTree = "<group>"; };
 		7FDCEAE72033219F0081ABED /* UNDStringConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDStringConstants.h; sourceTree = "<group>"; };
 		7FDCEAE82033219F0081ABED /* UNDStringConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDStringConstants.m; sourceTree = "<group>"; };
 		7FDCEAEA203422460081ABED /* UNDDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDDetailViewController.h; sourceTree = "<group>"; };
@@ -322,7 +326,6 @@
 			children = (
 				7F50B99C202DE267004BC9B3 /* Assets.xcassets */,
 				7F1517D6202B833900F97473 /* Undertakes.xcdatamodeld */,
-				7F36AC22201E7C9C0043D00E /* Default-568h@2x.png */,
 				7F36AC0C201E6C650043D00E /* Info.plist */,
 			);
 			name = Resources;
@@ -335,6 +338,8 @@
 				7F433BCC2025F31100C40FAD /* UNDPromiseCollectionViewCell.m */,
 				7F433BCE20272C3300C40FAD /* UNDMaintainerCollectionViewCell.h */,
 				7F433BCF20272C3300C40FAD /* UNDMaintainerCollectionViewCell.m */,
+				7F964972203C442D004690B0 /* UNDAlreadyDoneTableViewCell.h */,
+				7F964973203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -399,6 +404,8 @@
 				7F4912B82037593900C18AA6 /* NSString+UNDStringMetaInfo.m */,
 				7F4912BA203761FB00C18AA6 /* UIView+UNDGradientEasy.h */,
 				7F4912BB203761FB00C18AA6 /* UIView+UNDGradientEasy.m */,
+				7F3D2F38203A037100E0AD4A /* UIButton+UNDButtonAnimation.h */,
+				7F3D2F39203A037100E0AD4A /* UIButton+UNDButtonAnimation.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -501,7 +508,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F50B99D202DE267004BC9B3 /* Assets.xcassets in Resources */,
-				7F36AC23201E7C9C0043D00E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +634,7 @@
 				7F1517CA202B3B1D00F97473 /* UNDNetworkRequestURLService.m in Sources */,
 				7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */,
 				7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */,
+				7F964974203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m in Sources */,
 				7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */,
 				7F56866820307E0B003CB42B /* UNDUser+CoreDataClass.m in Sources */,
 				7F56867020307E0B003CB42B /* UNDHuman+CoreDataClass.m in Sources */,
@@ -646,6 +653,7 @@
 				7F4912B92037593900C18AA6 /* NSString+UNDStringMetaInfo.m in Sources */,
 				7F1517C8202B3B1D00F97473 /* UNDAuthViewController.m in Sources */,
 				7F56866C20307E0B003CB42B /* UNDFriend+CoreDataClass.m in Sources */,
+				7F3D2F3A203A037100E0AD4A /* UIButton+UNDButtonAnimation.m in Sources */,
 				7F50B99B202CA324004BC9B3 /* UNDAddPromiceViewController.m in Sources */,
 				7F56866B20307E0B003CB42B /* UNDLikeMan+CoreDataProperties.m in Sources */,
 				7F56866D20307E0B003CB42B /* UNDFriend+CoreDataProperties.m in Sources */,

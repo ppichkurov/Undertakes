@@ -15,4 +15,6 @@
 
 - (void)photosURLOfMan:(NSUInteger)userID thatLikedPromiseReceived:(NSString *)urlString;
 
+- (void)photoLoad;
+
 @end

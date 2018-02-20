@@ -25,7 +25,7 @@
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UNDHomeViewController *homeViewController;
 @property (nonatomic, strong) UNDAlreadyDoneTableViewController *alreadyDoneViewController;
-@property (nonatomic, strong) UNDFriendsTableViewController *friendsViewController;
+//@property (nonatomic, strong) UNDFriendsTableViewController *friendsViewController;
 
 @end
 
@@ -137,25 +137,26 @@
     if (!self.homeViewController)
     {
         self.homeViewController = [UNDHomeViewController new];
-        self.homeViewController.tabBarItem.title = @"Home";
+//        self.homeViewController.tabBarItem.title = @"Home";
+        self.homeViewController.tabBarItem.image = [UIImage imageNamed:@"homeTabBarIcon"];
     }
     if (!self.alreadyDoneViewController)
     {
         self.alreadyDoneViewController = [UNDAlreadyDoneTableViewController new];
-        self.alreadyDoneViewController.tabBarItem.title = @"Done";
+        self.alreadyDoneViewController.tabBarItem.image = [UIImage imageNamed:@"doneTabBarIcon"];
     }
-    if (!self.friendsViewController)
-    {
-        self.friendsViewController = [UNDFriendsTableViewController new];
-        self.friendsViewController.tabBarItem.title = @"Friends";
-    }
+//    if (!self.friendsViewController)
+//    {
+//        self.friendsViewController = [UNDFriendsTableViewController new];
+//        self.friendsViewController.tabBarItem.image = [UIImage imageNamed:@"friendTabBarIcon"];
+//    }
     if (!self.tabBarController)
     {
         self.tabBarController = [UITabBarController new];
     }
-    NSArray *viewControllersArray = @[self.friendsViewController, self.homeViewController, self.alreadyDoneViewController];
+    NSArray *viewControllersArray = @[self.homeViewController, self.alreadyDoneViewController];
     self.tabBarController.viewControllers = viewControllersArray;
-    self.tabBarController.selectedIndex = 1;
+    self.tabBarController.selectedIndex = 0;
     [self presentViewController:self.tabBarController animated:NO completion:^{
         NSLog(@"Presented");
     }];

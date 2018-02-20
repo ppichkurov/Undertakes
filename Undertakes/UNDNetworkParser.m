@@ -41,6 +41,13 @@
     });
 }
 
+- (void)notifyPhotoLoad
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.outputDelegate photoLoad];
+    });
+}
+
 - (void)correctLikeMansInAccordanceWith:(NSSet *)likeMans
 {
     if (!self.currentPromiseID || !likeMans || likeMans.count == 0)
@@ -147,12 +154,12 @@
     {
         return;
     }
-    NSString *fieldId = postIdDict[@"post_id"];
-    if (!fieldId || ![fieldId und_isNumericString])
+    NSNumber *fieldId = postIdDict[@"post_id"];
+    if (!fieldId)
     {
         return;
     }
-    [self savePromiseFieldIDToCoreData:fieldId];
+    [self savePromiseFieldIDToCoreData:[NSString stringWithFormat:@"%@",fieldId]];
 }
 
 - (void)loadUserPhotoURLDidFinishWithData:(NSData *)data
@@ -223,6 +230,7 @@
     }
     [self saveData:data toDocumentsFile:filePath];
     [self savePhoto:fileName forLikeMan:userID];
+    [self notifyPhotoLoad];
 }
 
 

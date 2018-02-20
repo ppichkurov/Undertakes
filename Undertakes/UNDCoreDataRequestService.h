@@ -15,7 +15,7 @@
 
 + (NSManagedObjectContext *)coreDataContext;
 //+ (NSFetchRequest *)currentUserRequest;
-+ (NSFetchRequest *)userPromisesRequest;
++ (NSFetchRequest *)userPromisesRequest:(BOOL)new;
 + (NSFetchRequest *)promiseLikeManRequest:(NSString *)likeManID;
 
 @end

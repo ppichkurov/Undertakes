@@ -138,7 +138,7 @@
     OCMStub([self.entityDescriptionClass insertNewObjectForEntityForName:@"UNDPromiseWeb"
                                                   inManagedObjectContext:self.context]).andReturn(nil);
     
-    OCMReject([self.coreDataService getPromisesForCurrentUser]);
+    OCMReject([self.coreDataService getPromisesForCurrentUser: YES]);
     
     [self.coreDataService savePromiseFieldIdToCoreData:232323];
 }
@@ -152,7 +152,7 @@
     
     NSArray<UNDPromise *> *array = @[self.promise];
     
-    OCMStub([self.coreDataService getPromisesForCurrentUser]).andReturn(array);
+    OCMStub([self.coreDataService getPromisesForCurrentUser: YES]).andReturn(array);
     
     OCMStub([[self.promiseWeb managedObjectContext] save: nil]);
 

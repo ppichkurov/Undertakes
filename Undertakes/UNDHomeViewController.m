@@ -7,7 +7,7 @@
 //
 
 #import "UNDHomeViewController.h"
-
+#import "UIButton+UNDButtonAnimation.h"
 #import "UNDPromiseWeb+CoreDataClass.h"
 
 #import "UNDPromiseCollectionViewDelegate.h"
@@ -45,6 +45,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 @property (nonatomic, strong) UNDNetworkService *networkService;
 
 @property (nonatomic, weak) UNDPromise *currentPromise;
+@property (nonatomic, assign) NSUInteger countOfPhotoNeedWaitingFor;
 
 @end
 
@@ -66,6 +67,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 - (void)prepareUI
 {
     self.view.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
+    self.countOfPhotoNeedWaitingFor = 0;
 }
 
 - (void)prepareButtons
@@ -110,18 +112,17 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     if (!self.currentPromise)
     {
+        [self.refreshLikesButton und_startFailAnimation];
         return;
     }
     if (!self.currentPromise.webVersion)
     {
+        [self.refreshLikesButton und_startFailAnimation];
         return;
     }
     [self.networkService getUsersThatLikeField: self.currentPromise.webVersion.fieldVkID.intValue];
-    
-    // переделать на обновления после полной подгрузки
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.maintainersCollectionView reloadData];
-    });
+    [self.refreshLikesButton setTitleColor: self.refreshLikesButton.backgroundColor forState:UIControlStateNormal];
+    [self.refreshLikesButton und_startRefreshAnimation];
 }
 
 - (void)preparePromisesCollectionView
@@ -160,7 +161,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
     flowLayout.minimumInteritemSpacing = 10.0f; //отступ между столбцами
     flowLayout.minimumLineSpacing = 10.0f; // отступ между строками
-    flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 30);
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
     flowLayout.itemSize = CGSizeMake(200, 200);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     return flowLayout;
@@ -169,9 +170,9 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 - (UICollectionViewFlowLayout *)maintainerFlowLayout
 {
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-    flowLayout.minimumInteritemSpacing = 0.0f; //отступ между столбцами
-    flowLayout.minimumLineSpacing = 15.0f; // отступ между строками
-    flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 30);
+    flowLayout.minimumInteritemSpacing = 15.0f; //отступ между столбцами
+    flowLayout.minimumLineSpacing = 20.0f; // отступ между строками
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
     flowLayout.itemSize = CGSizeMake(50, 50);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     return flowLayout;
@@ -190,7 +191,9 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
 - (void)prepareConstraints
 {
-    UIEdgeInsets padding = UIEdgeInsetsMake(35, 15, 0, 15);
+    NSLog(@"tabbar: %f", CGRectGetHeight(self.tabBarController.tabBar.frame));
+    
+    UIEdgeInsets padding = UIEdgeInsetsMake(45, 15, 0, 15);
     [self.addNewPromiseButton mas_makeConstraints: ^(MASConstraintMaker *make)
     {
         make.top.equalTo(self.view.mas_top).with.offset(padding.top);
@@ -210,17 +213,17 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     [self.promisesCollectionView mas_makeConstraints: ^(MASConstraintMaker *make)
     {
         make.top.equalTo(self.addNewPromiseButton.mas_bottom).with.offset(20.0f);
-        make.right.equalTo(self.view.mas_right).with.offset(15.0f);
-        make.left.equalTo(self.view.mas_left).with.offset(15.0f);
+        make.right.equalTo(self.view.mas_right);
+        make.left.equalTo(self.view.mas_left);
         make.height.equalTo(@220);
     }];
     
     [self.maintainersCollectionView mas_makeConstraints: ^(MASConstraintMaker *make)
      {
          make.top.equalTo(self.promisesCollectionView.mas_bottom).with.offset(20.0f);
-         make.right.equalTo(self.view.mas_right).with.offset(15.0f);
-         make.left.equalTo(self.view.mas_left).with.offset(15.0f);
-         make.height.equalTo(@135);
+         make.right.equalTo(self.view.mas_right);
+         make.left.equalTo(self.view.mas_left);
+         make.bottom.equalTo(self.view.mas_bottom).with.offset(-CGRectGetHeight(self.tabBarController.tabBar.frame));
      }];
 }
 
@@ -254,6 +257,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
 - (void)listOfMansThatLikedPromise:(NSSet *)likeMans
 {
+    self.countOfPhotoNeedWaitingFor = likeMans.count;
     for (NSNumber *man in likeMans) {
         [self.networkService getUserPhotoURL:man.intValue];
     }
@@ -262,6 +266,16 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 - (void)photosURLOfMan:(NSUInteger)userID thatLikedPromiseReceived:(NSString *)urlString
 {
     [self.networkService getPhotoByURL:urlString userID:userID];
+}
+
+- (void)photoLoad
+{
+    self.countOfPhotoNeedWaitingFor--;
+    if (self.countOfPhotoNeedWaitingFor == 0)
+    {
+        NSLog(@"All photo received");
+        [self.maintainersCollectionView reloadData];
+    }
 }
 //------------------------------------------------------------------------------------
 
