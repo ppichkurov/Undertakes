@@ -13,9 +13,24 @@
 
 @interface UNDCoreDataRequestService : NSObject
 
+/**
+ * <p>Возвращает ManagedObjectContext</p>
+ * @return - контекст
+ */
 + (NSManagedObjectContext *)coreDataContext;
-//+ (NSFetchRequest *)currentUserRequest;
-+ (NSFetchRequest *)userPromisesRequest:(BOOL)new;
+
+/**
+ * <p>Возвращает fetchedRequest с обещаниями для текущего залогиненного пользователя</p>
+ * @param newest - true - обещания, данные в текущий период, false - старые обещания
+ * @return реквест
+ */
++ (NSFetchRequest *)userPromisesRequest:(BOOL)newest;
+
+/**
+ * <p>Возвращает реквест для одного пользователя по id, лайкнувшего обещание </p>
+ * @param likeManID - id пользователя в виде строки, лайкнувших обещание
+ * @return если likeManID валидный id - возращает реквест, иначе nil
+ */
 + (NSFetchRequest *)promiseLikeManRequest:(NSString *)likeManID;
 
 @end

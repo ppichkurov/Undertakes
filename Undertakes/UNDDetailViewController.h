@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "UNDPromise+CoreDataClass.h"
 
+
 @interface UNDDetailViewController : UIViewController
 
+
 - (instancetype)initWithPromise:(UNDPromise *)promise;
+
 
 @end

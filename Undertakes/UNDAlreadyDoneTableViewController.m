@@ -13,16 +13,17 @@
 #import "UNDCoreDataService.h"
 #import "UNDTemplatesUI.h"
 
-static NSString *UNDOldPromisesTableViewReuseID = @"oldPromisesTableViewReuseID";
 
+static NSString *UNDOldPromisesTableViewReuseID = @"oldPromisesTableViewReuseID";
+static const CGFloat UNDTableViewRowHeight = 150.0f;
 
 @interface UNDAlreadyDoneTableViewController () <NSFetchedResultsControllerDelegate>
+
 
 @property (nonatomic, strong) NSFetchedResultsController *oldPromiseResultsController;
 @property (nonatomic, strong) UNDCoreDataService *coreDataService;
 
 @end
-
 
 @implementation UNDAlreadyDoneTableViewController
 
@@ -56,16 +57,18 @@ static NSString *UNDOldPromisesTableViewReuseID = @"oldPromisesTableViewReuseID"
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView registerClass:[UNDAlreadyDoneTableViewCell class] forCellReuseIdentifier: UNDOldPromisesTableViewReuseID];
+    [self.tableView registerClass:[UNDAlreadyDoneTableViewCell class]
+           forCellReuseIdentifier: UNDOldPromisesTableViewReuseID];
     [self prepareRefreshControl];
-    self.tableView.rowHeight = 150;
+    self.tableView.rowHeight = UNDTableViewRowHeight;
 }
-
 
 - (void)prepareRefreshControl
 {
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                            action:@selector(refreshData)
+                  forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)refreshData
@@ -160,12 +163,14 @@ static NSString *UNDOldPromisesTableViewReuseID = @"oldPromisesTableViewReuseID"
     {
         case NSFetchedResultsChangeInsert:
         {
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
             break;
         }
         case NSFetchedResultsChangeDelete:
         {
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
             break;
         }
         case NSFetchedResultsChangeUpdate:
@@ -185,6 +190,5 @@ static NSString *UNDOldPromisesTableViewReuseID = @"oldPromisesTableViewReuseID"
 {
     [self.tableView endUpdates];
 }
-
 
 @end

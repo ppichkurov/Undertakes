@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface NSString (UNDStringMetaInfo)
+
 
 - (BOOL)und_isNumericString;
 

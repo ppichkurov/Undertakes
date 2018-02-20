@@ -12,12 +12,13 @@
 #import "UNDCoreDataRequestService.h"
 #import "UNDPromiseWeb+CoreDataClass.h"
 
+
 static NSString *maintainerCollViewCell = @"maintainerCollViewCell";
 
 
 @interface UNDMaintainerCollectionViewDelegate () <NSFetchedResultsControllerDelegate>
 
-//@property (nonatomic, strong) NSFetchedResultsController *maintainerResultsController;
+
 @property (nonatomic, weak) UICollectionView *maintainersCollectionView;
 
 @end

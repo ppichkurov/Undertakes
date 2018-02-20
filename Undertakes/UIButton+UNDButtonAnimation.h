@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface UIButton (UNDButtonAnimation) <CAAnimationDelegate>
 
+/**
+ * <p>Стартует анимацию обновления на кнопке</p>
+ */
 - (void)und_startRefreshAnimation;
 
+/**
+ * <p>Стартует анимацию Ошибки на кнопке</p>
+ */
 - (void)und_startFailAnimation;
 
 @end

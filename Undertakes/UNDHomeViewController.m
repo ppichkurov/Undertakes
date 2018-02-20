@@ -7,32 +7,27 @@
 //
 
 #import "UNDHomeViewController.h"
+#import "masonry.h"
 #import "UIButton+UNDButtonAnimation.h"
 #import "UNDPromiseWeb+CoreDataClass.h"
-
 #import "UNDPromiseCollectionViewDelegate.h"
 #import "UNDMaintainerCollectionViewDelegate.h"
-
 #import "UNDPromiseCollectionViewCell.h"
 #import "UNDMaintainerCollectionViewCell.h"
-
 #import "UNDAddPromiceViewController.h"
 #import "UNDDetailViewController.h"
-
 #import "UNDNetworkParser.h"
 #import "UNDNetworkService.h"
 #import "UNDTemplatesUI.h"
-
-#import "masonry.h"
-
-
 #import "UNDStringConstants.h"
+
 
 static NSString *UNDPromiseCollViewCellId = @"promiseCollViewCell";
 static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
 
 @interface UNDHomeViewController () <UNDPromiseDataSourceOutputProtocol, UNDParserOutputProtocol>
+
 
 @property (nonatomic, strong) UIImage *photoImage;
 @property (nonatomic, strong) UIButton *addNewPromiseButton;
@@ -41,9 +36,8 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 @property (nonatomic, strong) UICollectionView *maintainersCollectionView;
 @property (nonatomic, strong) UNDPromiseCollectionViewDelegate *promisesDelegate;
 @property (nonatomic, strong) UNDMaintainerCollectionViewDelegate *maintainersDelegate;
-@property (nonatomic, strong) UNDNetworkParser *networkParser; //TODO должен работать только с нетворком
+@property (nonatomic, strong) UNDNetworkParser *networkParser;
 @property (nonatomic, strong) UNDNetworkService *networkService;
-
 @property (nonatomic, weak) UNDPromise *currentPromise;
 @property (nonatomic, assign) NSUInteger countOfPhotoNeedWaitingFor;
 
@@ -155,12 +149,11 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     [self.view addSubview:self.maintainersCollectionView];
 }
 
-//нет смысла объединять методы, будет слишком много параметров
 - (UICollectionViewFlowLayout *)propmiseFlowLayout
 {
     UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
-    flowLayout.minimumInteritemSpacing = 10.0f; //отступ между столбцами
-    flowLayout.minimumLineSpacing = 10.0f; // отступ между строками
+    flowLayout.minimumInteritemSpacing = 10.0f;
+    flowLayout.minimumLineSpacing = 10.0f;
     flowLayout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
     flowLayout.itemSize = CGSizeMake(200, 200);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -191,8 +184,6 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 
 - (void)prepareConstraints
 {
-    NSLog(@"tabbar: %f", CGRectGetHeight(self.tabBarController.tabBar.frame));
-    
     UIEdgeInsets padding = UIEdgeInsetsMake(45, 15, 0, 15);
     [self.addNewPromiseButton mas_makeConstraints: ^(MASConstraintMaker *make)
     {
@@ -252,9 +243,6 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     }];
 }
 
-//вынести в отдельный сервис
-//------------------------------------------------------------------------------------
-
 - (void)listOfMansThatLikedPromise:(NSSet *)likeMans
 {
     self.countOfPhotoNeedWaitingFor = likeMans.count;
@@ -277,6 +265,5 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
         [self.maintainersCollectionView reloadData];
     }
 }
-//------------------------------------------------------------------------------------
 
 @end

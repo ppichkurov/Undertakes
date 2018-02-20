@@ -11,32 +11,35 @@
 #import "Expecta.h"
 #import "OCMock.h"
 
+
 @interface UNDTemplatesUI (Tests)
 
+
 + (UIColor *)getMainBackgroundColor;
-
 + (UIColor *)colorForImportance:(NSUInteger)importance;
-
 + (UIButton *)getButtonWithTitle:(NSString *)title
                           action:(SEL)selector
                           target:(id)target
                          forView:(UIView *)view;
-
 + (UILabel *)getLabel:(NSString *)text forView:(UIView *)view;
 
 @end
 
+
 @interface UNDTemplatesUITests : XCTestCase
+
 
 @end
 
 @implementation UNDTemplatesUITests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
 }
 
-- (void)tearDown {
+- (void)tearDown
+{
     [super tearDown];
 }
 

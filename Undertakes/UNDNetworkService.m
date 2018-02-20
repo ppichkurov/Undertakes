@@ -18,6 +18,7 @@ static NSString *UNDPhotoHashTagUserID = @"UNDPhoto#%lu";
 
 @interface UNDNetworkService ()
 
+
 @property (nonatomic, strong) NSURLSession *urlSession;
 @property (nonatomic, strong) NSURLSessionDownloadTask *downloadTask;
 
@@ -108,7 +109,8 @@ static NSString *UNDPhotoHashTagUserID = @"UNDPhoto#%lu";
 
 #pragma mark - NSURLSession and DowloadTask delegates
 
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+- (void)URLSession:(NSURLSession *)session
+      downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
     NSData *data = [NSData dataWithContentsOfURL:location];
     
@@ -129,16 +131,5 @@ static NSString *UNDPhotoHashTagUserID = @"UNDPhoto#%lu";
         [self.outputDelegate loadPhotoDidFinishWithData:data taskDescription: downloadTask.taskDescription];
     }
 }
-
-//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-//{
-//    NSLog(@"Error: %@ with taskID: %lu", error, task.taskIdentifier);
-////    [session finishTasksAndInvalidate];
-//}
-
-//- (void)URLSession:(NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
-//{
-//
-//}
 
 @end

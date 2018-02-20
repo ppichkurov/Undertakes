@@ -13,12 +13,12 @@
 
 @interface UNDPromiseCollectionViewCell ()
 
+
 @property (nonatomic, strong) UIView *substrateView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *fullTextLabel;
 
 @end
-
 
 @implementation UNDPromiseCollectionViewCell
 
@@ -100,7 +100,6 @@
         make.leading.equalTo(self.substrateView).with.offset(paddingFullText.left);
         make.trailing.equalTo(self.substrateView).with.offset(-paddingFullText.right);
         make.top.equalTo(self.titleLabel).with.offset(paddingFullText.top);
-//        make.bottom.equalTo(self.substrateView).with.offset(-paddingFullText.bottom).priorityLow();
     }];
 }
 

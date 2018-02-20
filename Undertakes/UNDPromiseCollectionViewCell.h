@@ -12,6 +12,7 @@
 
 @interface UNDPromiseCollectionViewCell : UICollectionViewCell
 
+
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *fullText;
 @property (nonatomic, copy) NSDate *fireDate;
