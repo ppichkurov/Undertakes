@@ -100,7 +100,7 @@ static const CGFloat UNDTableViewRowHeight = 150.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"count: %lu", self.oldPromiseResultsController.sections[section].numberOfObjects);
+//    NSLog(@"count: %lu", self.oldPromiseResultsController.sections[section].numberOfObjects);
     return self.oldPromiseResultsController.sections[section].numberOfObjects;
 }
 

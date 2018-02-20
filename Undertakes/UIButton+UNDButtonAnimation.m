@@ -164,12 +164,12 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if([[anim valueForKey:@"id"] isEqual:@"animationGroupFirst"]) {
-        NSLog(@"firstAnim was stopped");
+//        NSLog(@"firstAnim was stopped");
         [self secondAnimationGroup];
         return;
     }
     if([[anim valueForKey:@"id"] isEqual:@"animationGroupSecond"]) {
-        NSLog(@"secondAnim was stopped");
+//        NSLog(@"secondAnim was stopped");
         [UNDCircleLayer removeAllAnimations];
         [UNDCircleLayer removeFromSuperlayer];
         [self thirdAnimationGroup];

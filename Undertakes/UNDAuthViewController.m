@@ -77,7 +77,7 @@
 
     NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
-        NSLog(@"King's cache clean");
+//        NSLog(@"King's cache clean");
     }];
 }
 
@@ -148,7 +148,7 @@
     self.tabBarController.viewControllers = viewControllersArray;
     self.tabBarController.selectedIndex = 0;
     [self presentViewController:self.tabBarController animated:NO completion:^{
-        NSLog(@"Presented");
+//        NSLog(@"Presented");
     }];
 }
 

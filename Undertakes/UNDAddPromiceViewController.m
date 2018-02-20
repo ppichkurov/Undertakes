@@ -230,14 +230,14 @@ static const NSTimeInterval UNDTomorrow = 60;
     [self savePromiseToCoreData];
     [self.delegate addPromisCollectionViewWillDismissed:self.titleText.text fulltext:self.fullText.text];
     [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"go BACK");
+//        NSLog(@"go BACK");
     }];
 }
 
 - (void)backWithoutSave
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"go BACK without save");
+//        NSLog(@"go BACK without save");
     }];
 }
 

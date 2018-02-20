@@ -31,7 +31,7 @@
 
 - (void)refresh
 {
-    NSLog(@"Refresh!");
+//    NSLog(@"Refresh!");
 }
 
 #pragma mark - Table view data source

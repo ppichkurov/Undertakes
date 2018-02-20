@@ -44,7 +44,7 @@
             _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"Undertakes"];
             [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
                 if (error != nil) {
-                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+//                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
                     abort();
                 }
             }];
@@ -62,7 +62,7 @@
     NSManagedObjectContext *context = self.persistentContainer.viewContext;
     NSError *error = nil;
     if ([context hasChanges] && ![context save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+//        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
 }

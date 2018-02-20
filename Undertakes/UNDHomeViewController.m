@@ -98,7 +98,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     UNDAddPromiceViewController *addPromiseViewController = [UNDAddPromiceViewController new];
     addPromiseViewController.delegate = self;
     [self presentViewController: addPromiseViewController animated:YES completion:^{
-        NSLog(@"go forward");
+//        NSLog(@"go forward");
     }];
 }
 
@@ -239,7 +239,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     UNDDetailViewController *detailViewController = [[UNDDetailViewController alloc] initWithPromise:promise];
     [self presentViewController:detailViewController animated:YES completion:^{
-        NSLog(@"show details");
+//        NSLog(@"show details");
     }];
 }
 
@@ -261,7 +261,7 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
     self.countOfPhotoNeedWaitingFor--;
     if (self.countOfPhotoNeedWaitingFor == 0)
     {
-        NSLog(@"All photo received");
+//        NSLog(@"All photo received");
         [self.maintainersCollectionView reloadData];
     }
 }

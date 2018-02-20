@@ -245,7 +245,7 @@
     NSError *error = nil;
     if (![data writeToFile:filePath options:0 error:&error])
     {
-        NSLog(@"Error : %@", error);
+//        NSLog(@"Error : %@", error);
     }
     error = nil;
     [self.mutex unlock];
