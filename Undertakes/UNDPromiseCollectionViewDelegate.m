@@ -27,7 +27,7 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
     if (self = [super init])
     {
         _promiceResultsController = [[NSFetchedResultsController alloc]
-                                     initWithFetchRequest:[UNDCoreDataRequestService userPromisesRequest]
+                                     initWithFetchRequest:[UNDCoreDataRequestService userPromisesRequest:YES]
                                      managedObjectContext:[UNDCoreDataRequestService coreDataContext]
                                      sectionNameKeyPath:nil
                                      cacheName:nil];
@@ -120,7 +120,7 @@ static NSString *promiseCollViewCell = @"promiseCollViewCell";
 {
     UNDPromiseCollectionViewCell *cell = (UNDPromiseCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:promiseCollViewCell forIndexPath:indexPath];
     
-     UNDPromise *promise = [self.promiceResultsController objectAtIndexPath:indexPath];
+    UNDPromise *promise = [self.promiceResultsController objectAtIndexPath:indexPath];
     [self prepareCell:cell withPromise:promise];
     return cell;
 }

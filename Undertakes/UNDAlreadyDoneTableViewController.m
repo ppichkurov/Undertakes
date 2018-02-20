@@ -7,74 +7,184 @@
 //
 
 #import "UNDAlreadyDoneTableViewController.h"
+#import "UNDCoreDataRequestService.h"
+#import "UNDPromise+CoreDataClass.h"
+#import "UNDAlreadyDoneTableViewCell.h"
+#import "UNDCoreDataService.h"
+#import "UNDTemplatesUI.h"
 
-@interface UNDAlreadyDoneTableViewController ()
+static NSString *UNDOldPromisesTableViewReuseID = @"oldPromisesTableViewReuseID";
+
+
+@interface UNDAlreadyDoneTableViewController () <NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, strong) NSFetchedResultsController *oldPromiseResultsController;
+@property (nonatomic, strong) UNDCoreDataService *coreDataService;
 
 @end
 
+
 @implementation UNDAlreadyDoneTableViewController
+
+- (instancetype)init
+{
+    if (self = [super init])
+    {
+        self.view.backgroundColor = [UNDTemplatesUI getMainBackgroundColor];
+        self.tableView.allowsSelection = NO;
+        self.coreDataService = [UNDCoreDataService new];
+    }
+    return self;
+}
+
+- (NSFetchedResultsController *)oldPromiseResultsController;
+{
+    if (_oldPromiseResultsController)
+    {
+        return _oldPromiseResultsController;
+    }
+    _oldPromiseResultsController = [[NSFetchedResultsController alloc]
+                                    initWithFetchRequest:[UNDCoreDataRequestService userPromisesRequest:NO]
+                                    managedObjectContext:[UNDCoreDataRequestService coreDataContext]
+                                    sectionNameKeyPath:nil
+                                    cacheName:nil];
+    _oldPromiseResultsController.delegate = self;
+    [_oldPromiseResultsController performFetch:nil];
+    return _oldPromiseResultsController;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView registerClass:[UNDAlreadyDoneTableViewCell class] forCellReuseIdentifier: UNDOldPromisesTableViewReuseID];
+    [self prepareRefreshControl];
+    self.tableView.rowHeight = 150;
 }
+
+
+- (void)prepareRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)refreshData
+{
+    self.oldPromiseResultsController = nil;
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (void)prepareCell:(UNDAlreadyDoneTableViewCell *)cell withPromise:(UNDPromise *)promise
+{
+    if (!cell || !promise)
+    {
+        return;
+    }
+    cell.title = promise.title;
+    cell.fullText = promise.fullText;
+    cell.importance = promise.importance;
+    cell.promiseObject = promise;
+}
+
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    NSLog(@"count: %lu", self.oldPromiseResultsController.sections[section].numberOfObjects);
+    return self.oldPromiseResultsController.sections[section].numberOfObjects;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+
+#pragma mark - Table view delegate
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UNDAlreadyDoneTableViewCell *cell = (UNDAlreadyDoneTableViewCell *)[tableView dequeueReusableCellWithIdentifier:UNDOldPromisesTableViewReuseID forIndexPath:indexPath];
+  
+    if (!cell) {
+        cell = [[UNDAlreadyDoneTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                  reuseIdentifier:UNDOldPromisesTableViewReuseID];
+    }
+    UNDPromise *promise = [self.oldPromiseResultsController objectAtIndexPath:indexPath];
+    [self prepareCell:cell withPromise:promise];
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+#pragma mark - NSFetchedResultControllerDelegate
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (NSString *)controller:(NSFetchedResultsController *)controller sectionIndexTitleForSectionName:(NSString *)sectionName
+{
+    return sectionName;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
 }
-*/
+
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type
+{
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        default:
+            return;
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+        {
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeDelete:
+        {
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeUpdate:
+        {
+            [self prepareCell:[self.tableView cellForRowAtIndexPath:indexPath] withPromise:anObject];
+            break;
+        }
+        case NSFetchedResultsChangeMove:
+        {
+            [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+            break;
+        }
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
 
 @end

@@ -190,4 +190,13 @@ static const NSUInteger UNDCircleAnimationRepeatCount = 4;
     self.userInteractionEnabled = YES;
 }
 
+- (void)und_startFailAnimation
+{
+    [UIView animateWithDuration:0.3f animations:^{
+        self.alpha = 0.3;
+    } completion:^(BOOL finished) {
+        self.alpha = 0.48;
+    }];
+}
+
 @end

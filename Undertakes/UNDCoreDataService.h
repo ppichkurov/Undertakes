@@ -18,7 +18,7 @@
 
 //- (UNDUser *)getCurrentUser;
 
-- (NSArray<UNDPromise *> *)getPromisesForCurrentUser;
+- (NSArray<UNDPromise *> *)getPromisesForCurrentUser:(BOOL)new;
 
 - (void)savePromiseToCoreDataWithTitle:(NSString *)title
                            description:(NSString *)fullText
@@ -30,5 +30,9 @@
 - (void)correctLikeManIDs:(NSSet *)likeMans forPromise:(NSManagedObjectID *)promiseID;
 
 - (void)correctLikeManID:(NSString *)likeManID photo:(NSString *)photoPath;
+
+- (void)removePromise:(UNDPromise *)promise;
+
+//- (void)touchAnOldObject;
 
 @end

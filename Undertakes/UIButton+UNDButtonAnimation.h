@@ -11,6 +11,7 @@
 @interface UIButton (UNDButtonAnimation) <CAAnimationDelegate>
 
 - (void)und_startRefreshAnimation;
-//- (void)und_stopRefreshAnimation;
+
+- (void)und_startFailAnimation;
 
 @end

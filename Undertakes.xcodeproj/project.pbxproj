@@ -45,6 +45,7 @@
 		7F56867220307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866620307E0B003CB42B /* UNDPromiseWeb+CoreDataClass.m */; };
 		7F56867320307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F56866720307E0B003CB42B /* UNDPromiseWeb+CoreDataProperties.m */; };
 		7F5686782030BF1C003CB42B /* UNDNetworkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5686772030BF1C003CB42B /* UNDNetworkParser.m */; };
+		7F964974203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F964973203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m */; };
 		7FDCEAE92033219F0081ABED /* UNDStringConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAE82033219F0081ABED /* UNDStringConstants.m */; };
 		7FDCEAEC203422460081ABED /* UNDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEB203422460081ABED /* UNDDetailViewController.m */; };
 		7FDCEAEF203428AB0081ABED /* UNDAlreadyDoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDCEAEE203428AB0081ABED /* UNDAlreadyDoneTableViewController.m */; };
@@ -141,6 +142,8 @@
 		7F5686762030BF1C003CB42B /* UNDNetworkParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDNetworkParser.h; sourceTree = "<group>"; };
 		7F5686772030BF1C003CB42B /* UNDNetworkParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDNetworkParser.m; sourceTree = "<group>"; };
 		7F5686792030BF8A003CB42B /* UNDParserOutputProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDParserOutputProtocol.h; sourceTree = "<group>"; };
+		7F964972203C442D004690B0 /* UNDAlreadyDoneTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDAlreadyDoneTableViewCell.h; sourceTree = "<group>"; };
+		7F964973203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDAlreadyDoneTableViewCell.m; sourceTree = "<group>"; };
 		7FDCEAE72033219F0081ABED /* UNDStringConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDStringConstants.h; sourceTree = "<group>"; };
 		7FDCEAE82033219F0081ABED /* UNDStringConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNDStringConstants.m; sourceTree = "<group>"; };
 		7FDCEAEA203422460081ABED /* UNDDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNDDetailViewController.h; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 				7F433BCC2025F31100C40FAD /* UNDPromiseCollectionViewCell.m */,
 				7F433BCE20272C3300C40FAD /* UNDMaintainerCollectionViewCell.h */,
 				7F433BCF20272C3300C40FAD /* UNDMaintainerCollectionViewCell.m */,
+				7F964972203C442D004690B0 /* UNDAlreadyDoneTableViewCell.h */,
+				7F964973203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				7F1517CA202B3B1D00F97473 /* UNDNetworkRequestURLService.m in Sources */,
 				7FDCEAFA2034C3BF0081ABED /* NSDate+UNDStringPresentation.m in Sources */,
 				7FDCEAF220343D7E0081ABED /* UNDFriendsTableViewController.m in Sources */,
+				7F964974203C442D004690B0 /* UNDAlreadyDoneTableViewCell.m in Sources */,
 				7F433BD820272FAF00C40FAD /* UNDMaintainerCollectionViewDelegate.m in Sources */,
 				7F56866820307E0B003CB42B /* UNDUser+CoreDataClass.m in Sources */,
 				7F56867020307E0B003CB42B /* UNDHuman+CoreDataClass.m in Sources */,

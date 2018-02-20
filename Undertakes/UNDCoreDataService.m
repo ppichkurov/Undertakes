@@ -19,9 +19,9 @@
 @implementation UNDCoreDataService
 
 
-- (NSArray<UNDPromise *> *)getPromisesForCurrentUser
+- (NSArray<UNDPromise *> *)getPromisesForCurrentUser:(BOOL)new
 {
-    NSArray *result = [[UNDCoreDataRequestService coreDataContext] executeFetchRequest: [UNDCoreDataRequestService userPromisesRequest] error:nil];
+    NSArray *result = [[UNDCoreDataRequestService coreDataContext] executeFetchRequest: [UNDCoreDataRequestService userPromisesRequest:new] error:nil];
     return result;
 }
 
@@ -72,7 +72,7 @@
     
     promiseWeb.fieldVkID = [NSString stringWithFormat:@"%lld",fieldId];
     
-    NSArray<UNDPromise *> *arrayOfPromises = [self getPromisesForCurrentUser];
+    NSArray<UNDPromise *> *arrayOfPromises = [self getPromisesForCurrentUser:YES];
     UNDPromise *lastAddPromise =  [arrayOfPromises firstObject];
     lastAddPromise.webVersion = promiseWeb;
 
@@ -154,6 +154,13 @@
     return;
 }
 
+- (void)removePromise:(UNDPromise *)promise
+{
+    [[UNDCoreDataRequestService coreDataContext] deleteObject:promise];
+    [[UNDCoreDataRequestService coreDataContext] save:nil];
+    return;
+}
+
 - (void)saveAllLikeMans:(NSSet<NSNumber *> *)likeMans forPromise:(UNDPromise *)promise
 {
     for (NSNumber *man in likeMans) {
@@ -189,5 +196,17 @@
     }
     [[UNDCoreDataRequestService coreDataContext] save:nil];
 }
+
+//- (void)touchAnOldObject
+//{
+//    NSArray<UNDPromise *> *oldGuysNeedToBeTouched = [self getPromisesForCurrentUser:NO];
+//    if (!oldGuysNeedToBeTouched.count)
+//    {
+//        return;
+//    }
+//    for (UNDPromise *man in oldGuysNeedToBeTouched) {
+//        man.fireDate = man.fireDate;
+//    }
+//}
 
 @end

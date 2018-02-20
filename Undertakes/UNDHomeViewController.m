@@ -112,10 +112,12 @@ static NSString *UNDMaintainerCollViewCellId = @"maintainerCollViewCell";
 {
     if (!self.currentPromise)
     {
+        [self.refreshLikesButton und_startFailAnimation];
         return;
     }
     if (!self.currentPromise.webVersion)
     {
+        [self.refreshLikesButton und_startFailAnimation];
         return;
     }
     [self.networkService getUsersThatLikeField: self.currentPromise.webVersion.fieldVkID.intValue];

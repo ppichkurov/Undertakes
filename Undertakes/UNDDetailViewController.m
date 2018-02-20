@@ -11,6 +11,7 @@
 #import "UNDTemplatesUI.h"
 #import "UNDPromiseWeb+CoreDataClass.h"
 #import "UNDLikeMan+CoreDataClass.h"
+#import "UNDCoreDataService.h"
 #import "masonry.h"
 
 @interface UNDDetailViewController ()
@@ -29,6 +30,8 @@
 
 @property (nonatomic, strong) UNDPromise *detailedPromise;
 
+@property (nonatomic, strong) UNDCoreDataService *coreDataService;
+
 @end
 
 @implementation UNDDetailViewController
@@ -38,6 +41,7 @@
     if (self = [super init])
     {
         _detailedPromise = promise;
+        _coreDataService = [UNDCoreDataService new];
     }
     return self;
 }
@@ -72,6 +76,9 @@
     self.fullTextView = [UITextView new];
     self.fullTextView.text = self.detailedPromise.fullText;
     self.fullTextView.font = [UIFont systemFontOfSize:17];
+    self.fullTextView.layer.cornerRadius = 10;
+    self.fullTextView.alpha = 0.7;
+
     self.fullTextView.editable = NO;
     [self.view addSubview:self.fullTextView];
 }
@@ -133,20 +140,20 @@
     }];
     
     [self.backButton mas_makeConstraints: ^(MASConstraintMaker *make)
-     {
-         make.bottom.equalTo(self.subView.mas_bottom).with.offset(-paddingMiddleItem.bottom);
-         make.right.equalTo(self.subView.mas_right).with.offset(-paddingMiddleItem.right);
-         make.height.equalTo(@44);
-         make.width.equalTo(@140);
-     }];
+    {
+        make.bottom.equalTo(self.subView.mas_bottom).with.offset(-paddingMiddleItem.bottom);
+        make.right.equalTo(self.subView.mas_right).with.offset(-paddingMiddleItem.right);
+        make.height.equalTo(@44);
+        make.width.equalTo(@140);
+    }];
     
     [self.deleteButton mas_makeConstraints: ^(MASConstraintMaker *make)
-     {
-         make.bottom.equalTo(self.subView.mas_bottom).with.offset(-paddingMiddleItem.bottom);
-         make.left.equalTo(self.subView.mas_left).with.offset(paddingMiddleItem.left);
-         make.right.equalTo(self.backButton.mas_left).with.offset(-paddingMiddleItem.right);
-         make.height.equalTo(@44);
-     }];
+    {
+        make.bottom.equalTo(self.subView.mas_bottom).with.offset(-paddingMiddleItem.bottom);
+        make.left.equalTo(self.subView.mas_left).with.offset(paddingMiddleItem.left);
+        make.right.equalTo(self.backButton.mas_left).with.offset(-paddingMiddleItem.right);
+        make.height.equalTo(@44);
+    }];
     
     [self.fullTextView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom).with.offset(10);
@@ -161,9 +168,7 @@
 
 - (void)deletePromise
 {
-    
-    // удаление обещания
-    
+    [self.coreDataService removePromise:self.detailedPromise];
     [self dismissDetailView];
 }
 

@@ -7,11 +7,15 @@
 //
 
 #import "UNDAddPromiceViewController.h"
+#import "UIButton+UNDButtonAnimation.h"
 #import "UNDCoreDataService.h"
 #import "UNDTemplatesUI.h"
 #import "masonry.h"
 
-static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
+/**
+ для тестов - сделано 1 минута вместо дня (60 * 60 * 24)
+ */
+static const NSTimeInterval UNDTomorrow = 60;
 
 @interface UNDAddPromiceViewController ()
 
@@ -79,7 +83,6 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 {
     self.fullText = [UITextField new];
     self.fullText.borderStyle = UITextBorderStyleRoundedRect;
-
     [self.view addSubview: self.fullText];
 }
 
@@ -216,6 +219,12 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 
 - (void)backToMainView
 {
+    if (self.titleLabel.text.length == 0
+        || self.fullText.text.length == 0)
+    {
+        [self.addButton und_startFailAnimation];
+        return;
+    }
     [self savePromiseToCoreData];
     [self.delegate addPromisCollectionViewWillDismissed:self.titleText.text fulltext:self.fullText.text];
     [self dismissViewControllerAnimated:YES completion:^{
