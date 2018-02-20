@@ -48,7 +48,7 @@
                           target:(id)target
                          forView:(UIView *)view
 {
-    if (!title || (title.length <=0)
+    if (!title || (title.length <= 0)
         || !selector || !target || !view)
     {
         return nil;

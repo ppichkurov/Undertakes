@@ -110,7 +110,7 @@
 - (void)prepareConstraints
 {
     UIEdgeInsets paddings = UIEdgeInsetsMake(0, 3, 0, 0);
-    UIEdgeInsets paddingTopItem = UIEdgeInsetsMake(30, 15, 20, 15);
+    UIEdgeInsets paddingTopItem = UIEdgeInsetsMake(45, 15, 20, 15);
     UIEdgeInsets paddingMiddleItem = UIEdgeInsetsMake(50, 15, 20, 15);
     [self.subView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).with.insets(paddings);

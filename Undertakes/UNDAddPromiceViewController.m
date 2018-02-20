@@ -134,8 +134,8 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
 
 - (void)prepareConstraints
 {
-    UIEdgeInsets paddingTopItem = UIEdgeInsetsMake(35, 15, 0, 15);
-    UIEdgeInsets paddingMiddleItem = UIEdgeInsetsMake(15, 15, 0, 15);
+    UIEdgeInsets paddingTopItem = UIEdgeInsetsMake(45, 15, 0, 15);
+    UIEdgeInsets paddingMiddleItem = UIEdgeInsetsMake(15, 15, 30, 15);
     
     [self.titleLabel mas_makeConstraints: ^(MASConstraintMaker *make)
      {
@@ -191,7 +191,7 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     
     [self.addButton mas_makeConstraints: ^(MASConstraintMaker *make)
     {
-        make.top.equalTo(self.datePicker.mas_bottom).with.offset(paddingMiddleItem.top);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-paddingMiddleItem.bottom);
         make.right.equalTo(self.view.mas_right).with.offset(-paddingMiddleItem.right);
         make.height.equalTo(@44);
         make.width.equalTo(@200);
@@ -199,7 +199,7 @@ static const NSTimeInterval UNDTomorrow = 60 * 60 * 24;
     
     [self.backButton mas_makeConstraints: ^(MASConstraintMaker *make)
      {
-         make.top.equalTo(self.datePicker.mas_bottom).with.offset(paddingMiddleItem.top);
+         make.bottom.equalTo(self.view.mas_bottom).with.offset(-paddingMiddleItem.bottom);
          make.left.equalTo(self.view.mas_left).with.offset(paddingMiddleItem.left);
          make.right.equalTo(self.addButton.mas_left).with.offset(-paddingMiddleItem.right);
          make.height.equalTo(@44);
